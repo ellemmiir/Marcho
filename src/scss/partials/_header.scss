@@ -1,0 +1,74 @@
+@use '../vars';
+
+
+.header {
+  padding: 40px 0;
+  background-color: vars.$white;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+}
+
+.menu {
+  &__btn {
+    display: none;
+  }
+  &__list {
+    display: flex;
+  }
+  &__list-item:not(:last-child) {
+    margin-right: 35px;
+  }
+  &__list-link {
+    @extend %roboto-500;
+    color: vars.$title;
+    border-bottom: 1px solid transparent;
+    transition: all .3s ease-in-out;
+    &:hover {
+      transition: all .3s ease-in-out;
+      @extend %roboto-500;
+      color: vars.$accent;
+      border-bottom: 1px solid vars.$accent;
+    }
+  }
+}
+
+.user-nav {
+  display: flex;
+  &__link {
+    display: flex;
+    position: relative;
+    svg{
+      path{
+        transition: all .3s ease-in-out;
+      }
+    }
+    &:hover{
+      svg{
+        path{
+          fill: vars.$accent;
+      }
+    }
+  }
+  }
+  &__link:not(:last-child){
+    margin-right: 25px;
+  }
+  &__num {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -9px;
+    right: -13px;
+    background-color: vars.$accent;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 1.6;
+    color: vars.$white;
+    text-align: center;
+  }
+}
