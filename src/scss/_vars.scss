@@ -32,3 +32,22 @@ $bg: #f6f6f6;
   font-weight: 700;
 }
 
+
+%btn {
+  position: relative;
+  padding: 12px 26px;
+  top: -1px;
+  background-color: $accent;
+  color: #fff;
+  @extend %roboto-400;
+  text-transform: uppercase;
+  box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+  cursor: pointer;
+  border: none;
+  &:hover {
+    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.5);
+  }
+  &:active {
+    top: 2px;
+  }
+}
