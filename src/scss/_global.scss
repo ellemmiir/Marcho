@@ -1,0 +1,32 @@
+body {
+  // background-color: $black;
+  // @extend %semibold;
+  font-size: 16px;
+  line-height: 1.5;
+  // color: $white;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1200px;
+}
+
+a {
+  // @extend %semibold;
+  // color: $white;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+section{
+  padding: 100px 0;
+}
+
+.title {
+  font-size: 120px;
+  line-height: 1;
+}
