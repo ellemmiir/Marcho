@@ -1,0 +1,378 @@
+body, a {
+    font-family: "Quicksand-Medium", sans-serif;
+    font-weight: 500;
+}
+
+.footer-top__form-btn {
+    font-family: "Roboto-Regular", sans-serif;
+    font-weight: 400;
+}
+
+.footer-top__title, .menu__list-link, .menu__list-link:hover {
+    font-family: "Roboto-Medium", sans-serif;
+    font-weight: 500;
+}
+
+.title {
+    font-family: "Roboto-Bold", sans-serif;
+    font-weight: 700;
+}
+
+.footer-top__form-btn {
+    position: relative;
+    padding: 12px 26px;
+    top: -1px;
+    background-color: #fe3e57;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    cursor: pointer;
+    border: none;
+}
+
+.footer-top__form-btn:hover {
+    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.5);
+}
+
+.footer-top__form-btn:active {
+    top: 2px;
+}
+
+.header {
+    padding: 40px 0;
+    background-color: #ffffff;
+}
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+}
+
+.menu__btn {
+    display: none;
+}
+
+.menu__list {
+    display: flex;
+}
+
+.menu__list-item:not(:last-child) {
+    margin-right: 35px;
+}
+
+.menu__list-link {
+    color: #29282d;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu__list-link:hover {
+    transition: all 0.3s ease-in-out;
+    color: #fe3e57;
+    border-bottom: 1px solid #fe3e57;
+}
+
+.user-nav {
+    display: flex;
+}
+
+.user-nav__link {
+    display: flex;
+    position: relative;
+}
+
+.user-nav__link svg path {
+    transition: all 0.2s;
+}
+
+.user-nav__link:hover svg path {
+    fill: #fe3e57;
+}
+
+.user-nav__link:not(:last-child) {
+    margin-right: 25px;
+}
+
+.user-nav__num {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -9px;
+    right: -13px;
+    background-color: #fe3e57;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #ffffff;
+    text-align: center;
+}
+
+footer {
+    background-color: #f6f6f6;
+}
+
+.footer-top {
+    display: flex;
+    padding: 70px 0 40px;
+    border-bottom: 1px solid #ececec;
+}
+
+.footer-top__contact {
+    margin-right: 50px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-top__contact-logo {
+    margin-bottom: 15px;
+}
+
+.footer-top__contact-email, .footer-top__contact-phone {
+    transition: all 0.2s ease-in-out;
+}
+
+.footer-top__contact-email:hover, .footer-top__contact-phone:hover {
+    color: #fe3e57;
+}
+
+.footer-top__social-list {
+    display: flex;
+}
+
+.footer-top__social-item:not(:last-child) {
+    margin-right: 18px;
+}
+
+.footer-top__social-link path {
+    fill: #8d8d8d;
+    transition: all 0.2s ease-in-out;
+}
+
+.footer-top__social-link:hover path {
+    fill: #fe3e57;
+}
+
+.footer-top__nav {
+    width: 170px;
+    margin-right: 30px;
+}
+
+.footer-top__title {
+    margin-bottom: 40px;
+    font-size: 22px;
+    color: #29282d;
+    line-height: 1;
+}
+
+.footer-top__nav-li:not(:last-child) {
+    margin-bottom: 14px;
+}
+
+.footer-top__nav-link {
+    transition: color 0.2s ease-in-out;
+}
+
+.footer-top__nav-link:hover {
+    color: #fe3e57;
+}
+
+.footer-top__form-wrapper {
+    max-width: 470px;
+}
+
+.footer-top__text {
+    margin-bottom: 25px;
+}
+
+.footer-top__form-input {
+    padding: 12px 10px 12px 15px;
+    width: 100%;
+    max-width: 320px;
+    background-color: #ffffff;
+    box-shadow: 0px 7px 20px 0px rgba(192, 192, 192, 0.3);
+    border: none;
+}
+
+.footer-top__form-input::-moz-placeholder {
+    color: #8d8d8d;
+    font-size: 16px;
+}
+
+.footer-top__form-input::placeholder {
+    color: #8d8d8d;
+    font-size: 16px;
+}
+
+.footer-top__form-btn {
+    padding: 12px 26px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 75px;
+    font-size: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom__box-img {
+    display: inline-block;
+    margin-left: 25px;
+    vertical-align: middle;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #8d8d8d;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1200px;
+}
+
+a {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #8d8d8d;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+.title {
+    text-align: center;
+    font-size: 48px;
+    line-height: 65px;
+    text-transform: uppercase;
+    color: #29282d;
+}
+
+@font-face {
+    font-family: "Quicksand-Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: local("Quicksand-Regular"), url("../fonts/Quicksand-Regular.woff2") format("woff2"), url("../fonts/Quicksand-Regular.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+    font-family: "Quicksand-Medium";
+  font-weight: 500;
+  font-style: normal;
+  src: local("Quicksand-Medium"), url("../fonts/Quicksand-Medium.woff2") format("woff2"), url("../fonts/Quicksand-Medium.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto-Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: local("Roboto-Regular"), url("../fonts/Roboto-Regular.woff2") format("woff2"), url("../fonts/Roboto-Regular.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto-Medium";
+  font-weight: 500;
+  font-style: normal;
+  src: local("Roboto-Medium"), url("../fonts/Roboto-Medium.woff2") format("woff2"), url("../fonts/Roboto-Medium.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto-Bold";
+  font-weight: 700;
+  font-style: normal;
+  src: local("Roboto-Bold"), url("../fonts/Roboto-Bold.woff2") format("woff2"), url("../fonts/Roboto-Bold.woff") format("woff");
+  font-display: swap;
+}
+/* Large desktops and laptops */
+/* Portrait tablets and medium desktops */
+/* Portrait tablets and small desktops */
+/* Landscape phones and portrait tablets */
+/* Landscape phones and smaller */
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+ul[class],
+ol[class] {
+    padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+ul[class] {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+body, a {
+    font-family: "Quicksand-Medium", sans-serif;
+    font-weight: 500;
+}
+
+.title {
+    font-family: "Roboto-Bold", sans-serif;
+    font-weight: 700;
+}
