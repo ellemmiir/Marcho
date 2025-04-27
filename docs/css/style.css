@@ -3,7 +3,7 @@ body, a {
     font-weight: 500;
 }
 
-.info__item-title, .categories__link, .top-slider__link, .footer-top__form-btn {
+.info__item-title, .categories__link, .top-slider__link, .video__link, .footer-top__form-btn {
     font-family: "Roboto-Regular", sans-serif;
     font-weight: 400;
 }
@@ -38,7 +38,7 @@ body, a {
     top: 2px;
 }
 
-.top-slider__link {
+.top-slider__link, .video__link {
     position: relative;
     display: inline-block;
     padding: 14px 36px;
@@ -49,7 +49,7 @@ body, a {
     cursor: pointer;
 }
 
-.top-slider__link::before {
+.top-slider__link::before, .video__link::before {
     position: absolute;
     content: "";
     top: 50%;
@@ -62,7 +62,7 @@ body, a {
     transition: all 0.5s ease;
 }
 
-.top-slider__link:hover::before {
+.top-slider__link:hover::before, .video__link:hover::before {
     width: 100%;
 }
 
@@ -455,6 +455,56 @@ footer {
     transition: all 0.3s;
 }
 
+.video {
+    background-image: url("../images/decor/pattern.svg");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-color: #f6f6f6;
+    padding: 125px 0;
+}
+
+.video__inner {
+    display: flex;
+}
+
+.video__popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+    max-width: 530px;
+    width: 100%;
+    height: 480px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.video__content {
+    max-width: 570px;
+}
+
+.video__subtitle {
+    margin-bottom: 5px;
+    padding-top: 75px;
+    color: #fe3e57;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.video__title {
+    text-align: left !important;
+}
+
+.video__text {
+    margin-bottom: 55px;
+}
+
+.video__link {
+    z-index: 1;
+}
+
 html,
 body {
     height: 100%;
@@ -600,7 +650,7 @@ body, a {
     font-weight: 500;
 }
 
-.top-slider__link, .info__item-title, .categories__link {
+.top-slider__link, .video__link, .info__item-title, .categories__link {
     font-family: "Roboto-Regular", sans-serif;
     font-weight: 400;
 }
@@ -610,7 +660,7 @@ body, a {
     font-weight: 700;
 }
 
-.top-slider__link {
+.top-slider__link, .video__link {
     position: relative;
     display: inline-block;
     padding: 14px 36px;
@@ -621,7 +671,7 @@ body, a {
     cursor: pointer;
 }
 
-.top-slider__link::before {
+.top-slider__link::before, .video__link::before {
     position: absolute;
     content: "";
     top: 50%;
@@ -634,7 +684,7 @@ body, a {
     transition: all 0.5s ease;
 }
 
-.top-slider__link:hover::before {
+.top-slider__link:hover::before, .video__link:hover::before {
     width: 100%;
 }
 
