@@ -44,6 +44,12 @@ button {
   color: vars.$title;
 }
 
+@media (max-width: 1600px) {
+  .title{
+    @include vars.adaptiv-font(48, 30);
+  }
+}
+
 
 .text {
   text-align: center;

@@ -259,7 +259,7 @@
       width: 1150px;
     }
     &__title{
-      @include vars.adaptiv-font(48, 26);
+      @include vars.adaptiv-font(48, 30);
     }
   }
 }
@@ -322,6 +322,20 @@
       margin-top: 0;
     }
   }
+
+  .video{
+    &__inner {
+      display: block;
+    }
+    &__popup {
+      background-size: contain;
+      max-width: 100%;
+      background-position: center top;
+    }
+    &__content {
+      max-width: 100%;
+    }
+  }
 }
 
 
@@ -351,6 +365,18 @@
       }
     }
   }
+
+  .video{
+    padding: 60px 0;
+    &__subtitle{
+      padding-top: 20px;
+    }
+    &__popup {
+      height: 300px;
+      background-size: cover;
+    }
+  }
+ 
 }
 
 
