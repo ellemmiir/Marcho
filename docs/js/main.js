@@ -13767,7 +13767,7 @@ $(function () {
     arrows: false,
     fade: true,
     autoplay: true,
-    autoplaySpead: 5000
+    autoplaySpead: 5000,
   });
 
 

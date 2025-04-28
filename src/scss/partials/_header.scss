@@ -3,7 +3,12 @@
 
 .header {
   padding: 40px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: vars.$white;
+  z-index: 999;
   &__inner {
     display: flex;
     justify-content: space-between;
@@ -72,6 +77,13 @@
 }
 
 //adaptiv
+
+@media (max-width: 1400px){
+  .header{
+    padding: 20px 5px;
+  }
+}
+
 @media (max-width: 991px) {
   .menu {
     order: 1;
@@ -81,8 +93,10 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
-      top: 120px;
+      top: 70px;
       left: 0;
+      right: 0;
+      height: 100vh;
       background-color: vars.$white;
       z-index: 5;
       transform: translateX(200%);
@@ -143,7 +157,6 @@
     margin-left: auto;
   }
 }
-
 
 @media (max-width: 500px) {
   .header {

@@ -31,6 +31,24 @@ $bg: #f6f6f6;
 }
 
 
+$maxWidth: 1200;
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $addMobSize: $addSize + $addSize * 0.7;
+
+    @media (max-width: 767px) {
+        font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
+    }
+
+    @media (min-width: 767px) {
+        font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+    }
+}
+
+// @include adaptiv-font(120, 50);
+
+
 %btn {
   position: relative;
   padding: 12px 26px;
