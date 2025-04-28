@@ -2,7 +2,7 @@
 
 
 .header {
-  padding: 40px 0;
+  padding: 40px 10px;
   background-color: vars.$white;
   &__inner {
     display: flex;
@@ -29,8 +29,6 @@
     border-bottom: 1px solid transparent;
     transition: all .3s ease-in-out;
     &:hover {
-      transition: all .3s ease-in-out;
-      @extend %roboto-500;
       color: vars.$accent;
       border-bottom: 1px solid vars.$accent;
     }
@@ -70,5 +68,102 @@
     line-height: 1.6;
     color: vars.$white;
     text-align: center;
+  }
+}
+
+//adaptiv
+@media (max-width: 991px) {
+  .menu {
+    order: 1;
+    margin-left: 40px;
+    &__list {
+      position: absolute;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      top: 120px;
+      left: 0;
+      background-color: vars.$white;
+      z-index: 5;
+      transform: translateX(200%);
+      transition: all .5s;
+      &.menu__list--active {
+        transform: translateX(0%);
+        transition: all .5s;
+      }
+    }
+    &__list-item {
+      margin-right: 0 !important;
+      padding: 0 15px;
+      width: 100%;
+      text-align: center;
+    }
+    &__list-link {
+      padding: 12px 0;
+      display: block;
+      &:hover {
+        border-bottom: 1px solid transparent;
+      }
+    }
+    &__btn{
+      position: relative;
+      display: block;
+      width: 30px;
+      height: 26px;
+      background: transparent;
+      border-top: 4px solid black;
+      border-bottom: 4px solid black;
+      transition: all .2 ease-in-out;
+      &:before,
+      &:after {
+        content: ' ';
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 4px;
+        top: 50%;
+        left: 50%;
+        background: currentColor;
+        transform: translate(-50%, -50%);
+        transition: transform .2 ease-in-out;
+      } 
+      &.menu__btn--active {
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        &:before {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+        &:after {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+  }
+  .user-nav {
+    margin-left: auto;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .header {
+    .logo{
+      display: none;
+    }
+    &__inner{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
+  .user-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    &__link{
+      padding: 5px;
+    }
   }
 }

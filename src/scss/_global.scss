@@ -44,6 +44,13 @@ button {
   color: vars.$title;
 }
 
+.text {
+  text-align: center;
+  max-width: 570px;
+  margin: 0 auto 55px;
+}
+
+
 //fonts
 @font-face {
   font-family: 'Quicksand-Regular';

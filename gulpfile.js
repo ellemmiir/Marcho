@@ -82,6 +82,8 @@ function pages () {
 }
 
 
+
+
 function styles () {
     return src([ path.src.css, 'node_modules/slick-slider/slick/slick.css',], {base: srcPath + 'scss/'})
     .pipe(plumber({
@@ -104,6 +106,7 @@ function styles () {
     .pipe(dest(path.build.css)) 
     .pipe(browserSync.stream())
 }
+
 
 
 function scripts () {
