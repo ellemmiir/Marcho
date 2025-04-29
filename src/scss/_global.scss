@@ -1,4 +1,3 @@
-@use 'vars';
 
 html,
 body {
@@ -43,6 +42,79 @@ button {
   @extend %roboto-700;
   text-transform: uppercase;
   color: vars.$title;
+}
+
+@media (max-width: 1600px) {
+  .title{
+    @include vars.adaptiv-font(48, 30);
+  }
+}
+
+
+.text {
+  text-align: center;
+  max-width: 570px;
+  margin: 0 auto 55px;
+}
+
+//at pages
+.top {
+  padding-top: 110px;
+  &__container {
+    margin: 0 auto;
+    padding: 120px 0 130px;
+    max-width: 1700px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    text-align: center;
+  }
+}
+
+
+.breadcrumbs {
+  display: inline-flex;
+  justify-content: center;
+  padding-left: 25px;
+  position: relative;
+  flex-wrap: wrap;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 4px;
+    background-image: url('../images/icons/home-icon.svg');
+  }
+  &__list {
+    display: flex;
+  }
+  &__item {
+    color: #727272;
+    padding-right: 40px;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 9px;
+      right: 15px;
+      top: 9px;
+      background-image: url('../images/icons/angle-right.svg');
+      background-repeat: no-repeat;
+    }
+    &:last-child {
+      color: vars.$accent;
+      padding-right: 0;
+      &::after {
+        display: none;
+      }
+    }
+  }
+  &__link {
+    color: inherit;
+  }
 }
 
 //fonts

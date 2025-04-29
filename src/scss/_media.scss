@@ -16,13 +16,26 @@ $maxWidth: 1200;
 // @include adaptiv-font(120, 50);
 
 @media (max-width: 1600px) {
-
 }
 
 
 /* Large desktops and laptops */
 /* Portrait tablets and medium desktops */
 @media (max-width: 1200px) {
+  // .top-slider {
+  //   &__content {
+  //     padding-left: 15px;
+  //     padding-top: 40px;
+  //   }
+  //   &__img {
+  //     width: 40%;
+  //     object-fit: contain;
+  //   }
+  // }
+}
+
+
+@media (max-width: 1050px) {
 
 }
 
