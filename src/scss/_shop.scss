@@ -1,196 +1,3 @@
-// .product {
-//   padding: 105px 0 120px;
-//   text-align: center;
-//   &__items {
-//     display: grid;
-//     grid-template-columns: repeat(3, 1fr);
-//     grid-gap: 45px 30px;
-//   }
-//   &__link {
-//     z-index: 1;
-//     @extend %btn-white;
-//     margin-top: 30px;
-//   }
-// }
-
-// .product-item {
-//   max-width: 370px;
-//   text-align: center;
-//   &.product-item--list {
-//     min-width: 100%;
-//     display: flex;
-//     text-align: left;
-//     &:hover {
-//       .product-item__link-box {
-//         transform: translateY(-280%);
-//       }
-//     }
-//     .product-item__img-box {
-//       height: 250px;
-//       min-width: 200px;
-//       margin-bottom: 0;
-//       img {
-//         height: 250px;
-//       }
-//     }
-//     .product-item__link-box {
-//       bottom: auto;
-//       background-color: transparent;
-//       width: 155px;
-//       box-shadow: none;
-//       .product-item__link {
-//         width: 50px;
-//         height: 50px;
-//         background-color: #fff;
-//         border-radius: 50%;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//       }
-//       .product-item__link--line {
-//         display: none;
-//       }
-//     }
-//     .product-item__content-box {
-//       display: block;
-//     }
-//     .product-item__wrapper-box {
-//       padding: 30px 40px;
-//       border: 1px solid #ececec;
-//       border-left: none;
-//     }
-//     .product-item__box {
-//       display: flex;
-//       flex-wrap: wrap;
-//     }
-//     .product-item__title {
-//       width: 100%;
-//       order: -1;
-//       padding: 0;
-//       margin-bottom: 10px;
-//     }
-//     .product-item__text {
-//       margin-bottom: 20px;
-//     }
-//     .product-item__btn {
-//       color: #fff;
-//       padding: 11px 40px;
-//       background-color: vars.$title;
-//       border: none;
-//       &:hover {
-//         background-color: vars.$accent;
-//         box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
-//         cursor: pointer;
-//       }
-//     }
-//     .product-item__price {
-//       order: -1;
-//       margin-left: -12px;
-//     }
-//     .star {
-//       margin-left: 23px;
-//     }
-//   }
-//   &__content-box {
-//     display: none;
-//   }
-//   &:hover {
-//     .product-item__link-box {
-//       transform: translateY(0);
-//     }
-//   }
-//   &__img-box {
-//     position: relative;
-//     height: 370px;
-//     overflow: hidden;
-//     margin-bottom: 25px;
-//   }
-//   &__link-box {
-//     transition: all 0.3s;
-//     position: absolute;
-//     left: 0;
-//     right: 0;
-//     bottom: 50px;
-//     background-color: vars.$white;
-//     width: 220px;
-//     height: 50px;
-//     margin: 0 auto;
-//     box-shadow: 0px 5px 30px 0px rgba(152, 152, 152, 0.2);
-//     border-radius: 25px;
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-around;
-//     transform: translateY(300%);
-//   }
-//   &__link {
-//     display: inherit;
-//     path {
-//       transition: all 0.3s;
-//     }
-//   }
-//   &__link:hover {
-//     path {
-//       fill: vars.$accent;
-//     }
-//   }
-//   &__link--line::before,
-//   &__link--line::after {
-//     content: "";
-//     position: absolute;
-//     background-color: #ececec;
-//     width: 1px;
-//     height: 30px;
-//     top: 10px;
-//   }
-//   &__link--line::before {
-//     left: 70px;
-//   }
-//   &__link--line::after {
-//     right: 70px;
-//   }
-//   &__images {
-//     object-fit: cover;
-//   }
-//   &__title {
-//     color: vars.$title;
-//     font-size: 22px;
-//     padding: 15px 0 20px;
-//     transition: color .2s ease-in-out;
-//     &:hover {
-//       transition: color .2s ease-in-out;
-//       color: vars.$accent;
-//     }
-//   }
-//   &__price {
-//     display: flex;
-//     justify-content: center;
-//     @extend %roboto-400;
-//   }
-//   &__new-price {
-//     padding: 0 12px;
-//     color: vars.$title;
-//   }
-//   &__old-price {
-//     padding: 0 12px;
-//     text-decoration: line-through;
-//   }
-//   &--sale {
-//     .product-item__img-box::before {
-//       content: "SALE";
-//       @extend %btn;
-//       position: absolute;
-//       top: 25px;
-//       left: 25px;
-//       line-height: 1;
-//     }
-//   }
-// }
-
-// .star {
-//   margin: 0 auto;
-// }
-
-
 .shop {
   padding: 120px 0 105px;
   &__inner {
@@ -245,7 +52,6 @@
   }
 }
 
-
 .filter-price {
   user-select: none;
   &__label {
@@ -263,14 +69,15 @@
   }
 }
 
-
+//stylization of filter price with ios-rangeslider
+//filter
 .irs{
   position: relative;
   display: block;
   height: 30px;
 }
 
-
+//grey line
 .irs--flat .irs-line {
   position: relative;
   display: block;
@@ -280,6 +87,7 @@
   outline: none; 
 }
 
+//active line
 .irs--flat .irs-bar {
   position: absolute;
   display: block;
@@ -288,7 +96,7 @@
   background-color: vars.$accent;
 }
 
-
+//handlers of line
 .irs--flat .irs-handle {
   position: absolute;
   display: block;
@@ -299,7 +107,7 @@
   box-shadow: 0px 0px 13px 0px rgba(90, 90, 90, 0.2);
 }
 
-
+//numbers
 .irs-from,
 .irs-to,
 .irs-single {
@@ -310,7 +118,6 @@
 .irs--flat .irs-max {
   display: none;
 }
-
 
 .filter-color {
   user-select: none;
@@ -360,7 +167,6 @@
   }
 }
 
-
 .filter-size {
   user-select: none;
   &__label {
@@ -390,7 +196,6 @@
   }
 }
 
-
 .filter-category {
   user-select: none;
   &__label {
@@ -418,7 +223,6 @@
     transition: all .1s ease-in-out;
   }
 }
-
 
 .filter-popular {
   user-select: none;
@@ -454,83 +258,88 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid vars.$bg-dark;
     .product-item {
       margin-bottom: 40px;
     }
   }
   &__filter {
-    border: 1px solid #ececec;
-    padding: 20px 25px 20px 30px;
     margin-bottom: 40px;
+    padding: 20px 25px 20px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid vars.$bg-dark;
   }
   &__filter-buttons {
     display: flex;
     align-items: center;
   }
   &__filter-btn {
-    outline: none;
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
     margin-left: 15px;
+    padding: 0;
     line-height: 0;
+    outline: none;
   }
   &__filter-btn--active {
-
     path {
       fill: vars.$accent;
     }
   }
+  .select-style{
+    font-size: 16px;
+    color: vars.$default;
+    border-color: vars.$default;
+  }
 }
 
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  padding: 30px 0;
-  .pagination__list {
-    display: flex;
-    padding: 0 35px;
-  }
-  &__item {
-    padding: 0 15px;
-  }
-  &__link--active {
-    color: vars.$accent;
-  }
-  &__arrows {
-    text-transform: uppercase;
-    position: relative;
-    &:before {
-      content: '';
-      position: absolute;
-      width: 5px;
-      height: 10px;
-      top: 8px;
-    }
-    &:hover {
-      color: vars.$accent;
-    }
-  }
-  &__prev {
-    padding-left: 15px;
-    &::before {
-      background-image: url('../images/icons/angle-left.svg');
-      left: 0;
-    }
-  }
-  &__next {
-    padding-right: 15px;
-    &::before {
-      background-image: url('../images/icons/angle-right1.svg');
-      right: 0;
-    }
-  }
-}
+//styles of product in _product.scss
+
+
+
+// .pagination {
+//   display: flex;
+//   justify-content: center;
+//   padding: 30px 0;
+//   .pagination__list {
+//     display: flex;
+//     padding: 0 35px;
+//   }
+//   &__item {
+//     padding: 0 15px;
+//   }
+//   &__link--active {
+//     color: vars.$accent;
+//   }
+//   &__arrows {
+//     text-transform: uppercase;
+//     position: relative;
+//     &:before {
+//       content: '';
+//       position: absolute;
+//       width: 5px;
+//       height: 10px;
+//       top: 8px;
+//     }
+//     &:hover {
+//       color: vars.$accent;
+//     }
+//   }
+//   &__prev {
+//     padding-left: 15px;
+//     &::before {
+//       background-image: url('../images/icons/angle-left.svg');
+//       left: 0;
+//     }
+//   }
+//   &__next {
+//     padding-right: 15px;
+//     &::before {
+//       background-image: url('../images/icons/angle-right1.svg');
+//       right: 0;
+//     }
+//   }
+// }
 
 
