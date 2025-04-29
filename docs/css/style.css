@@ -918,6 +918,61 @@ button {
     color: inherit;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+.pagination .pagination__list {
+    display: flex;
+    padding: 0 35px;
+}
+
+.pagination__item {
+    padding: 0 15px;
+}
+
+.pagination__link--active {
+    color: #fe3e57;
+}
+
+.pagination__arrows {
+    position: relative;
+    text-transform: uppercase;
+}
+
+.pagination__arrows:before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    top: 8px;
+    background-repeat: no-repeat;
+}
+
+.pagination__arrows:hover {
+    color: #fe3e57;
+}
+
+.pagination__prev {
+    padding-left: 15px;
+}
+
+.pagination__prev::before {
+    background-image: url("../images/icons/angle-left.svg");
+    left: 0;
+}
+
+.pagination__next {
+    padding-right: 15px;
+}
+
+.pagination__next::before {
+    background-image: url("../images/icons/angle-right1.svg");
+    right: 0;
+}
+
 @font-face {
     font-family: "Quicksand-Regular";
   font-weight: 400;
