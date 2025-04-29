@@ -110,7 +110,7 @@ function styles () {
 
 
 function scripts () {
-    return src(['node_modules/jquery/dist/jquery.js', 'node_modules/@fancyapps/ui/dist/fancybox/fancybox.umd.js', 'node_modules/slick-slider/slick/slick.js', path.src.js], {base: srcPath + 'js/'})
+    return src(['node_modules/jquery/dist/jquery.js', 'node_modules/@fancyapps/ui/dist/fancybox/fancybox.umd.js', 'node_modules/ion-rangeslider/js/ion.rangeSlider.js', 'node_modules/slick-slider/slick/slick.js', path.src.js], {base: srcPath + 'js/'})
     .pipe(plumber({
       errorHandler : function (err) {
         notify.onError({
