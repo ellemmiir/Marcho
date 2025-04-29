@@ -3,7 +3,7 @@ body, a {
     font-weight: 500;
 }
 
-.info__item-title, .categories__link, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title, .filter-price__btn, .top-slider__link, .video__link, .footer-top__form-btn {
+.info__item-title, .categories__link, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title, .filter-price__btn, .top-slider__link, .video__link, .product__link, .footer-top__form-btn {
     font-family: "Roboto-Regular", sans-serif;
     font-weight: 400;
 }
@@ -38,7 +38,7 @@ body, a {
     top: 2px;
 }
 
-.top-slider__link, .video__link {
+.top-slider__link, .video__link, .product__link {
     position: relative;
     display: inline-block;
     padding: 14px 36px;
@@ -49,7 +49,7 @@ body, a {
     cursor: pointer;
 }
 
-.top-slider__link::before, .video__link::before {
+.top-slider__link::before, .video__link::before, .product__link::before {
     position: absolute;
     content: "";
     top: 50%;
@@ -62,7 +62,7 @@ body, a {
     transition: all 0.5s ease;
 }
 
-.top-slider__link:hover::before, .video__link:hover::before {
+.top-slider__link:hover::before, .video__link:hover::before, .product__link:hover::before {
     width: 100%;
 }
 
@@ -1017,6 +1017,22 @@ button {
 /* Portrait tablets and small desktops */
 /* Landscape phones and portrait tablets */
 /* Landscape phones and smaller */
+.product {
+    padding: 105px 0 120px;
+    text-align: center;
+}
+
+.product__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 45px 30px;
+}
+
+.product__link {
+    margin-top: 30px;
+    z-index: 1;
+}
+
 .product-item {
     max-width: 370px;
     text-align: center;
@@ -1502,7 +1518,7 @@ body, a {
     font-weight: 500;
 }
 
-.top-slider__link, .video__link, .filter-price__btn, .info__item-title, .categories__link, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title {
+.top-slider__link, .video__link, .product__link, .filter-price__btn, .info__item-title, .categories__link, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title {
     font-family: "Roboto-Regular", sans-serif;
     font-weight: 400;
 }
@@ -1532,7 +1548,7 @@ body, a {
     top: 2px;
 }
 
-.top-slider__link, .video__link {
+.top-slider__link, .video__link, .product__link {
     position: relative;
     display: inline-block;
     padding: 14px 36px;
@@ -1543,7 +1559,7 @@ body, a {
     cursor: pointer;
 }
 
-.top-slider__link::before, .video__link::before {
+.top-slider__link::before, .video__link::before, .product__link::before {
     position: absolute;
     content: "";
     top: 50%;
@@ -1556,7 +1572,7 @@ body, a {
     transition: all 0.5s ease;
 }
 
-.top-slider__link:hover::before, .video__link:hover::before {
+.top-slider__link:hover::before, .video__link:hover::before, .product__link:hover::before {
     width: 100%;
 }
 

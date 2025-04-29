@@ -1,17 +1,17 @@
-// .product {
-//   padding: 105px 0 120px;
-//   text-align: center;
-//   &__items {
-//     display: grid;
-//     grid-template-columns: repeat(3, 1fr);
-//     grid-gap: 45px 30px;
-//   }
-//   &__link {
-//     z-index: 1;
-//     @extend %btn-white;
-//     margin-top: 30px;
-//   }
-// }
+.product {
+  padding: 105px 0 120px;
+  text-align: center;
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 45px 30px;
+  }
+  &__link {
+    margin-top: 30px;
+    @extend %btn-white;
+    z-index: 1;
+  }
+}
 
 .product-item {
   max-width: 370px;
