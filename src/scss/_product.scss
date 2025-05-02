@@ -1,5 +1,4 @@
 .product {
-  padding: 105px 0 120px;
   text-align: center;
   &__items {
     display: grid;
@@ -119,6 +118,7 @@
   overflow: hidden;
   &__img{
     object-fit: cover;
+    display: inline;
   }
   &__link-box {
     position: absolute;
@@ -198,3 +198,4 @@
 .star {
   margin: 0 auto;
 }
+
