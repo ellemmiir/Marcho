@@ -2,8 +2,8 @@
 
 
 .header {
-  padding: 40px 10px;
   position: fixed;
+  padding: 40px 10px;
   top: 0;
   left: 0;
   right: 0;
@@ -43,11 +43,11 @@
 .user-nav {
   display: flex;
   &__link {
-    display: flex;
     position: relative;
+    display: flex;
     svg{
       path{
-        transition: all .2s;
+        transition: all .3s ease-in-out;
       }
     }
     &:hover{
@@ -70,7 +70,6 @@
     background-color: vars.$accent;
     border-radius: 50%;
     font-size: 12px;
-    line-height: 1.6;
     color: vars.$white;
     text-align: center;
   }
@@ -78,7 +77,7 @@
 
 //adaptiv
 
-@media (max-width: 1400px){
+@media (max-width: 1600px){
   .header{
     padding: 20px 5px;
   }
@@ -86,24 +85,24 @@
 
 @media (max-width: 991px) {
   .menu {
-    order: 1;
     margin-left: 40px;
+    order: 1;
     &__list {
       position: absolute;
       flex-direction: column;
       align-items: center;
       width: 100%;
+      height: 100vh;
       top: 70px;
       left: 0;
       right: 0;
-      height: 100vh;
       background-color: vars.$white;
-      z-index: 5;
       transform: translateX(200%);
-      transition: all .5s;
+      z-index: 5;
+      transition: all .5s ease-in-out;
       &.menu__list--active {
         transform: translateX(0%);
-        transition: all .5s;
+        transition: all .5s ease-in-out;
       }
     }
     &__list-item {
@@ -125,9 +124,9 @@
       width: 30px;
       height: 26px;
       background: transparent;
-      border-top: 4px solid black;
-      border-bottom: 4px solid black;
-      transition: all .2 ease-in-out;
+      border-top: 4px solid vars.$black;
+      border-bottom: 4px solid vars.$black;
+      transition: all .3s ease-in-out;
       &:before,
       &:after {
         content: ' ';
@@ -139,7 +138,7 @@
         left: 50%;
         background: currentColor;
         transform: translate(-50%, -50%);
-        transition: transform .2 ease-in-out;
+        transition: transform .3s ease-in-out;
       } 
       &.menu__btn--active {
         border-top: 4px solid transparent;

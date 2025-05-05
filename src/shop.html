@@ -4,10 +4,12 @@ title: Shop
 ---
 
 <main class="main">
-  <section class="shop">
+  <section class="shop section">
     <div class="container">
       <div class="shop__inner">
-        <button class="shop__filter-btn"></button>
+        <button class="shop__filter-btn">
+          <img src="images/icons/search-white.svg" alt="search button">
+        </button>
 
         <div class="shop__filters filter">
           <div class="filter-search filter__item">
@@ -28,7 +30,6 @@ title: Shop
                 <span>Price: $<span class="filter-price__from"></span>
                   -$<span class="filter-price__to"></span>
                 </span>
-                <button class="filter-price__btn" type="submit">Filter</button>
               </label>
             </form>
           </div>
@@ -189,13 +190,16 @@ title: Shop
               </label>
             </form>
           </div>
+          <div class="filter__btn-box">
+            <button class="shop__filters-btn" type="submit">Filter</button>
+          </div>
         </div>
 
         <div class="shop-content">
           <div class="shop-content__filter">
             <div class="shop-content__filter-buttons">
               <span>View</span>
-              <button class="shop-content__filter-btn shop-content__filter-btn--active button-grid ">
+              <button class="shop-content__filter-btn shop-content__filter-btn--active button-grid">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px">
                   <path
                     fill-rule="evenodd"
@@ -239,6 +243,7 @@ title: Shop
           </div>
 
           <div class="shop-content__inner">
+
             <div class="product-item product-item--sale">
               <div class="product-item__top-box top-box">
                 <a href="product.html" class="top-box__img-link">
