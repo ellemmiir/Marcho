@@ -122,7 +122,6 @@
 .top-box{
   margin-bottom: 25px;
   position: relative;
-  height: 370px;
   overflow: hidden;
   &__img{
     object-fit: cover;
@@ -207,3 +206,39 @@
   margin: 0 auto;
 }
 
+
+@media (max-width: 1200px) {
+  .product-item{
+    margin-bottom: 0;
+  }
+  .top-box{
+    margin-bottom: 0;
+  }
+  .bottom-box{
+    &__title{
+      @include vars.adaptiv-font(22, 16);
+    }
+  }
+}
+
+
+@media (max-width: 1050px) {
+
+}
+
+
+@media (max-width: 991px) {
+
+}
+
+
+@media (max-width: 767px) {
+  .bottom-box{
+    &__title{
+      padding: 0 5px;
+    }
+  }
+}
+
+
+@media (max-width: 480px) {}

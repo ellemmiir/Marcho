@@ -78,7 +78,7 @@
   </section>
   
   <main class="main">
-    <section class="shop">
+    <section class="shop section">
       <div class="container">
         <div class="shop__inner">
           <button class="shop__filter-btn">
@@ -104,7 +104,6 @@
                   <span>Price: $<span class="filter-price__from"></span>
                     -$<span class="filter-price__to"></span>
                   </span>
-                  <button class="filter-price__btn" type="submit">Filter</button>
                 </label>
               </form>
             </div>
@@ -154,7 +153,6 @@
                     <span class="filter-color__checkbox filter-color__checkbox--purple"></span>
                   </div>
                 </label>
-                <button class="filter-color__btn" type="submit">Filter</button>
               </form>
             </div>
   
@@ -266,13 +264,16 @@
                 </label>
               </form>
             </div>
+            <div class="filter__btn-box">
+              <button class="shop__filters-btn" type="submit">Filter</button>
+            </div>
           </div>
   
           <div class="shop-content">
             <div class="shop-content__filter">
               <div class="shop-content__filter-buttons">
                 <span>View</span>
-                <button class="shop-content__filter-btn shop-content__filter-btn--active button-grid ">
+                <button class="shop-content__filter-btn shop-content__filter-btn--active button-grid">
                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px">
                     <path
                       fill-rule="evenodd"
