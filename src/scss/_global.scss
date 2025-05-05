@@ -62,8 +62,7 @@ button {
 
 @media (max-width: 1050px) {
   .section{
-  padding: 80px 0;
-    
+    padding: 80px 0;
   }
 }
 
@@ -80,6 +79,13 @@ button {
     text-align: center;
   }
 }
+
+@media (max-width: 1600px){
+  .top{
+    padding-top: 70px;
+  }
+}
+
 
 .breadcrumbs {
   display: inline-flex;
@@ -106,12 +112,13 @@ button {
     &::after {
       content: '';
       position: absolute;
-      width: 10px;
-      height: 9px;
-      right: 15px;
-      top: 9px;
-      background-image: url('../images/icons/angle-right.svg');
+      width: 25px;
+      height: 25px;
+      right: 8px;
+      top: 1px;
+      background-image: url('../images/icons/angle-right1.svg');
       background-repeat: no-repeat;
+      background-size: contain;
     }
     &:last-child {
       color: vars.$accent;
@@ -122,7 +129,11 @@ button {
     }
   }
   &__link {
+    transition: color .3s ease-in-out;
     color: inherit;
+  }
+  &__link:hover {
+    color: vars.$accent;
   }
 }
 
