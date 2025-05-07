@@ -472,8 +472,16 @@
       margin: 0 auto;
     }
   } 
-
 }
+
+
+.star-rating .star-value{
+  transition: all .2s ease-in-out;
+}
+
+// .star-rating .star-value{
+//   background: url("myStar_on.svg") !important;
+// }
 
 
 @media (max-width: 1050px) {

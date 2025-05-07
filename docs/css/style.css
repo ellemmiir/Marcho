@@ -959,6 +959,10 @@ footer {
     }
 }
 
+.star-rating .star-value {
+    transition: all 0.2s ease-in-out;
+}
+
 @media (max-width: 1050px) {
     .top-slider__item {
         height: 500px;
@@ -1523,10 +1527,6 @@ button {
     background-color: #fe3e57;
     box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
     cursor: pointer;
-}
-
-.product-item.product-item--list .star {
-    margin-left: 23px;
 }
 
 .top-box {
