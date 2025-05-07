@@ -3,7 +3,7 @@ body, a {
     font-weight: 500;
 }
 
-.info__item-title, .categories__link, .blog__item-title, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title, .shop__filters-btn, .top-slider__link, .video__link, .promo__link, .product__link, .footer-top__form-btn {
+.info__item-title, .categories__link, .blog__item-title, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title, .shop__filters-btn, .filter__btn, .top-slider__link, .video__link, .promo__link, .product__link, .footer-top__form-btn {
     font-family: "Roboto-Regular", sans-serif;
     font-weight: 400;
 }
@@ -18,23 +18,23 @@ body, a {
     font-weight: 700;
 }
 
-.shop__filters-btn, .footer-top__form-btn {
+.shop__filters-btn, .filter__btn, .footer-top__form-btn {
     position: relative;
     padding: 12px 26px;
     top: -1px;
     background-color: #fe3e57;
     color: #fff;
     text-transform: uppercase;
-    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
     border: none;
 }
 
-.shop__filters-btn:hover, .footer-top__form-btn:hover {
+.shop__filters-btn:hover, .filter__btn:hover, .footer-top__form-btn:hover {
     box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.5);
 }
 
-.shop__filters-btn:active, .footer-top__form-btn:active {
+.shop__filters-btn:active, .filter__btn:active, .footer-top__form-btn:active {
     top: 2px;
 }
 
@@ -1736,8 +1736,8 @@ a {
 }
 
 .filter__item {
-    margin-bottom: 40px;
-    padding: 35px 30px 40px;
+    margin-bottom: 20px;
+    padding: 20px;
     border: 1px solid #f6f6f6;
 }
 
@@ -1746,10 +1746,20 @@ a {
 }
 
 .filter__title {
-    margin-bottom: 25px;
-    font-size: 22px;
+    margin-bottom: 10px;
+    font-size: 16px;
     color: #29282d;
     text-transform: uppercase;
+}
+
+.filter__btn-box {
+    padding: 20px;
+    border: 1px solid #f6f6f6;
+}
+
+.filter__btn {
+    display: block;
+    margin: 0 auto;
 }
 
 .filter-search__form {
@@ -1785,7 +1795,7 @@ a {
 }
 
 .filter-price__label {
-    padding-top: 30px;
+    padding-top: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1842,7 +1852,7 @@ a {
 }
 
 .filter-color__label {
-    padding: 20px 0;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #ececec;
@@ -1901,8 +1911,12 @@ a {
 .filter-size__label {
     display: block;
     padding-left: 35px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     cursor: pointer;
+}
+
+.filter-size__label:last-child {
+    margin-bottom: 0;
 }
 
 .filter-size__input:checked + .filter-size__checkbox {
@@ -1950,7 +1964,7 @@ a {
 .filter-category__checkbox {
     display: flex;
     justify-content: space-between;
-    padding: 16px 20px;
+    padding: 10px;
     color: #29282d;
     background-color: #f6f6f6;
     transition: all 0.1s ease-in-out;
@@ -1968,6 +1982,10 @@ a {
     margin-right: 8px;
     padding: 10px 0;
     cursor: pointer;
+}
+
+.filter-popular__label:last-child {
+    margin-bottom: 0;
 }
 
 .filter-popular__input:checked + .filter-popular__checkbox {
@@ -2090,7 +2108,7 @@ body, a {
     font-weight: 500;
 }
 
-.top-slider__link, .video__link, .promo__link, .product__link, .shop__filters-btn, .info__item-title, .categories__link, .blog__item-title, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title {
+.top-slider__link, .video__link, .promo__link, .product__link, .shop__filters-btn, .filter__btn, .info__item-title, .categories__link, .blog__item-title, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title {
     font-family: "Roboto-Regular", sans-serif;
     font-weight: 400;
 }
@@ -2100,23 +2118,23 @@ body, a {
     font-weight: 700;
 }
 
-.shop__filters-btn {
+.shop__filters-btn, .filter__btn {
     position: relative;
     padding: 12px 26px;
     top: -1px;
     background-color: #fe3e57;
     color: #fff;
     text-transform: uppercase;
-    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
     border: none;
 }
 
-.shop__filters-btn:hover {
+.shop__filters-btn:hover, .filter__btn:hover {
     box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.5);
 }
 
-.shop__filters-btn:active {
+.shop__filters-btn:active, .filter__btn:active {
     top: 2px;
 }
 

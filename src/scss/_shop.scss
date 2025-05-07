@@ -36,19 +36,28 @@
 //filters
 .filter {
   &__item {
-    margin-bottom: 40px;
-    padding: 35px 30px 40px;
+    margin-bottom: 20px;
+    padding: 20px;
     border: 1px solid vars.$bg;
   }
   &__item:last-child{
     margin-bottom: 0;
   }
   &__title {
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     @extend %roboto-400;
-    font-size: 22px;
+    font-size: 16px;
     color: vars.$title;
     text-transform: uppercase;
+  }
+  &__btn-box{
+    padding: 20px;
+    border: 1px solid vars.$bg;
+  }
+  &__btn{
+    display: block;
+    margin: 0 auto;
+    @extend %btn;
   }
 }
 
@@ -80,7 +89,7 @@
 .filter-price {
   user-select: none;
   &__label {
-    padding-top: 30px;
+    padding-top: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -143,7 +152,7 @@
 .filter-color {
   user-select: none;
   &__label {
-    padding: 20px 0;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #ececec;
@@ -193,8 +202,11 @@
   &__label {
     display: block;
     padding-left: 35px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     cursor: pointer;
+  }
+  &__label:last-child{
+    margin-bottom: 0;
   }
   &__input {
     @extend %checkbox-hidden;
@@ -239,7 +251,7 @@
   &__checkbox {
     display: flex;
     justify-content: space-between;
-    padding: 16px 20px;
+    padding: 10px;
     color: vars.$title;
     background-color: vars.$bg;
     transition: all .1s ease-in-out;
@@ -254,6 +266,9 @@
     margin-right: 8px;
     padding: 10px 0;
     cursor: pointer;
+  }
+  &__label:last-child{
+    margin-bottom: 0;
   }
   &__input {
     @extend %checkbox-hidden;
