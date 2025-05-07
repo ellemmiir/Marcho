@@ -15,6 +15,7 @@ $(function () {
   });
 
 
+
   $('.shop-content__filter-btn ').on('click', function () {
     $('.shop-content__filter-btn ').removeClass('shop-content__filter-btn--active');
     $(this).addClass('shop-content__filter-btn--active');
@@ -51,6 +52,15 @@ $(function () {
     fade: true,
     autoplay: true,
     autoplaySpead: 5000,
+  });
+
+
+  $(".star").rateYo({
+    readOnly: true,
+    starWidth: "17px",
+    normalFill: "#ccccce",
+    ratedFill: "#ffc35b",
+    starSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="16"><path d="m8.102.555-2.04 4.14-4.566.664C.68 5.477.352 6.49.946 7.066l3.3 3.22-.781 4.546c-.14.82.726 1.438 1.45 1.05L9 13.739l4.086 2.145c.723.383 1.59-.23 1.45-1.051l-.782-4.547 3.3-3.219c.594-.578.266-1.59-.55-1.707l-4.567-.664L9.899.555c-.367-.735-1.425-.746-1.796 0Zm0 0" style="stroke:none;fill-rule:nonzero;fill-opacity:1"/></svg>',
   });
 
 
