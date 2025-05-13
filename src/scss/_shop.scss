@@ -400,11 +400,11 @@
 
 
 @media (max-width: 480px) {
-  // .shop-content {
-  //   &__inner {
-  //     display: grid;
-  //     grid-gap: 20px;
-  //     grid-template-columns: repeat(1, 1fr);
-  //   }
-  // }
+  .shop-content {
+    &__filter-form{
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+    }
+  }
 }

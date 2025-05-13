@@ -39,6 +39,9 @@
   &.product-item--list {
     display: flex;
     min-width: 100%;
+    .star{
+      margin: 0;
+    }
     &:hover {
       .top-box__link-box {
         transform: translateY(-280%);
@@ -46,10 +49,10 @@
     }
     .product-item__top-box {
       margin-bottom: 0;
-      height: 250px;
+      height: 100%;
       min-width: 200px;
       img {
-        height: 250px;
+        height: 100%;
       }
     }
     .top-box__link-box {
@@ -83,7 +86,11 @@
       flex-wrap: wrap;
       margin-bottom: 10px;
     }
+    .bottom-box__title-link{
+      width: 100%;
+    }
     .bottom-box__title{
+      margin-top: 10px;
       padding: 0;
       width: 100%;
       order: -1;
@@ -106,7 +113,7 @@
       background-color: vars.$title;
       color: vars.$white;
       border: none;
-      transition: all .3s ease-in-out;
+      transition: all .2s ease-in-out;
       &:hover {
         background-color: vars.$accent;
         box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);

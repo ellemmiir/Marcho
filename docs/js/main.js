@@ -17382,6 +17382,10 @@ $(function () {
     $('.shop__filters').slideToggle();
   });
 
+  $('.filter__btn').on('click', function () {
+    $('.shop__filters').slideToggle();
+  });
+
   //change display of shop content
   $('.button-list').on('click', function () {
     $('.product-item').addClass('product-item--list');
