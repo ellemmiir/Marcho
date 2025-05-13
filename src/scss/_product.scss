@@ -20,7 +20,7 @@
       position: absolute;
       content: "SALE";
       padding: 12px 26px;
-      top: 25px;
+      bottom: 25px;
       left: 25px;
       @extend %roboto-400;
       color: vars.$white;
