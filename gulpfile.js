@@ -85,7 +85,7 @@ function pages () {
 
 
 function styles () {
-    return src([ path.src.css, 'node_modules/@fancyapps/ui/dist/fancybox/fancybox.css', 'node_modules/slick-slider/slick/slick.css'], {base: srcPath + 'scss/'})
+    return src([ path.src.css, 'node_modules/@fancyapps/ui/dist/fancybox/fancybox.css', 'node_modules/rateyo/src/jquery.rateyo.css', 'node_modules/slick-slider/slick/slick.css'], {base: srcPath + 'scss/'})
     .pipe(plumber({
       errorHandler : function (err) {
         notify.onError({
