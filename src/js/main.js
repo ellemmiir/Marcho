@@ -1,5 +1,16 @@
 $(function () {
 
+  window.onscroll = function () { scrollFunction() };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      document.querySelector('header').classList.add('header-mini');
+    } else {
+      document.querySelector('header').classList.remove('header-mini');
+    }
+  }
+
+
   //shop
    $('.filter-price__input').ionRangeSlider({
     type: "double",
@@ -112,6 +123,17 @@ $(function () {
   
 
   Fancybox.bind("[data-fancybox]", {
+  });
+
+  AOS.init({
+    disable: function () {
+      let maxWidth = 1200;
+      return window.innerWidth < maxWidth;
+    },
+    startEvent: 'DOMContentLoaded',
+    offset: 100,
+    delay: 200,
+    duration: 1500,
   });
 
 });

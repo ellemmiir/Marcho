@@ -9,6 +9,7 @@
   right: 0;
   background-color: vars.$white;
   z-index: 999;
+  transition: 0.5s;
   &__inner {
     display: flex;
     justify-content: space-between;
@@ -16,7 +17,7 @@
     text-transform: uppercase;
     flex-wrap: wrap;
   }
-}
+} 
 
 .menu {
   &__btn {
@@ -73,6 +74,12 @@
     color: vars.$white;
     text-align: center;
   }
+}
+
+
+.header-mini {
+  padding: 20px 10px;
+  transition: all .3 ease-in-out;
 }
 
 //adaptiv
