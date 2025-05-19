@@ -432,28 +432,17 @@
   }
 
   .blog{
-    &__items{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    &__item{
+    .blog__item{
       max-width: 100%;
+    }
+    .blog__item-box{
+      padding: 20px;
     }
     &__img{
       margin: 0 auto;
     }
   } 
 }
-
-
-.star-rating .star-value{
-  transition: all .2s ease-in-out;
-}
-
-// .star-rating .star-value{
-//   background: url("myStar_on.svg") !important;
-// }
 
 
 @media (max-width: 1050px) {
@@ -488,6 +477,13 @@
     background-color: vars.$bg-dark;
     &__inner{
       margin: 0 auto;
+    }
+  }
+  .blog{
+    .blog__items{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 20px;
     }
   }
 }
@@ -599,7 +595,7 @@
   }
 
   .blog{
-    &__items{
+    .blog__items{
       grid-template-columns: repeat(1, 1fr);
     }
   } 
