@@ -1,0 +1,248 @@
+.product {
+  text-align: center;
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 45px 30px;
+  }
+  &__link {
+    margin-top: 30px;
+    @extend %btn-white;
+    z-index: 1;
+  }
+}
+
+.product-item {
+  max-width: 370px;
+  text-align: center; 
+  &--sale {
+    .product-item__top-box::before {
+      position: absolute;
+      content: "SALE";
+      padding: 12px 26px;
+      bottom: 25px;
+      left: 25px;
+      @extend %roboto-400;
+      color: vars.$white;
+      line-height: 1;
+      text-transform: uppercase;
+      background-color: vars.$accent;
+    }
+  }
+  &:hover {
+    .top-box__link-box {
+      transform: translateY(0);
+    }
+  }
+  
+  //when products are displayed as a list when clicking on a button
+  &.product-item--list {
+    display: flex;
+    min-width: 100%;
+    .star{
+      margin: 0;
+    }
+    &:hover {
+      .top-box__link-box {
+        transform: translateY(-280%);
+      }
+    }
+    .product-item__top-box {
+      margin-bottom: 0;
+      height: 100%;
+      min-width: 200px;
+      img {
+        height: 100%;
+      }
+    }
+    .top-box__link-box {
+      bottom: auto;
+      background-color: transparent;
+      width: 155px;
+      box-shadow: none;
+      .top-box__link {
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .top-box__link--line {
+        display: none;
+      }
+    }
+    .product-item__bottom-box{
+      padding: 30px 40px;
+      width: 100%;
+      border: 1px solid #ececec;
+      border-left: none;
+    }
+    .bottom-box__wrapper{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .bottom-box__title-link{
+      width: 100%;
+    }
+    .bottom-box__title{
+      margin-top: 10px;
+      padding: 0;
+      width: 100%;
+      order: -1;
+    }
+    .bottom-box__price {
+      order: -1;
+    }
+    .bottom-box__new-price{
+      padding: 0;
+    }
+    .bottom-box__content-box{
+      text-align: left;
+      display: block;
+    }
+    .bottom-box__text{
+      margin-bottom: 20px;
+    }
+    .bottom-box__btn { 
+      padding: 11px 40px;
+      background-color: vars.$title;
+      color: vars.$white;
+      border: none;
+      transition: all .2s ease-in-out;
+      &:hover {
+        background-color: vars.$accent;
+        box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.top-box{
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+  &__img{
+    object-fit: cover;
+    display: inline;
+  }
+  &__link-box {
+    position: absolute;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+    width: 220px;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    background-color: vars.$white;
+    box-shadow: 0px 5px 30px 0px rgba(152, 152, 152, 0.2);
+    border-radius: 25px;
+    transform: translateY(300%);
+    transition: all 0.3s;
+  }
+  &__link {
+    display: inherit;
+    path {
+      transition: all 0.3s;
+    }
+  }
+  &__link:hover {
+    path {
+      fill: vars.$accent;
+    }
+  }
+  &__link--line::before,
+  &__link--line::after {
+    content: "";
+    position: absolute;
+    background-color: #ececec;
+    width: 1px;
+    height: 30px;
+    top: 10px;
+  }
+  &__link--line::before {
+    left: 70px;
+  }
+  &__link--line::after {
+    right: 70px;
+  }
+}
+
+.bottom-box{
+  &__title {
+    color: vars.$title;
+    font-size: 22px;
+    padding: 15px 0 20px;
+    transition: color .2s ease-in-out;
+    &:hover {
+      transition: color .2s ease-in-out;
+      color: vars.$accent;
+    }
+  }
+  &__price {
+    display: flex;
+    justify-content: center;
+    @extend %roboto-400;
+  }
+  &__new-price {
+    padding: 0 12px;
+    color: vars.$title;
+  }
+  &__old-price {
+    padding: 0 12px;
+    text-decoration: line-through;
+  }
+  &__content-box {
+    display: none;
+  }
+}
+
+
+.star {
+  margin: 0 auto;
+}
+
+
+@media (max-width: 1200px) {
+  .product-item{
+    margin-bottom: 0;
+  }
+  .top-box{
+    margin-bottom: 0;
+  }
+  .bottom-box{
+    &__title{
+      @include vars.adaptiv-font(22, 16);
+    }
+  }
+}
+
+
+@media (max-width: 1050px) {
+
+}
+
+
+@media (max-width: 991px) {
+
+}
+
+
+@media (max-width: 767px) {
+  .bottom-box{
+    &__title{
+      padding: 0 5px;
+    }
+  }
+}
+
+
+@media (max-width: 480px) {}

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcho</title>
+  <link rel="stylesheet" href="css/style.min.css">
+
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a class="logo" href="index.html">
+          <img class="logo__img" src="images/logo.png" alt="logo">
+        </a>
+        <nav class="menu">
+          <button class="menu__btn">
+          </button>
+          <ul class="menu__list">
+            <li class="menu__list-item">
+              <a class="menu__list-link" href="index.html">home</a>
+            </li>
+            <li class="menu__list-item">
+              <a class="menu__list-link" href="shop.html">shop</a>
+            </li>
+            <li class="menu__list-item">
+              <a class="menu__list-link" href="login.html">page</a>
+            </li>
+            <li class="menu__list-item">
+              <a class="menu__list-link" href="blog.html">blog</a>
+            </li>
+            <li class="menu__list-item">
+              <a class="menu__list-link" href="contact.html">contact</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="user-nav">
+          <a class="user-nav__link" href="login.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path fill="#29282d" fill-rule="evenodd" d="M17.07 12.928a9.923 9.923 0 00-3.8-2.383 5.78 5.78 0 10-6.54 0A10.018 10.018 0 000 20h1.56a8.44 8.44 0 0116.88 0H20a9.931 9.931 0 00-2.93-7.072zM5.78 5.78A4.22 4.22 0 1110 10a4.222 4.222 0 01-4.22-4.22z"/></svg>
+          </a>
+          <a class="user-nav__link" href="shop.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20.03" height="20"><path d="M19.89 18.7l-5.81-5.81a7.944 7.944 0 10-1.18 1.178l5.81 5.81a.417.417 0 00.59 0l.59-.589a.421.421 0 000-.589zM7.93 14.167a6.25 6.25 0 116.25-6.25 6.254 6.254 0 01-6.25 6.246z" fill="#29282d" fill-rule="evenodd"/></svg>       
+          </a>
+          <a class="user-nav__link" href="login.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path d="M19.75 4.589A6.683 6.683 0 0015.58.218c-1.71-.595-3.75 0-5.58 1.611C8.17.26 6.12-.293 4.42.26A6.884 6.884 0 00.25 4.631c-.47 1.57-.51 4.117 1.95 7.215 1.11 1.4 2.82 3.4 4.22 4.965 2.68 3.014 3.11 3.183 3.49 3.183h.17c.39 0 .77-.168 3.45-3.224a224.86 224.86 0 004.22-4.966c2.47-3.098 2.47-5.645 2-7.215zm-3.28 6.2c-1.96 2.462-5.32 6.324-6.47 7.385-1.15-1.061-4.52-4.924-6.48-7.385-1.61-1.994-2.21-3.947-1.7-5.687a4.986 4.986 0 013.11-3.225c1.23-.467 2.9.169 4.43 1.655a.84.84 0 001.06.126.447.447 0 00.22-.17c1.53-1.443 3.19-2.079 4.42-1.655a5.168 5.168 0 013.11 3.268c.51 1.699-.08 3.689-1.7 5.683z" fill="#29282d" fill-rule="evenodd"/></svg>
+            <span class="user-nav__num">3</span>
+          </a>
+          <a class="user-nav__link" href="login.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20"><path d="M17.44 20a2.724 2.724 0 112.74-2.724A2.738 2.738 0 0117.44 20zm0-3.814a1.09 1.09 0 101.09 1.09 1.094 1.094 0 00-1.09-1.093zm1.75-2.806H6.38a.823.823 0 01-.8-.628L2.9 1.637H.84a.817.817 0 110-1.634h2.71a.824.824 0 01.8.627l.74 3.078h16.1a.818.818 0 01.8 1.014l-2 8.038a.822.822 0 01-.8.617zM7.03 11.745h11.52l1.59-6.4H5.49zM7.48 20a2.724 2.724 0 112.74-2.724A2.738 2.738 0 017.48 20zm0-3.814a1.09 1.09 0 101.09 1.09 1.094 1.094 0 00-1.09-1.093z" fill="#29282d" fill-rule="evenodd"/></svg>        
+            <span class="user-nav__num">7</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main class="main">
+    <section class="top-slider">
+      <div class="container top-slider__container">
+        <div class="top-slider__inner">
+          <div class="top-slider__item">
+            <div class="top-slider__content">
+              <h3 class="top-slider__title" data-aos="fade-down">
+                New Season <br>
+                New Brand Collection
+              </h3>
+              <p class="top-slider__text" data-aos="fade-down">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                et dolore magna aliqua. Ipsum.
+              </p>
+              <a class="top-slider__link" href="shop.html" data-aos="fade-down">BUY NOW</a>
+            </div>
+            <img class="top-slider__img" src="images/top-slider-girl.png" alt="slide images">
+          </div>
+          <div class="top-slider__item">
+            <div class="top-slider__content">
+              <h3 class="top-slider__title">
+                New Title <br>
+                New Brand Collection
+              </h3>
+              <p class="top-slider__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                et dolore magna aliqua. Ipsum.
+              </p>
+              <a class="top-slider__link" href="#">BUY NOW</a>
+            </div>
+            <img class="top-slider__img" src="images/top-slider-girl.png" alt="slide images">
+          </div>
+          <div class="top-slider__item">
+            <div class="top-slider__content">
+              <h3 class="top-slider__title">
+                New Description <br>
+                New Brand Collection
+              </h3>
+              <p class="top-slider__text">
+                Doloremque numquam dolorum cum sint consequatur consectetur tenetur et dolore voluptatum quos, possimus
+                nulla fuga? Ipsa deleniti omnis non rem alias aliquam, quos, quibusdam quod praesentium obcaecati, atque sit
+                cupiditate?
+              </p>
+              <a class="top-slider__link" href="#">BUY NOW</a>
+            </div>
+            <img class="top-slider__img" src="images/top-slider-girl.png" alt="slide images">
+          </div>
+          <div class="top-slider__item">
+            <div class="top-slider__content">
+              <h3 class="top-slider__title">
+                New Season <br>
+                New Brand Collection
+              </h3>
+              <p class="top-slider__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                et dolore magna aliqua. Ipsum.
+              </p>
+              <a class="top-slider__link" href="#">BUY NOW</a>
+            </div>
+            <img class="top-slider__img" src="images/top-slider-girl.png" alt="slide images">
+          </div>
+        </div>
+      </div>
+    </section> 
+  
+     <section class="categories-info section">
+      <div class="categories-info__inner">
+        <div class="container">
+          <div class="info">
+            <div class="info__item">
+              <svg width="60" height="60">
+                <path fill="#FFB534" fill-rule="evenodd" d="M0 0h60v60H0V0Z"/>
+                <path fill="#FFF" fill-rule="evenodd" d="M36.011 35.162c.346 0 .626.277.626.619 0 .342-.28.619-.626.619h-9.354a.623.623 0 0 1-.626-.619c0-.342.281-.619.626-.619h9.354Zm-10.69-4.043a.63.63 0 0 1-.443-.182l-3.34-3.3a.614.614 0 0 1 0-.876.631.631 0 0 1 .886 0l2.897 2.864 5.57-5.504a.631.631 0 0 1 .886 0 .613.613 0 0 1 0 .875l-6.013 5.941a.629.629 0 0 1-.443.182Zm24.052 7.922h-2.048a.536.536 0 0 1 .002.041c0 2.161-1.78 3.919-3.967 3.919-2.188 0-3.967-1.758-3.967-3.919l.001-.041H25.278a.536.536 0 0 1 .002.041c0 2.161-1.78 3.919-3.967 3.919-2.188 0-3.967-1.758-3.967-3.919l.001-.041h-3.383a1.289 1.289 0 0 1-1.295-1.28V36.4h-2.046a.622.622 0 0 1-.626-.619c0-.342.28-.619.626-.619h6.013c.346 0 .626.277.626.619 0 .342-.28.619-.626.619h-2.714v1.361c0 .024.019.042.042.042h3.6a3.97 3.97 0 0 1 3.749-2.641 3.968 3.968 0 0 1 3.748 2.641h12.996V33.14c0-.341.28-.618.626-.618s.627.277.627.618v4.663h.301a3.97 3.97 0 0 1 3.749-2.641 3.97 3.97 0 0 1 3.749 2.641h1.637V35.08h-.71a1.953 1.953 0 0 1-1.962-1.94v-1.32c0-.342.28-.619.626-.619h1.948a2.048 2.048 0 0 0-1.946-1.403H39.31v.702a.623.623 0 0 1-.627.619.622.622 0 0 1-.626-.619V19.277a.042.042 0 0 0-.042-.041H13.964a.042.042 0 0 0-.042.041v11.222c0 .343-.281.62-.626.62a.623.623 0 0 1-.627-.62V19.277c0-.705.581-1.279 1.295-1.279h24.051c.714 0 1.295.574 1.295 1.279v1.362h4.718c1.45 0 2.631 1.166 2.631 2.6v.659a.622.622 0 0 1-.496.606l1.036 4.093c1.583.239 2.8 1.593 2.8 3.223v6.602c0 .341-.28.619-.626.619ZM21.313 36.4c-1.497 0-2.714 1.203-2.714 2.682 0 1.479 1.217 2.681 2.714 2.681 1.496 0 2.714-1.202 2.714-2.681S22.809 36.4 21.313 36.4Zm22.047 0c-1.497 0-2.714 1.203-2.714 2.682 0 1.479 1.217 2.681 2.714 2.681 1.496 0 2.714-1.202 2.714-2.681S44.856 36.4 43.36 36.4Zm2.046-13.161a1.37 1.37 0 0 0-1.378-1.362H39.31v1.402h6.096v-.04Zm-.531 1.278H39.31v4.044h6.588l-1.023-4.044Zm3.871 7.922h-1.419v.701c0 .387.318.702.709.702h.71v-1.403Zm-5.386 7.922a1.289 1.289 0 0 1-1.295-1.279c0-.706.581-1.279 1.295-1.279s1.294.573 1.294 1.279c0 .705-.58 1.279-1.294 1.279Zm-22.047 0a1.289 1.289 0 0 1-1.295-1.279c0-.706.581-1.279 1.295-1.279s1.294.573 1.294 1.279c0 .705-.58 1.279-1.294 1.279Zm-.71-7.221c0 .342-.281.62-.626.62h-8.018a.623.623 0 0 1-.626-.62c0-.341.28-.618.626-.618h8.018c.345 0 .626.277.626.618Z"/>
+                </svg>
+              <h5 class="info__item-title">Free Shipping Order $100</h5>
+              <p class="info__item-text">Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do
+              </p>
+            </div>
+            <div class="info__item">
+              <svg width="60" height="60">
+                <path fill="#34C3FF" fill-rule="evenodd" d="M0 0h60v60H0V0Z"/>
+                <path fill="#FFF" fill-rule="evenodd" d="M25.707 30.72c0 .704-.657 1.114-1.611 1.114-.547 0-1.002-.133-1.243-.288l.214-.77c.147.072.553.244.947.244.356 0 .608-.106.608-.366 0-.266-.301-.41-.624-.41h-.46v-.737h.443c.241 0 .554-.078.554-.31 0-.172-.176-.288-.51-.288-.345 0-.717.155-.86.233l-.219-.743c.252-.155.751-.299 1.309-.299.822 0 1.332.388 1.332.925 0 .388-.214.687-.696.842v.011c.444.055.816.377.816.842Zm1.977 1.114c-1.068 0-1.495-.881-1.495-1.867 0-.981.427-1.867 1.501-1.867 1.074 0 1.501.886 1.501 1.867 0 .986-.427 1.867-1.501 1.867h-.006Zm.477-1.867c0-.765-.186-1.108-.471-1.108s-.471.343-.471 1.108c0 .764.186 1.113.471 1.113h.005c.28 0 .466-.349.466-1.113Zm3.813 1.845c-.548 0-.893-.033-1.096-.066v-3.663A8.987 8.987 0 0 1 32.176 28c.778 0 1.255.116 1.66.377.433.276.734.731.734 1.413 0 .775-.318 1.246-.679 1.524-.455.348-1.14.498-1.917.498Zm.301-3.02c-.192 0-.307.017-.362.028v2.177c.061.012.165.012.241.012.756.011 1.31-.349 1.31-1.164 0-.742-.521-1.053-1.189-1.053Zm3.862.876c-.302 0-.641.116-.817.215l-.18-.653c.175-.094.575-.255 1.177-.255.926 0 1.321.471 1.321 1.202v.915c0 .288.016.553.044.676h-.932l-.055-.233h-.021c-.198.222-.483.299-.789.299-.592 0-.943-.415-.943-.858 0-.732.647-1.07 1.666-1.07v-.017c0-.099-.066-.221-.471-.221Zm-.17 1.207c0 .156.104.245.296.245a.4.4 0 0 0 .367-.283c.011-.045.011-.1.011-.15v-.149c-.455 0-.674.116-.674.337Zm1.961-1.834h1.156l.356 1.181c.044.155.098.376.137.509h.022c.038-.144.082-.365.115-.509l.268-1.181h1.129l-.57 1.557c-.499 1.38-.794 1.774-1.09 2.018-.329.271-.68.36-.97.382l-.192-.875a1.33 1.33 0 0 0 .335-.078.913.913 0 0 0 .35-.244.216.216 0 0 0 .055-.128.37.37 0 0 0-.044-.16l-1.057-2.472Zm3.764-4.322-4.234-.312.106-1.467 1.851.137a10.831 10.831 0 0 0-8.057-3.607c-6.012 0-10.904 4.947-10.904 11.028 0 6.082 4.892 11.03 10.904 11.03 3.636 0 7.021-1.83 9.058-4.896l1.207.821c-2.307 3.473-6.144 5.546-10.265 5.546C24.544 42.999 19 37.392 19 30.498c0-6.892 5.544-12.5 12.358-12.5 3.474 0 6.746 1.474 9.07 4.018l.121-1.685 1.451.107-.308 4.281Z"/>
+                </svg>
+              <h5 class="info__item-title">30 Days Easy Return</h5>
+              <p class="info__item-text">Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do
+              </p>
+            </div>
+            <div class="info__item">
+              <svg width="60" height="60">
+                <path fill="#FE3E57" fill-rule="evenodd" d="M0 0h60v60H0V0Z"/>
+                <path fill="#FFF" fill-rule="evenodd" d="m42.495 32.209-4.149 4.765a3.36 3.36 0 0 1-.652.579l-.017.01c-.676.422-1.525.636-2.526.636h-6.156c-.424 0-.852.023-1.274.072l-.696.076.304.289a.492.492 0 0 1 .01.71l-3.493 3.5a.521.521 0 0 1-.719.013l-5.966-5.546a.489.489 0 0 1-.015-.708l3.527-3.576a.525.525 0 0 1 .366-.153h.004c.133 0 .262.051.358.142l.725.688a7.264 7.264 0 0 1 1.322-1.387c1.484-1.182 3.24-1.545 5.078-1.048.705.19 1.449.286 2.212.286h4.046c.589 0 1.109.227 1.464.64.073.084.139.175.196.271l2.89-2.792a2.107 2.107 0 0 1 1.598-.594 2.387 2.387 0 0 1 1.452.594c.776.7.821 1.717.111 2.533Zm-21.44 1.873-2.816 2.854 5.227 4.86 2.785-2.79-5.196-4.924Zm20.636-3.671c-.416-.375-1.16-.491-1.635-.027l-3.329 3.217c-.015.48-.184.93-.482 1.272-.358.411-.882.638-1.477.638h-3.522a.505.505 0 0 1-.512-.5c0-.275.229-.499.512-.499h3.522c.298 0 .532-.096.697-.286.153-.174.24-.427.24-.693 0-.362-.194-.977-.921-.977h-4.046a9.551 9.551 0 0 1-2.485-.323c-1.526-.413-2.925-.123-4.158.86a6.274 6.274 0 0 0-1.225 1.316l3.205 3.037 1.53-.168a12.4 12.4 0 0 1 1.39-.078h6.156c.798 0 1.46-.159 1.967-.472.166-.114.317-.249.449-.4l4.148-4.766c.48-.55.191-.958-.024-1.151Zm-12.416 5.088a.51.51 0 0 1-.615-.372l-.005-.021a.499.499 0 0 1 .382-.599.511.511 0 0 1 .614.372l.005.02a.499.499 0 0 1-.381.6Zm9.04-6.966h-4.983c-.272 0-.523-.085-.727-.232a1.237 1.237 0 0 1-.726.232h-4.983c-.272 0-.523-.085-.727-.232a1.242 1.242 0 0 1-.727.232h-4.983c-.682 0-1.238-.542-1.238-1.209v-2.268a2.61 2.61 0 0 1 1.459-2.341 2.826 2.826 0 0 1-.679-1.837c0-1.587 1.323-2.88 2.949-2.88 1.627 0 2.95 1.293 2.95 2.88 0 .698-.255 1.338-.678 1.836.377.189.701.462.947.793.245-.331.569-.604.947-.792a2.826 2.826 0 0 1-.679-1.837c0-1.587 1.323-2.88 2.95-2.88 1.626 0 2.95 1.293 2.95 2.88 0 .698-.255 1.338-.679 1.836.378.189.701.462.947.793.246-.331.569-.604.947-.793a2.822 2.822 0 0 1-.679-1.836c0-1.587 1.324-2.88 2.95-2.88 1.627 0 2.95 1.293 2.95 2.88 0 .698-.255 1.338-.679 1.836a2.611 2.611 0 0 1 1.459 2.341v2.269c0 .667-.556 1.209-1.238 1.209Zm-15.364-9.536c-1.063 0-1.927.844-1.927 1.881 0 1.038.864 1.882 1.927 1.882 1.062 0 1.927-.844 1.927-1.882 0-1.037-.865-1.881-1.927-1.881Zm2.707 6.058c0-.802-.584-1.471-1.379-1.606a3 3 0 0 1-2.657 0 1.634 1.634 0 0 0-1.378 1.606v2.269c0 .116.096.211.215.211h4.983a.214.214 0 0 0 .216-.211v-2.269Zm3.729-6.058c-1.063 0-1.927.844-1.927 1.881 0 1.038.864 1.882 1.927 1.882 1.063 0 1.927-.844 1.927-1.882 0-1.037-.864-1.881-1.927-1.881Zm2.707 6.058c0-.802-.584-1.471-1.379-1.606a2.993 2.993 0 0 1-2.656 0 1.634 1.634 0 0 0-1.379 1.606v2.269c0 .116.097.211.216.211h4.983a.214.214 0 0 0 .215-.211v-2.269Zm3.729-6.058c-1.062 0-1.927.844-1.927 1.881 0 1.038.865 1.882 1.927 1.882 1.063 0 1.927-.844 1.927-1.882 0-1.037-.864-1.881-1.927-1.881Zm2.707 6.058c0-.802-.584-1.471-1.378-1.606a3 3 0 0 1-2.657 0 1.632 1.632 0 0 0-1.378 1.606v2.269c0 .116.096.211.215.211h4.983a.214.214 0 0 0 .215-.211v-2.269Z"/>
+                </svg>
+              <h5 class="info__item-title">24/7 Customer Support</h5>
+              <p class="info__item-text">Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do
+              </p>
+            </div>
+          </div>
+  
+           <div class="categories">
+            <h2 class="title">TOP CATEGORIES</h2>
+            <div class="text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo tempor ut labore et dolore aliqua.
+            </div>
+            <div class="categories__items">
+  
+              <div class="categories__item" style="background-image: url('images/categories/jewellry.jpg');">
+                <p class="categories__item-subtitle">Up To 40% Off</p>
+                <h4 class="categories__item-title">Shoes & Jewellry</h4>
+                <p class="categories__item-text">
+                  EXPLORE MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="8"><path d="M9.84 3.62L6.23.15a.582.582 0 00-.78 0l-.32.32a.485.485 0 00-.16.37.507.507 0 00.16.38l2.1 2.03H.54a.519.519 0 00-.54.51v.45a.544.544 0 00.54.54h6.72L5.13 6.79a.508.508 0 000 .74l.32.32a.61.61 0 00.39.15.57.57 0 00.39-.16l3.61-3.47A.523.523 0 0010 4a.546.546 0 00-.16-.38" fill="#29282d" fill-rule="evenodd"/></svg>
+                </p>
+                <a class="categories__item-link" href="shop.html"></a>
+              </div>
+  
+              <div class="categories__item" style="background-image: url('images/categories/accessories.jpg');">
+                <p class="categories__item-subtitle">New Arrival</p>
+                <h4 class="categories__item-title">Clothes & Accessories</h4>
+                <p class="categories__item-text">
+                  EXPLORE MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="8"><path d="M9.84 3.62L6.23.15a.582.582 0 00-.78 0l-.32.32a.485.485 0 00-.16.37.507.507 0 00.16.38l2.1 2.03H.54a.519.519 0 00-.54.51v.45a.544.544 0 00.54.54h6.72L5.13 6.79a.508.508 0 000 .74l.32.32a.61.61 0 00.39.15.57.57 0 00.39-.16l3.61-3.47A.523.523 0 0010 4a.546.546 0 00-.16-.38" fill="#29282d" fill-rule="evenodd"/></svg>
+                </p>
+                <a class="categories__item-link" href="shop.html"></a>
+              </div>
+  
+              <div class="categories__item" style="background-image: url('images/categories/men.jpg');">
+                <p class="categories__item-subtitle">Trending Now</p>
+                <h4 class="categories__item-title">Men’s Fashion</h4>
+                <p class="categories__item-text">
+                  EXPLORE MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="8"><path d="M9.84 3.62L6.23.15a.582.582 0 00-.78 0l-.32.32a.485.485 0 00-.16.37.507.507 0 00.16.38l2.1 2.03H.54a.519.519 0 00-.54.51v.45a.544.544 0 00.54.54h6.72L5.13 6.79a.508.508 0 000 .74l.32.32a.61.61 0 00.39.15.57.57 0 00.39-.16l3.61-3.47A.523.523 0 0010 4a.546.546 0 00-.16-.38" fill="#29282d" fill-rule="evenodd"/></svg>
+                </p>
+                <a class="categories__item-link" href="shop.html"></a>
+              </div>
+              
+              <div class="categories__item" style="background-image: url('images/categories/girl.jpg');">
+                <p class="categories__item-subtitle">Hot Collection</p>
+                <h4 class="categories__item-title">Girl’s Fashion</h4>
+                <p class="categories__item-text">
+                  EXPLORE MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="8"><path d="M9.84 3.62L6.23.15a.582.582 0 00-.78 0l-.32.32a.485.485 0 00-.16.37.507.507 0 00.16.38l2.1 2.03H.54a.519.519 0 00-.54.51v.45a.544.544 0 00.54.54h6.72L5.13 6.79a.508.508 0 000 .74l.32.32a.61.61 0 00.39.15.57.57 0 00.39-.16l3.61-3.47A.523.523 0 0010 4a.546.546 0 00-.16-.38" fill="#29282d" fill-rule="evenodd"/></svg>
+                </p>
+                <a class="categories__item-link" href="shop.html"></a>
+              </div>
+             
+            </div>
+          </div> 
+        </div>
+      </div>
+    </section>
+  
+    <section class="video section">
+      <div class="container">
+        <div class="video__inner">
+          <div class="video__popup" style="background-image: url('images/video.jpg');">
+            <a class="video__play" data-fancybox
+              href="https://www.youtube.com/watch?v=64TCo-9BD_U&ab_channel=LeraGr">
+              <img class="video__play-img" src="images/icons/play-btn.svg" alt="video play button">
+            </a>
+          </div>
+          <div class="video__content">
+            <p class="video__subtitle">
+              Winter Collection 20% Off
+            </p>
+            <h3 class="video__title title">TRENDING FASHION</h3>
+            <p class="video__text">
+              Lorem ipsum dolor sit amet, consectetur apiscing elit, sed do eiusmod temp incididunt ut labore et dolore
+              magna aliqua
+              consectetur adipiscing elit, sedu do eiusmod temp indidunt ut labore et dolore magna aliqua.. Quis ipsum de
+              ultcesm.
+              Risus commodo viverra maecenas.
+            </p>
+            <a class="video__link" href="shop.html">View Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="product section">
+      <div class="container">
+        <h3 class="title">TRENDING PRODUCTS</h3>
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodmoe tempor incididunt ut
+          labore
+          et dolore aliqua.</p>
+        <div class="product__items">
+  
+          <div class="product-item product-item--sale">
+            <div class="product-item__top-box top-box">
+              <a href="product.html" class="top-box__img-link">
+                <img class="top-box__img" src="images/product/1.jpg" alt="product">
+              </a>
+              <div class="top-box__link-box">
+                <a class="top-box__link" href="shop.html">
+                  <svg width="19" height="20"><path fill="#29282D" fill-rule="evenodd" d="m18.709 18.219-4.681-4.95a8.142 8.142 0 0 0 1.863-5.194c0-4.453-3.563-8.077-7.944-8.077C3.568-.002.005 3.622.005 8.075c0 4.454 3.563 8.078 7.942 8.078a7.756 7.756 0 0 0 4.551-1.463l4.718 4.99a1.022 1.022 0 0 0 1.464.03 1.068 1.068 0 0 0 .029-1.491ZM7.947 2.106c3.238 0 5.872 2.679 5.872 5.969 0 3.292-2.634 5.971-5.872 5.971-3.236 0-5.869-2.679-5.869-5.971 0-3.29 2.633-5.969 5.869-5.969Z"/></svg>
+                </a>
+                <a class="top-box__link top-box__link--line" href="login.html">
+                  <svg width="16" height="20"><path fill="#29282D" fill-rule="evenodd" d="M15.999 17.294 14.854 4.396a.55.55 0 0 0-.547-.504h-2.354A3.953 3.953 0 0 0 8.005.002a3.953 3.953 0 0 0-3.948 3.89H1.703a.547.547 0 0 0-.547.504L.011 17.294c0 .017-.004.033-.004.049 0 1.469 1.345 2.663 3 2.663h9.996c1.655 0 3-1.194 3-2.663 0-.016 0-.032-.004-.049ZM8.005 1.106a2.848 2.848 0 0 1 2.844 2.786H5.161a2.848 2.848 0 0 1 2.844-2.786Zm4.998 17.796H3.007c-1.038 0-1.88-.687-1.896-1.534L2.206 5.001h1.847v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001h5.692v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001H13.8l1.099 12.367c-.016.847-.862 1.534-1.896 1.534Z"/></svg>
+                </a>
+                <a class="top-box__link" href="login.html">
+                  <svg width="23" height="20"><path fill="#29282D" fill-rule="evenodd" d="M16.894-.001c-2.424 0-3.959 1.424-4.82 2.619a8.851 8.851 0 0 0-.573.914 8.522 8.522 0 0 0-.573-.914c-.86-1.195-2.395-2.619-4.82-2.619-1.724 0-3.298.698-4.433 1.965C.593 3.172-.004 4.791-.004 6.521c0 1.884.748 3.636 2.353 5.513 1.434 1.679 3.498 3.409 5.887 5.413.891.746 1.811 1.518 2.792 2.362l.029.025a.678.678 0 0 0 .888 0l.03-.025c.98-.844 1.901-1.616 2.791-2.362 2.39-2.004 4.453-3.734 5.887-5.413 1.605-1.877 2.353-3.629 2.353-5.513 0-1.73-.596-3.349-1.679-4.557C20.192.696 18.618-.001 16.894-.001Zm-3.002 16.438a301.82 301.82 0 0 0-2.391 2.018c-.833-.712-1.623-1.374-2.39-2.018-4.677-3.921-7.766-6.511-7.766-9.916 0-1.407.476-2.715 1.342-3.681a4.53 4.53 0 0 1 3.421-1.515c1.849 0 3.043 1.12 3.72 2.06a7.819 7.819 0 0 1 1.032 2.019.674.674 0 0 0 .641.458.673.673 0 0 0 .641-.458 7.819 7.819 0 0 1 1.032-2.019c.677-.94 1.872-2.06 3.72-2.06 1.331 0 2.546.538 3.422 1.515.865.966 1.342 2.274 1.342 3.681 0 3.405-3.09 5.995-7.766 9.916Z"/></svg>
+                </a>
+              </div>
+            </div>
+  
+            <div class="product-item__bottom-box bottom-box">
+              <div class="bottom-box__wrapper">
+                <div class="star" data-rateyo-rating='3.5'></div>
+                <a href="product.html" class="bottom-box__title-link">
+                <h4 class="bottom-box__title">White Polo Men’s T-Shirt</h4>
+                </a>
+                <div class="bottom-box__price">
+                  <div class="bottom-box__new-price">$34.00</div>
+                  <div class="bottom-box__old-price">$27.00</div>
+                </div>
+              </div>
+              <div class="bottom-box__content-box">
+                <p class="bottom-box__text">
+                  Lorem ipsum dolor sit amet, adipiscing elit, sed de eusmod utlitoi labore et dolore magna aliqua.
+                </p>
+                <button class="bottom-box__btn">
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="product-item">
+            <div class="product-item__top-box top-box">
+              <a href="product.html" class="top-box__img-link">
+                <img class="top-box__img" src="images/product/2.jpg" alt="product">
+              </a>
+              <div class="top-box__link-box">
+                <a class="top-box__link" href="shop.html">
+                  <svg width="19" height="20"><path fill="#29282D" fill-rule="evenodd" d="m18.709 18.219-4.681-4.95a8.142 8.142 0 0 0 1.863-5.194c0-4.453-3.563-8.077-7.944-8.077C3.568-.002.005 3.622.005 8.075c0 4.454 3.563 8.078 7.942 8.078a7.756 7.756 0 0 0 4.551-1.463l4.718 4.99a1.022 1.022 0 0 0 1.464.03 1.068 1.068 0 0 0 .029-1.491ZM7.947 2.106c3.238 0 5.872 2.679 5.872 5.969 0 3.292-2.634 5.971-5.872 5.971-3.236 0-5.869-2.679-5.869-5.971 0-3.29 2.633-5.969 5.869-5.969Z"/></svg>
+                </a>
+                <a class="top-box__link top-box__link--line" href="login.html">
+                  <svg width="16" height="20"><path fill="#29282D" fill-rule="evenodd" d="M15.999 17.294 14.854 4.396a.55.55 0 0 0-.547-.504h-2.354A3.953 3.953 0 0 0 8.005.002a3.953 3.953 0 0 0-3.948 3.89H1.703a.547.547 0 0 0-.547.504L.011 17.294c0 .017-.004.033-.004.049 0 1.469 1.345 2.663 3 2.663h9.996c1.655 0 3-1.194 3-2.663 0-.016 0-.032-.004-.049ZM8.005 1.106a2.848 2.848 0 0 1 2.844 2.786H5.161a2.848 2.848 0 0 1 2.844-2.786Zm4.998 17.796H3.007c-1.038 0-1.88-.687-1.896-1.534L2.206 5.001h1.847v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001h5.692v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001H13.8l1.099 12.367c-.016.847-.862 1.534-1.896 1.534Z"/></svg>
+                </a>
+                <a class="top-box__link" href="login.html">
+                  <svg width="23" height="20"><path fill="#29282D" fill-rule="evenodd" d="M16.894-.001c-2.424 0-3.959 1.424-4.82 2.619a8.851 8.851 0 0 0-.573.914 8.522 8.522 0 0 0-.573-.914c-.86-1.195-2.395-2.619-4.82-2.619-1.724 0-3.298.698-4.433 1.965C.593 3.172-.004 4.791-.004 6.521c0 1.884.748 3.636 2.353 5.513 1.434 1.679 3.498 3.409 5.887 5.413.891.746 1.811 1.518 2.792 2.362l.029.025a.678.678 0 0 0 .888 0l.03-.025c.98-.844 1.901-1.616 2.791-2.362 2.39-2.004 4.453-3.734 5.887-5.413 1.605-1.877 2.353-3.629 2.353-5.513 0-1.73-.596-3.349-1.679-4.557C20.192.696 18.618-.001 16.894-.001Zm-3.002 16.438a301.82 301.82 0 0 0-2.391 2.018c-.833-.712-1.623-1.374-2.39-2.018-4.677-3.921-7.766-6.511-7.766-9.916 0-1.407.476-2.715 1.342-3.681a4.53 4.53 0 0 1 3.421-1.515c1.849 0 3.043 1.12 3.72 2.06a7.819 7.819 0 0 1 1.032 2.019.674.674 0 0 0 .641.458.673.673 0 0 0 .641-.458 7.819 7.819 0 0 1 1.032-2.019c.677-.94 1.872-2.06 3.72-2.06 1.331 0 2.546.538 3.422 1.515.865.966 1.342 2.274 1.342 3.681 0 3.405-3.09 5.995-7.766 9.916Z"/></svg>
+                </a>
+              </div>
+            </div>
+  
+            <div class="product-item__bottom-box bottom-box">
+              <div class="bottom-box__wrapper">
+                <div class="star" data-rateyo-rating='4.7'></div>
+                <a href="product.html" class="bottom-box__title-link">
+                <h4 class="bottom-box__title">White Polo Men’s T-Shirt</h4>
+                </a>
+                <div class="bottom-box__price">
+                  <div class="bottom-box__new-price">$34.00</div>
+                  <div class="bottom-box__old-price">$27.00</div>
+                </div>
+              </div>
+              <div class="bottom-box__content-box">
+                <p class="bottom-box__text">
+                  Lorem ipsum dolor sit amet, adipiscing elit, sed de eusmod utlitoi labore et dolore magna aliqua.
+                </p>
+                <button class="bottom-box__btn">
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="product-item">
+            <div class="product-item__top-box top-box">
+              <a href="product.html" class="top-box__img-link">
+                <img class="top-box__img" src="images/product/3.jpg" alt="product">
+              </a>
+              <div class="top-box__link-box">
+                <a class="top-box__link" href="shop.html">
+                  <svg width="19" height="20"><path fill="#29282D" fill-rule="evenodd" d="m18.709 18.219-4.681-4.95a8.142 8.142 0 0 0 1.863-5.194c0-4.453-3.563-8.077-7.944-8.077C3.568-.002.005 3.622.005 8.075c0 4.454 3.563 8.078 7.942 8.078a7.756 7.756 0 0 0 4.551-1.463l4.718 4.99a1.022 1.022 0 0 0 1.464.03 1.068 1.068 0 0 0 .029-1.491ZM7.947 2.106c3.238 0 5.872 2.679 5.872 5.969 0 3.292-2.634 5.971-5.872 5.971-3.236 0-5.869-2.679-5.869-5.971 0-3.29 2.633-5.969 5.869-5.969Z"/></svg>
+                </a>
+                <a class="top-box__link top-box__link--line" href="login.html">
+                  <svg width="16" height="20"><path fill="#29282D" fill-rule="evenodd" d="M15.999 17.294 14.854 4.396a.55.55 0 0 0-.547-.504h-2.354A3.953 3.953 0 0 0 8.005.002a3.953 3.953 0 0 0-3.948 3.89H1.703a.547.547 0 0 0-.547.504L.011 17.294c0 .017-.004.033-.004.049 0 1.469 1.345 2.663 3 2.663h9.996c1.655 0 3-1.194 3-2.663 0-.016 0-.032-.004-.049ZM8.005 1.106a2.848 2.848 0 0 1 2.844 2.786H5.161a2.848 2.848 0 0 1 2.844-2.786Zm4.998 17.796H3.007c-1.038 0-1.88-.687-1.896-1.534L2.206 5.001h1.847v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001h5.692v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001H13.8l1.099 12.367c-.016.847-.862 1.534-1.896 1.534Z"/></svg>
+                </a>
+                <a class="top-box__link" href="login.html">
+                  <svg width="23" height="20"><path fill="#29282D" fill-rule="evenodd" d="M16.894-.001c-2.424 0-3.959 1.424-4.82 2.619a8.851 8.851 0 0 0-.573.914 8.522 8.522 0 0 0-.573-.914c-.86-1.195-2.395-2.619-4.82-2.619-1.724 0-3.298.698-4.433 1.965C.593 3.172-.004 4.791-.004 6.521c0 1.884.748 3.636 2.353 5.513 1.434 1.679 3.498 3.409 5.887 5.413.891.746 1.811 1.518 2.792 2.362l.029.025a.678.678 0 0 0 .888 0l.03-.025c.98-.844 1.901-1.616 2.791-2.362 2.39-2.004 4.453-3.734 5.887-5.413 1.605-1.877 2.353-3.629 2.353-5.513 0-1.73-.596-3.349-1.679-4.557C20.192.696 18.618-.001 16.894-.001Zm-3.002 16.438a301.82 301.82 0 0 0-2.391 2.018c-.833-.712-1.623-1.374-2.39-2.018-4.677-3.921-7.766-6.511-7.766-9.916 0-1.407.476-2.715 1.342-3.681a4.53 4.53 0 0 1 3.421-1.515c1.849 0 3.043 1.12 3.72 2.06a7.819 7.819 0 0 1 1.032 2.019.674.674 0 0 0 .641.458.673.673 0 0 0 .641-.458 7.819 7.819 0 0 1 1.032-2.019c.677-.94 1.872-2.06 3.72-2.06 1.331 0 2.546.538 3.422 1.515.865.966 1.342 2.274 1.342 3.681 0 3.405-3.09 5.995-7.766 9.916Z"/></svg>
+                </a>
+              </div>
+            </div>
+  
+            <div class="product-item__bottom-box bottom-box">
+              <div class="bottom-box__wrapper">
+                <div class="star" data-rateyo-rating='4.2'></div>
+                <a href="product.html" class="bottom-box__title-link">
+                <h4 class="bottom-box__title">White Polo Men’s T-Shirt</h4>
+                </a>
+                <div class="bottom-box__price">
+                  <div class="bottom-box__new-price">$34.00</div>
+                  <div class="bottom-box__old-price">$27.00</div>
+                </div>
+              </div>
+              <div class="bottom-box__content-box">
+                <p class="bottom-box__text">
+                  Lorem ipsum dolor sit amet, adipiscing elit, sed de eusmod utlitoi labore et dolore magna aliqua.
+                </p>
+                <button class="bottom-box__btn">
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="product-item product-item--sale">
+            <div class="product-item__top-box top-box">
+              <a href="product.html" class="top-box__img-link">
+                <img class="top-box__img" src="images/product/4.jpg" alt="product">
+              </a>
+              <div class="top-box__link-box">
+                <a class="top-box__link" href="shop.html">
+                  <svg width="19" height="20"><path fill="#29282D" fill-rule="evenodd" d="m18.709 18.219-4.681-4.95a8.142 8.142 0 0 0 1.863-5.194c0-4.453-3.563-8.077-7.944-8.077C3.568-.002.005 3.622.005 8.075c0 4.454 3.563 8.078 7.942 8.078a7.756 7.756 0 0 0 4.551-1.463l4.718 4.99a1.022 1.022 0 0 0 1.464.03 1.068 1.068 0 0 0 .029-1.491ZM7.947 2.106c3.238 0 5.872 2.679 5.872 5.969 0 3.292-2.634 5.971-5.872 5.971-3.236 0-5.869-2.679-5.869-5.971 0-3.29 2.633-5.969 5.869-5.969Z"/></svg>
+                </a>
+                <a class="top-box__link top-box__link--line" href="login.html">
+                  <svg width="16" height="20"><path fill="#29282D" fill-rule="evenodd" d="M15.999 17.294 14.854 4.396a.55.55 0 0 0-.547-.504h-2.354A3.953 3.953 0 0 0 8.005.002a3.953 3.953 0 0 0-3.948 3.89H1.703a.547.547 0 0 0-.547.504L.011 17.294c0 .017-.004.033-.004.049 0 1.469 1.345 2.663 3 2.663h9.996c1.655 0 3-1.194 3-2.663 0-.016 0-.032-.004-.049ZM8.005 1.106a2.848 2.848 0 0 1 2.844 2.786H5.161a2.848 2.848 0 0 1 2.844-2.786Zm4.998 17.796H3.007c-1.038 0-1.88-.687-1.896-1.534L2.206 5.001h1.847v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001h5.692v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001H13.8l1.099 12.367c-.016.847-.862 1.534-1.896 1.534Z"/></svg>
+                </a>
+                <a class="top-box__link" href="login.html">
+                  <svg width="23" height="20"><path fill="#29282D" fill-rule="evenodd" d="M16.894-.001c-2.424 0-3.959 1.424-4.82 2.619a8.851 8.851 0 0 0-.573.914 8.522 8.522 0 0 0-.573-.914c-.86-1.195-2.395-2.619-4.82-2.619-1.724 0-3.298.698-4.433 1.965C.593 3.172-.004 4.791-.004 6.521c0 1.884.748 3.636 2.353 5.513 1.434 1.679 3.498 3.409 5.887 5.413.891.746 1.811 1.518 2.792 2.362l.029.025a.678.678 0 0 0 .888 0l.03-.025c.98-.844 1.901-1.616 2.791-2.362 2.39-2.004 4.453-3.734 5.887-5.413 1.605-1.877 2.353-3.629 2.353-5.513 0-1.73-.596-3.349-1.679-4.557C20.192.696 18.618-.001 16.894-.001Zm-3.002 16.438a301.82 301.82 0 0 0-2.391 2.018c-.833-.712-1.623-1.374-2.39-2.018-4.677-3.921-7.766-6.511-7.766-9.916 0-1.407.476-2.715 1.342-3.681a4.53 4.53 0 0 1 3.421-1.515c1.849 0 3.043 1.12 3.72 2.06a7.819 7.819 0 0 1 1.032 2.019.674.674 0 0 0 .641.458.673.673 0 0 0 .641-.458 7.819 7.819 0 0 1 1.032-2.019c.677-.94 1.872-2.06 3.72-2.06 1.331 0 2.546.538 3.422 1.515.865.966 1.342 2.274 1.342 3.681 0 3.405-3.09 5.995-7.766 9.916Z"/></svg>
+                </a>
+              </div>
+            </div>
+  
+            <div class="product-item__bottom-box bottom-box">
+              <div class="bottom-box__wrapper">
+                <div class="bottom-box__star star" data-rateyo-rating='4'></div>
+                <a href="product.html" class="bottom-box__title-link">
+                <h4 class="bottom-box__title">White Polo Men’s T-Shirt</h4>
+                </a>
+                <div class="bottom-box__price">
+                  <div class="bottom-box__new-price">$34.00</div>
+                  <div class="bottom-box__old-price">$27.00</div>
+                </div>
+              </div>
+              <div class="bottom-box__content-box">
+                <p class="bottom-box__text">
+                  Lorem ipsum dolor sit amet, adipiscing elit, sed de eusmod utlitoi labore et dolore magna aliqua.
+                </p>
+                <button class="bottom-box__btn">
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="product-item">
+            <div class="product-item__top-box top-box">
+              <a href="product.html" class="top-box__img-link">
+                <img class="top-box__img" src="images/product/5.jpg" alt="product">
+              </a>
+              <div class="top-box__link-box">
+                <a class="top-box__link" href="shop.html">
+                  <svg width="19" height="20"><path fill="#29282D" fill-rule="evenodd" d="m18.709 18.219-4.681-4.95a8.142 8.142 0 0 0 1.863-5.194c0-4.453-3.563-8.077-7.944-8.077C3.568-.002.005 3.622.005 8.075c0 4.454 3.563 8.078 7.942 8.078a7.756 7.756 0 0 0 4.551-1.463l4.718 4.99a1.022 1.022 0 0 0 1.464.03 1.068 1.068 0 0 0 .029-1.491ZM7.947 2.106c3.238 0 5.872 2.679 5.872 5.969 0 3.292-2.634 5.971-5.872 5.971-3.236 0-5.869-2.679-5.869-5.971 0-3.29 2.633-5.969 5.869-5.969Z"/></svg>
+                </a>
+                <a class="top-box__link top-box__link--line" href="login.html">
+                  <svg width="16" height="20"><path fill="#29282D" fill-rule="evenodd" d="M15.999 17.294 14.854 4.396a.55.55 0 0 0-.547-.504h-2.354A3.953 3.953 0 0 0 8.005.002a3.953 3.953 0 0 0-3.948 3.89H1.703a.547.547 0 0 0-.547.504L.011 17.294c0 .017-.004.033-.004.049 0 1.469 1.345 2.663 3 2.663h9.996c1.655 0 3-1.194 3-2.663 0-.016 0-.032-.004-.049ZM8.005 1.106a2.848 2.848 0 0 1 2.844 2.786H5.161a2.848 2.848 0 0 1 2.844-2.786Zm4.998 17.796H3.007c-1.038 0-1.88-.687-1.896-1.534L2.206 5.001h1.847v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001h5.692v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001H13.8l1.099 12.367c-.016.847-.862 1.534-1.896 1.534Z"/></svg>
+                </a>
+                <a class="top-box__link" href="login.html">
+                  <svg width="23" height="20"><path fill="#29282D" fill-rule="evenodd" d="M16.894-.001c-2.424 0-3.959 1.424-4.82 2.619a8.851 8.851 0 0 0-.573.914 8.522 8.522 0 0 0-.573-.914c-.86-1.195-2.395-2.619-4.82-2.619-1.724 0-3.298.698-4.433 1.965C.593 3.172-.004 4.791-.004 6.521c0 1.884.748 3.636 2.353 5.513 1.434 1.679 3.498 3.409 5.887 5.413.891.746 1.811 1.518 2.792 2.362l.029.025a.678.678 0 0 0 .888 0l.03-.025c.98-.844 1.901-1.616 2.791-2.362 2.39-2.004 4.453-3.734 5.887-5.413 1.605-1.877 2.353-3.629 2.353-5.513 0-1.73-.596-3.349-1.679-4.557C20.192.696 18.618-.001 16.894-.001Zm-3.002 16.438a301.82 301.82 0 0 0-2.391 2.018c-.833-.712-1.623-1.374-2.39-2.018-4.677-3.921-7.766-6.511-7.766-9.916 0-1.407.476-2.715 1.342-3.681a4.53 4.53 0 0 1 3.421-1.515c1.849 0 3.043 1.12 3.72 2.06a7.819 7.819 0 0 1 1.032 2.019.674.674 0 0 0 .641.458.673.673 0 0 0 .641-.458 7.819 7.819 0 0 1 1.032-2.019c.677-.94 1.872-2.06 3.72-2.06 1.331 0 2.546.538 3.422 1.515.865.966 1.342 2.274 1.342 3.681 0 3.405-3.09 5.995-7.766 9.916Z"/></svg>
+                </a>
+              </div>
+            </div>
+  
+            <div class="product-item__bottom-box bottom-box">
+              <div class="bottom-box__wrapper">
+                <div class="bottom-box__star star" data-rateyo-rating='4.7'></div>
+                <a href="product.html" class="bottom-box__title-link">
+                <h4 class="bottom-box__title">White Polo Men’s T-Shirt</h4>
+                </a>
+                <div class="bottom-box__price">
+                  <div class="bottom-box__new-price">$34.00</div>
+                  <div class="bottom-box__old-price">$27.00</div>
+                </div>
+              </div>
+              <div class="bottom-box__content-box">
+                <p class="bottom-box__text">
+                  Lorem ipsum dolor sit amet, adipiscing elit, sed de eusmod utlitoi labore et dolore magna aliqua.
+                </p>
+                <button class="bottom-box__btn">
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="product-item product-item--sale">
+            <div class="product-item__top-box top-box">
+              <a href="product.html" class="top-box__img-link">
+                <img class="top-box__img" src="images/product/6.jpg" alt="product">
+              </a>
+              <div class="top-box__link-box">
+                <a class="top-box__link" href="shop.html">
+                  <svg width="19" height="20"><path fill="#29282D" fill-rule="evenodd" d="m18.709 18.219-4.681-4.95a8.142 8.142 0 0 0 1.863-5.194c0-4.453-3.563-8.077-7.944-8.077C3.568-.002.005 3.622.005 8.075c0 4.454 3.563 8.078 7.942 8.078a7.756 7.756 0 0 0 4.551-1.463l4.718 4.99a1.022 1.022 0 0 0 1.464.03 1.068 1.068 0 0 0 .029-1.491ZM7.947 2.106c3.238 0 5.872 2.679 5.872 5.969 0 3.292-2.634 5.971-5.872 5.971-3.236 0-5.869-2.679-5.869-5.971 0-3.29 2.633-5.969 5.869-5.969Z"/></svg>
+                </a>
+                <a class="top-box__link top-box__link--line" href="login.html">
+                  <svg width="16" height="20"><path fill="#29282D" fill-rule="evenodd" d="M15.999 17.294 14.854 4.396a.55.55 0 0 0-.547-.504h-2.354A3.953 3.953 0 0 0 8.005.002a3.953 3.953 0 0 0-3.948 3.89H1.703a.547.547 0 0 0-.547.504L.011 17.294c0 .017-.004.033-.004.049 0 1.469 1.345 2.663 3 2.663h9.996c1.655 0 3-1.194 3-2.663 0-.016 0-.032-.004-.049ZM8.005 1.106a2.848 2.848 0 0 1 2.844 2.786H5.161a2.848 2.848 0 0 1 2.844-2.786Zm4.998 17.796H3.007c-1.038 0-1.88-.687-1.896-1.534L2.206 5.001h1.847v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001h5.692v1.677a.55.55 0 0 0 .552.552.55.55 0 0 0 .552-.552V5.001H13.8l1.099 12.367c-.016.847-.862 1.534-1.896 1.534Z"/></svg>
+                </a>
+                <a class="top-box__link" href="login.html">
+                  <svg width="23" height="20"><path fill="#29282D" fill-rule="evenodd" d="M16.894-.001c-2.424 0-3.959 1.424-4.82 2.619a8.851 8.851 0 0 0-.573.914 8.522 8.522 0 0 0-.573-.914c-.86-1.195-2.395-2.619-4.82-2.619-1.724 0-3.298.698-4.433 1.965C.593 3.172-.004 4.791-.004 6.521c0 1.884.748 3.636 2.353 5.513 1.434 1.679 3.498 3.409 5.887 5.413.891.746 1.811 1.518 2.792 2.362l.029.025a.678.678 0 0 0 .888 0l.03-.025c.98-.844 1.901-1.616 2.791-2.362 2.39-2.004 4.453-3.734 5.887-5.413 1.605-1.877 2.353-3.629 2.353-5.513 0-1.73-.596-3.349-1.679-4.557C20.192.696 18.618-.001 16.894-.001Zm-3.002 16.438a301.82 301.82 0 0 0-2.391 2.018c-.833-.712-1.623-1.374-2.39-2.018-4.677-3.921-7.766-6.511-7.766-9.916 0-1.407.476-2.715 1.342-3.681a4.53 4.53 0 0 1 3.421-1.515c1.849 0 3.043 1.12 3.72 2.06a7.819 7.819 0 0 1 1.032 2.019.674.674 0 0 0 .641.458.673.673 0 0 0 .641-.458 7.819 7.819 0 0 1 1.032-2.019c.677-.94 1.872-2.06 3.72-2.06 1.331 0 2.546.538 3.422 1.515.865.966 1.342 2.274 1.342 3.681 0 3.405-3.09 5.995-7.766 9.916Z"/></svg>
+                </a>
+              </div>
+            </div>
+  
+            <div class="product-item__bottom-box bottom-box">
+              <div class="bottom-box__wrapper">
+                <div class="bottom-box__star star" data-rateyo-rating='4.7'></div>
+                <a href="product.html" class="bottom-box__title-link">
+                <h4 class="bottom-box__title">White Polo Men’s T-Shirt</h4>
+                </a>
+                <div class="bottom-box__price">
+                  <div class="bottom-box__new-price">$34.00</div>
+                  <div class="bottom-box__old-price">$27.00</div>
+                </div>
+              </div>
+              <div class="bottom-box__content-box">
+                <p class="bottom-box__text">
+                  Lorem ipsum dolor sit amet, adipiscing elit, sed de eusmod utlitoi labore et dolore magna aliqua.
+                </p>
+                <button class="bottom-box__btn">
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+        <a class="product__link" href="shop.html">WATCH MORE</a>
+      </div>
+    </section>
+  
+    <div class="promo section">
+      <div class="container">
+        <div class="promo__inner">
+          <p class="promo__subtitle">Style Fashion</p>
+          <h3 class="promo__title title">DEAL OF THE DAY</h3>
+          <div class="promo__clock" data-time="'2025-08-25'">
+            <div class="promo__clock-item">
+              <span class="promo__days"></span>
+              <div class="promo__text">Days</div>
+            </div>
+            <div class="promo__clock-item">
+              <span class="promo__hours"></span>
+              <div class="promo__text">Hours</div> 
+            </div>
+            <div class="promo__clock-item">
+              <span class="promo__minutes"></span>
+              <div class="promo__text">Minutes</div>
+            </div>
+            <div class="promo__clock-item">
+              <span class="promo__seconds"></span>
+              <div class="promo__text">Seconds</div>
+            </div>
+          </div>
+          <a class="promo__link" href="#">SHOP NOW</a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="partners">
+      <div class="container">
+        <ul class="partners__list">
+          <li class="partners__item">
+            <img src="images/partners/1.png" alt="logo of partners">
+          </li>
+          <li class="partners__item">
+            <img src="images/partners/2.png" alt="logo of partners">
+          </li>
+          <li class="partners__item">
+            <img src="images/partners/3.png" alt="logo of partners">
+          </li>
+          <li class="partners__item">
+            <img src="images/partners/4.png" alt="logo of partners">
+          </li>
+          <li class="partners__item">
+            <img src="images/partners/5.png" alt="logo of partners">
+          </li>
+          <li class="partners__item">
+            <img src="images/partners/6.png" alt="logo of partners">
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+     <section class="blog section">
+      <div class="container">
+        <h3 class="title">From Our Blog</h3>
+        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodmoe tempor incididunt ut labore et dolore aliqua.</p>
+        <div class="blog__items">
+    
+          <div class="blog__item">
+            <a class="blog__item-imglink" href="blog-one.html">
+              <img class="blog__img" src="images/blog/1.jpg" alt="blog image">
+            </a>
+            <div class="blog__item-box">
+              <div class="blog-box">
+                <a class="blog-box__author" href="#">By Admin</a>
+                <div class="blog-box__date">10 January, 2025</div>
+              </div>
+              <a class="blog__item-titlelink" href="blog-one.html">
+                <h4 class="blog__item-title">Our Apps User Use Mobile On His Mobile</h4>
+              </a>
+              <a class="blog__item-link" href="blog-one.html">Read More
+                <svg width="10" height="8" viewbox="0 0 10 8">
+                  <path fill="#8d8d8d" fill-rule="evenodd"
+                    d="M1310.84,6130.62l-3.61-3.47a0.582,0.582,0,0,0-.78,0l-0.32.32a0.485,0.485,0,0,0-.16.37,0.507,0.507,0,0,0,.16.38l2.1,2.03h-6.69a0.519,0.519,0,0,0-.54.51v0.45a0.544,0.544,0,0,0,.54.54h6.72l-2.13,2.04a0.508,0.508,0,0,0,0,.74l0.32,0.32a0.61,0.61,0,0,0,.39.15,0.57,0.57,0,0,0,.39-0.16l3.61-3.47a0.523,0.523,0,0,0,.16-0.37,0.546,0.546,0,0,0-.16-0.38"
+                    transform="translate(-1301 -6127)" />
+                </svg>
+              </a>
+            </div>
+          </div>
+    
+          <div class="blog__item">
+            <a class="blog__item-imglink" href="blog-one.html">
+              <img class="blog__img" src="images/blog/2.jpg" alt="blog image">
+            </a>
+            <div class="blog__item-box">
+              <div class="blog-box">
+                <a class="blog-box__author" href="#">By Admin</a>
+                <div class="blog-box__date">10 January, 2025</div>
+              </div>
+              <a class="blog__item-titlelink" href="blog-one.html">
+                <h4 class="blog__item-title">Our Apps User Use Mobile On His Mobile</h4>
+              </a>
+              <a class="blog__item-link" href="blog-one.html">Read More
+                <svg width="10" height="8" viewbox="0 0 10 8">
+                  <path fill="#8d8d8d" fill-rule="evenodd"
+                    d="M1310.84,6130.62l-3.61-3.47a0.582,0.582,0,0,0-.78,0l-0.32.32a0.485,0.485,0,0,0-.16.37,0.507,0.507,0,0,0,.16.38l2.1,2.03h-6.69a0.519,0.519,0,0,0-.54.51v0.45a0.544,0.544,0,0,0,.54.54h6.72l-2.13,2.04a0.508,0.508,0,0,0,0,.74l0.32,0.32a0.61,0.61,0,0,0,.39.15,0.57,0.57,0,0,0,.39-0.16l3.61-3.47a0.523,0.523,0,0,0,.16-0.37,0.546,0.546,0,0,0-.16-0.38"
+                    transform="translate(-1301 -6127)" />
+                </svg>
+              </a>
+            </div>
+          </div>
+    
+          <div class="blog__item">
+            <a class="blog__item-imglink" href="blog-one.html">
+              <img class="blog__img" src="images/blog/3.jpg" alt="blog image">
+            </a>
+            <div class="blog__item-box">
+              <div class="blog-box">
+                <a class="blog-box__author" href="#">By Admin</a>
+                <div class="blog-box__date">10 January, 2025</div>
+              </div>
+              <a class="blog__item-titlelink" href="blog-one.html">
+                <h4 class="blog__item-title">Our Apps User Use Mobile On His Mobile</h4>
+              </a>
+              <a class="blog__item-link" href="blog-one.html">Read More
+                <svg width="10" height="8" viewbox="0 0 10 8">
+                  <path fill="#8d8d8d" fill-rule="evenodd"
+                    d="M1310.84,6130.62l-3.61-3.47a0.582,0.582,0,0,0-.78,0l-0.32.32a0.485,0.485,0,0,0-.16.37,0.507,0.507,0,0,0,.16.38l2.1,2.03h-6.69a0.519,0.519,0,0,0-.54.51v0.45a0.544,0.544,0,0,0,.54.54h6.72l-2.13,2.04a0.508,0.508,0,0,0,0,.74l0.32,0.32a0.61,0.61,0,0,0,.39.15,0.57,0.57,0,0,0,.39-0.16l3.61-3.47a0.523,0.523,0,0,0,.16-0.37,0.546,0.546,0,0,0-.16-0.38"
+                    transform="translate(-1301 -6127)" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>  
+  </main>
+  
+  
+
+   <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-top__contact">
+          <a class="logo footer-top__contact-logo" href="index.html">
+            <img class="logo__img" src="images/logo.png" alt="logo">
+          </a>
+          <p class="footer-top__contact-adress">No. 342 - London Oxford Street,
+            012 United States</p>
+          <a class="footer-top__contact-email" href="mailto:Youremail@gmail.com">Youremail@gmail.com</a>
+          <a class="footer-top__contact-phone" href="tel:+02838388393">+0283 838 8393</a>
+  
+          <ul class="footer-top__social-list">
+            <li class="footer-top__social-item">
+              <a class="footer-top__social-link" href="#">
+                <svg width="11px" height="18px" viewBox="0 0 11 17" version="1.1">
+                  <g>
+                    <path
+                      d="M 9.59375 9.5625 L 10.085938 6.484375 L 7.027344 6.484375 L 7.027344 4.488281 C 7.027344 3.648438 7.453125 2.828125 8.824219 2.828125 L 10.214844 2.828125 L 10.214844 0.207031 C 10.214844 0.207031 8.953125 0 7.746094 0 C 5.230469 0 3.585938 1.472656 3.585938 4.140625 L 3.585938 6.484375 L 0.785156 6.484375 L 0.785156 9.5625 L 3.585938 9.5625 L 3.585938 17 L 7.027344 17 L 7.027344 9.5625 Z M 9.59375 9.5625 " />
+                  </g>
+                </svg>
+              </a>
+            </li>
+            <li class="footer-top__social-item">
+              <a class="footer-top__social-link" href="#">
+                <svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1">
+                  <g>
+                    <path
+                      d="M 13.457031 4.445312 C 13.46875 4.578125 13.46875 4.710938 13.46875 4.84375 C 13.46875 8.910156 10.375 13.589844 4.722656 13.589844 C 2.980469 13.589844 1.359375 13.085938 0 12.210938 C 0.246094 12.238281 0.484375 12.25 0.742188 12.25 C 2.179688 12.25 3.503906 11.765625 4.558594 10.9375 C 3.207031 10.90625 2.074219 10.023438 1.683594 8.804688 C 1.875 8.832031 2.066406 8.851562 2.265625 8.851562 C 2.542969 8.851562 2.816406 8.8125 3.074219 8.746094 C 1.664062 8.460938 0.609375 7.222656 0.609375 5.730469 L 0.609375 5.691406 C 1.019531 5.921875 1.496094 6.0625 2 6.082031 C 1.171875 5.53125 0.628906 4.585938 0.628906 3.523438 C 0.628906 2.949219 0.78125 2.425781 1.046875 1.96875 C 2.558594 3.835938 4.835938 5.054688 7.386719 5.1875 C 7.339844 4.957031 7.308594 4.722656 7.308594 4.484375 C 7.308594 2.789062 8.679688 1.410156 10.382812 1.410156 C 11.269531 1.410156 12.070312 1.78125 12.628906 2.378906 C 13.324219 2.246094 13.992188 1.988281 14.582031 1.636719 C 14.351562 2.351562 13.867188 2.949219 13.230469 3.332031 C 13.847656 3.265625 14.449219 3.09375 15 2.855469 C 14.582031 3.464844 14.058594 4.007812 13.457031 4.445312 Z M 13.457031 4.445312 " />
+                  </g>
+                </svg>
+              </a>
+            </li>
+            <li class="footer-top__social-item">
+              <a class="footer-top__social-link" href="#">
+                <svg width="14px" height="16px" viewBox="0 0 14 16" version="1.1">
+                  <g>
+                    <path
+                      d="M 3.132812 14 L 0.230469 14 L 0.230469 4.652344 L 3.132812 4.652344 Z M 1.679688 3.378906 C 0.753906 3.378906 0 2.609375 0 1.679688 C 0 0.753906 0.753906 0 1.679688 0 C 2.609375 0 3.363281 0.753906 3.363281 1.679688 C 3.363281 2.609375 2.609375 3.378906 1.679688 3.378906 Z M 13.996094 14 L 11.101562 14 L 11.101562 9.449219 C 11.101562 8.367188 11.078125 6.976562 9.589844 6.976562 C 8.082031 6.976562 7.851562 8.152344 7.851562 9.371094 L 7.851562 14 L 4.953125 14 L 4.953125 4.652344 L 7.734375 4.652344 L 7.734375 5.929688 L 7.777344 5.929688 C 8.164062 5.195312 9.109375 4.417969 10.523438 4.417969 C 13.460938 4.417969 14 6.351562 14 8.867188 L 14 14 Z M 13.996094 14 " />
+                  </g>
+                </svg>
+              </a>
+            </li>
+            <li class="footer-top__social-item">
+              <a class="footer-top__social-link" href="#">
+                <svg width="16px" height="17px" viewBox="0 0 16 16" version="1.1">
+                  <g>
+                    <path
+                      d="M 16 8.179688 C 16 12.601562 12.824219 15.75 8.132812 15.75 C 3.632812 15.75 0 12.289062 0 8 C 0 3.710938 3.632812 0.25 8.132812 0.25 C 10.320312 0.25 12.164062 1.015625 13.582031 2.277344 L 11.371094 4.304688 C 8.476562 1.644531 3.09375 3.644531 3.09375 8 C 3.09375 10.703125 5.355469 12.894531 8.132812 12.894531 C 11.351562 12.894531 12.558594 10.695312 12.746094 9.554688 L 8.132812 9.554688 L 8.132812 6.886719 L 15.871094 6.886719 C 15.949219 7.285156 16 7.664062 16 8.179688 Z M 16 8.179688 " />
+                  </g>
+                </svg>
+              </a>
+            </li>
+            <li class="footer-top__social-item">
+              <a class="footer-top__social-link" href="#">
+                <svg width="14px" height="18px" viewBox="0 0 14 18" version="1.1">
+                  <g>
+                    <path
+                      d="M 7.4375 0.226562 C 3.695312 0.226562 0 2.632812 0 6.523438 C 0 9 1.445312 10.40625 2.320312 10.40625 C 2.679688 10.40625 2.886719 9.4375 2.886719 9.160156 C 2.886719 8.835938 2.023438 8.140625 2.023438 6.777344 C 2.023438 3.953125 4.253906 1.949219 7.140625 1.949219 C 9.625 1.949219 11.460938 3.308594 11.460938 5.808594 C 11.460938 7.675781 10.6875 11.175781 8.171875 11.175781 C 7.261719 11.175781 6.484375 10.542969 6.484375 9.636719 C 6.484375 8.308594 7.449219 7.019531 7.449219 5.648438 C 7.449219 3.320312 4.023438 3.742188 4.023438 6.554688 C 4.023438 7.148438 4.101562 7.800781 4.375 8.339844 C 3.871094 10.425781 2.84375 13.539062 2.84375 15.691406 C 2.84375 16.355469 2.941406 17.007812 3.007812 17.671875 C 3.132812 17.804688 3.070312 17.792969 3.257812 17.726562 C 5.097656 15.300781 5.03125 14.824219 5.863281 11.652344 C 6.3125 12.472656 7.46875 12.917969 8.390625 12.917969 C 12.261719 12.917969 14 9.277344 14 5.996094 C 14 2.507812 10.871094 0.226562 7.4375 0.226562 Z M 7.4375 0.226562 " />
+                  </g>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="footer-top__nav">
+          <h6 class="footer-top__title">
+            Useful Links
+          </h6>
+          <ul class="footer-top__nav-list">
+            <li class="footer-top__nav-li">
+              <a class="footer-top__nav-link" href="#">About Us</a>
+            </li>
+            <li class="footer-top__nav-li">
+              <a class="footer-top__nav-link" href="#">Privacy Policy</a>
+            </li>
+            <li class="footer-top__nav-li">
+              <a class="footer-top__nav-link" href="#">Terms & Conditions</a>
+            </li>
+            <li class="footer-top__nav-li">
+              <a class="footer-top__nav-link" href="#">Contact Us</a>
+            </li>
+            <li class="footer-top__nav-li">
+              <a class="footer-top__nav-link" href="#">Help & Support</a>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="footer-top__nav">
+          <h6 class="footer-top__title">
+            My Account
+          </h6>
+          <ul class="footer-top__nav-list">
+            <li class="footer-top__nav-li">
+              <a class="footer-top__nav-link" href="#">My Account</a>
+            </li>
+            <li class="footer-top__nav-li">
+              <a class="footer-top__nav-link" href="#">My Cart</a>
+            </li>
+            <li class="footer-top__nav-li">
+              <a class="footer-top__nav-link" href="#">My Wishlist</a>
+            </li>
+            <li class="footer-top__nav-li">
+              <a class="footer-top__nav-link" href="#">Registration</a>
+            </li>
+            <li class="footer-top__nav-li">
+              <a class="footer-top__nav-link" href="#">Check Out</a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="footer-top__form-wrapper">
+          <h6 class="footer-top__title">
+            Subscribe Our Newsletter
+          </h6>
+          <p class="footer-top__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna
+            aliqua. Quis ipsum suspendisse ultrices gravida.
+          </p>
+          <form class="footer-top__form" action="#">
+            <input class="footer-top__form-input" type="email" placeholder="Your email address" required>
+            <button class="footer-top__form-btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+        <p class="footer-bottom__text">
+          © 2024 CodeAstrology. All Rights Reserved.
+        </p>
+        <div class="footer-bottom__box">
+          We Accept
+          <img class="footer-bottom__box-img" src="images/icons/mastercard.png" alt="we accept mastercard">
+          <img class="footer-bottom__box-img" src="images/icons/visa.png" alt="we accept visa">
+          <img class="footer-bottom__box-img" src="images/icons/paypal.png" alt="we accept paypal">
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/main.min.js"></script>
+  
+</body>
+</html>

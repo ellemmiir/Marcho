@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>SVG stack preview | svg-sprite</title>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                color: #666;
+                background: #fafafa;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1em;
+                line-height: 1.4;
+            }
+
+            header {
+                display: block;
+                padding: 3em 3em 2em;
+                background-color: #fff;
+            }
+
+            header p {
+                margin: 2em 0 0;
+            }
+
+            section {
+                border-top: 1px solid #eee;
+                padding: 2em 3em 0;
+            }
+
+            section ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            section li {
+                display: inline-block;
+                background-color: #fff;
+                position: relative;
+                margin: 0 2em 2em 0;
+                vertical-align: top;
+                border: 1px solid #ccc;
+                padding: 1em 1em 3em;
+                cursor: default;
+            }
+
+            .icon-box {
+                margin: 0;
+                width: 144px;
+                height: 144px;
+                position: relative;
+                background: #ccc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath fill='%23fff' d='M6 0h6v6H6zM0 6h6v6H0z'/%3E%3C/svg%3E") top left repeat;
+                border: 1px solid #ccc;
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            .icon {
+                display: inline-block;
+            }
+
+            h1 {
+                margin-top: 0;
+            }
+
+            h2 {
+                margin: 0;
+                padding: 0;
+                font-size: 1em;
+                font-weight: 400;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                position: absolute;
+                left: 1em;
+                right: 1em;
+                bottom: 1em;
+            }
+
+            footer {
+                display: block;
+                margin: 0;
+                padding: 0 3em 3em;
+            }
+
+            footer p {
+                margin: 0;
+                font-size: .7em;
+            }
+
+            footer a {
+                color: #0f7595;
+                margin-left: 0;
+            }
+        </style>
+
+<!--
+Sprite shape dimensions
+====================================================================================================
+You will need to set the sprite shape dimensions via CSS when you use them as stack SVGs, otherwise
+they would become a huge 100% in size. You may use the following dimension classes for doing so.
+They might well be outsourced to an external stylesheet of course.
+-->
+
+<style>
+ .svg-angle-left-dims { width: 50px; height: 50px; }
+ .svg-angle-right-dims { width: 50px; height: 50px; }
+ .svg-angle-right1-dims { width: 25px; height: 25px; }
+ .svg-arrow-dims { width: 10px; height: 8px; }
+ .svg-blog-decor-dims { width: 126px; height: 53px; }
+ .svg-calendar-dims { width: 16px; height: 16px; }
+ .svg-cart-dims { width: 22px; height: 20px; }
+ .svg-g-dims { width: 1627px; height: 369px; }
+ .svg-heart-dims { width: 20px; height: 20px; }
+ .svg-home-icon-dims { width: 16px; height: 16px; }
+ .svg-info-after-dims { width: 65px; height: 52px; }
+ .svg-info-before-dims { width: 120px; height: 121px; }
+ .svg-ok-dims { width: 24px; height: 24px; }
+ .svg-ok2-dims { width: 20px; height: 20px; }
+ .svg-pattern-dims { width: 1920px; height: 744.03px; }
+ .svg-play-btn-dims { width: 130px; height: 130px; }
+ .svg-search-dims { width: 20.03px; height: 20px; }
+ .svg-search-white-dims { width: 20.03px; height: 20px; }
+ .svg-star-dims { width: 18px; height: 16px; }
+ .svg-time-dims { width: 20px; height: 20px; }
+ .svg-user-dims { width: 20px; height: 20px; }
+ .svg-user-grey-dims { width: 20px; height: 20px; }
+</style>
+
+<!--
+====================================================================================================
+-->
+
+    </head>
+    <body>
+        <header>
+            <h1>SVG stack preview</h1>
+            <p>This preview features an SVG stack. Please have a look at the HTML source for further details and be aware of the following constraints:</p>
+            <ul>
+                <li>Your browser has to <a href="https://caniuse.com/svg-fragment" target="_blank" rel="noopener noreferrer">support SVG fragment identifiers</a> for SVG stacks to work.</li>
+                <li>Support for SVG fragment identifiers hasn't always been that decent. For older browsers you will have to use some prolyfill like <a href="https://github.com/preciousforever/SVG-Stacker/blob/master/fixsvgstack.jquery.js" target="_blank" rel="noopener noreferrer">fixsvgstack.jquery.js</a>.</li>
+            </ul>
+        </header>
+        <section>
+
+<!--
+SVG stack
+====================================================================================================
+These SVG images make use of fragment identifiers (IDs) to reference certain portions of the
+external sprite. By default, all shapes inside the sprite are hidden by CSS. The `:target` pseudo
+selector is used to show the very shape that is referenced by the fragment identifier.
+-->
+
+            <ul>
+
+             <li title="angle-left">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#angle-left" class="svg-angle-left-dims" alt="angle-left">
+                    </div>
+                    <h2>angle-left, </h2>
+                </li>
+             <li title="angle-right">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#angle-right" class="svg-angle-right-dims" alt="angle-right">
+                    </div>
+                    <h2>angle-right, </h2>
+                </li>
+             <li title="angle-right1">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#angle-right1" class="svg-angle-right1-dims" alt="angle-right1">
+                    </div>
+                    <h2>angle-right1, </h2>
+                </li>
+             <li title="arrow">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#arrow" class="svg-arrow-dims" alt="arrow">
+                    </div>
+                    <h2>arrow, </h2>
+                </li>
+             <li title="blog-decor">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#blog-decor" class="svg-blog-decor-dims" alt="blog-decor">
+                    </div>
+                    <h2>blog-decor, </h2>
+                </li>
+             <li title="calendar">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#calendar" class="svg-calendar-dims" alt="calendar">
+                    </div>
+                    <h2>calendar, </h2>
+                </li>
+             <li title="cart">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#cart" class="svg-cart-dims" alt="cart">
+                    </div>
+                    <h2>cart, </h2>
+                </li>
+             <li title="g">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#g" class="svg-g-dims" alt="g">
+                    </div>
+                    <h2>g, </h2>
+                </li>
+             <li title="heart">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#heart" class="svg-heart-dims" alt="heart">
+                    </div>
+                    <h2>heart, </h2>
+                </li>
+             <li title="home-icon">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#home-icon" class="svg-home-icon-dims" alt="home-icon">
+                    </div>
+                    <h2>home-icon, </h2>
+                </li>
+             <li title="info-after">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#info-after" class="svg-info-after-dims" alt="info-after">
+                    </div>
+                    <h2>info-after, </h2>
+                </li>
+             <li title="info-before">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#info-before" class="svg-info-before-dims" alt="info-before">
+                    </div>
+                    <h2>info-before, </h2>
+                </li>
+             <li title="ok">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#ok" class="svg-ok-dims" alt="ok">
+                    </div>
+                    <h2>ok, </h2>
+                </li>
+             <li title="ok2">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#ok2" class="svg-ok2-dims" alt="ok2">
+                    </div>
+                    <h2>ok2, </h2>
+                </li>
+             <li title="pattern">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#pattern" class="svg-pattern-dims" alt="pattern">
+                    </div>
+                    <h2>pattern, </h2>
+                </li>
+             <li title="play-btn">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#play-btn" class="svg-play-btn-dims" alt="play-btn">
+                    </div>
+                    <h2>play-btn, </h2>
+                </li>
+             <li title="search">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#search" class="svg-search-dims" alt="search">
+                    </div>
+                    <h2>search, </h2>
+                </li>
+             <li title="search-white">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#search-white" class="svg-search-white-dims" alt="search-white">
+                    </div>
+                    <h2>search-white, </h2>
+                </li>
+             <li title="star">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#star" class="svg-star-dims" alt="star">
+                    </div>
+                    <h2>star, </h2>
+                </li>
+             <li title="time">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#time" class="svg-time-dims" alt="time">
+                    </div>
+                    <h2>time, </h2>
+                </li>
+             <li title="user">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#user" class="svg-user-dims" alt="user">
+                    </div>
+                    <h2>user, </h2>
+                </li>
+             <li title="user-grey">
+                    <div class="icon-box">
+                        <img src="../sprite.svg#user-grey" class="svg-user-grey-dims" alt="user-grey">
+                    </div>
+                    <h2>user-grey, </h2>
+                </li>
+         </ul>
+
+<!--
+====================================================================================================
+-->
+
+        </section>
+        <footer>
+            <p>Generated at Mon, 19 May 2025 07:37:15 GMT by <a href="https://github.com/svg-sprite/svg-sprite" target="_blank" rel="noopener noreferrer">svg-sprite</a>.</p>
+        </footer>
+    </body>
+</html>

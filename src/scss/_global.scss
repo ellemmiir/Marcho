@@ -1,9 +1,20 @@
+
+html,
 body {
-  // background-color: $black;
-  // @extend %semibold;
+  height: 100%;
+}
+
+body {
   font-size: 16px;
   line-height: 1.5;
-  // color: $white;
+  color: vars.$default;
+  @extend %quicksand-500;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex-grow: 1;
 }
 
 .container {
@@ -13,8 +24,10 @@ body {
 }
 
 a {
-  // @extend %semibold;
-  // color: $white;
+  font-size: 16px;
+  line-height: 1.6;
+  color: vars.$default;
+  @extend %quicksand-500;
 }
 
 button {
@@ -22,11 +35,228 @@ button {
   cursor: pointer;
 }
 
-section{
-  padding: 100px 0;
+.title {
+  text-align: center;
+  font-size: 48px;
+  line-height: 65px;
+  @extend %roboto-700;
+  text-transform: uppercase;
+  color: vars.$title;
 }
 
-.title {
-  font-size: 120px;
-  line-height: 1;
+@media (max-width: 1600px) {
+  .title{
+    @include vars.adaptiv-font(48, 30);
+  }
+}
+
+.text {
+  text-align: center;
+  max-width: 570px;
+  margin: 0 auto 55px;
+}
+
+.section{
+  padding: 120px 0;
+}
+
+@media (max-width: 1200px) {
+  .section{
+    padding: 50px 0;
+  }
+}
+
+@media (max-width: 1050px) {
+  .section{
+    padding: 20px 0;
+  }
+}
+
+//at pages
+.top {
+  padding-top: 110px;
+  &__container {
+    margin: 0 auto;
+    padding: 120px 0 130px;
+    max-width: 1700px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1600px){
+  .top{
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 1200px){
+  .top{
+    &__container{
+      background-image: none !important;
+      padding: 20px 0;
+    }
+  }
+}
+
+
+.breadcrumbs {
+  display: inline-flex;
+  justify-content: center;
+  padding-left: 25px;
+  position: relative;
+  flex-wrap: wrap;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 4px;
+    background-image: url('../images/icons/home-icon.svg');
+  }
+  &__list {
+    display: flex;
+  }
+  &__item {
+    color: #727272;
+    padding-right: 40px;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: 8px;
+      top: 1px;
+      background-image: url('../images/icons/angle-right1.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    &:last-child {
+      color: vars.$accent;
+      padding-right: 0;
+      &::after {
+        display: none;
+      }
+    }
+  }
+  &__link {
+    transition: color .3s ease-in-out;
+    color: inherit;
+  }
+  &__link:hover {
+    color: vars.$accent;
+  }
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+  .pagination__list {
+    display: flex;
+    padding: 0 35px;
+  }
+  &__item {
+    padding: 0 15px;
+  }
+  &__link--active {
+    color: vars.$accent;
+  }
+  &__arrows {
+    position: relative;
+    text-transform: uppercase;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 10px;
+      top: 8px;
+      background-repeat: no-repeat;
+    }
+    &:hover {
+      color: vars.$accent;
+    }
+  }
+  &__prev {
+    padding-left: 15px;
+    &::before {
+      background-image: url('../images/icons/angle-left.svg');
+      left: 0;
+    }
+  }
+  &__next {
+    padding-right: 15px;
+    &::before {
+      background-image: url('../images/icons/angle-right1.svg');
+      right: 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination{
+    &__list{
+      padding: 0 15px;
+    }
+    &__item{
+      padding: 0 10px;
+    }
+  }
+}
+
+
+//fonts
+@font-face {
+  font-family: 'Quicksand-Regular';
+  font-weight: 400;
+  font-style: normal;
+  src: local('Quicksand-Regular'),
+  url('../fonts/Quicksand-Regular.woff2') format('woff2'),
+  url('../fonts/Quicksand-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quicksand-Medium';
+  font-weight: 500;
+  font-style: normal;
+  src: local('Quicksand-Medium'),
+  url('../fonts/Quicksand-Medium.woff2') format('woff2'),
+  url('../fonts/Quicksand-Medium.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  font-weight: 400;
+  font-style: normal;
+  src: local('Roboto-Regular'),
+  url('../fonts/Roboto-Regular.woff2') format('woff2'),
+  url('../fonts/Roboto-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto-Medium';
+  font-weight: 500;
+  font-style: normal;
+  src: local('Roboto-Medium'),
+  url('../fonts/Roboto-Medium.woff2') format('woff2'),
+  url('../fonts/Roboto-Medium.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  font-weight: 700;
+  font-style: normal;
+  src: local('Roboto-Bold'),
+  url('../fonts/Roboto-Bold.woff2') format('woff2'),
+  url('../fonts/Roboto-Bold.woff') format('woff');
+  font-display: swap;
 }
