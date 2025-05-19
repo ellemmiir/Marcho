@@ -3,7 +3,7 @@ body, a {
     font-weight: 500;
 }
 
-.info__item-title, .blog__item-title, .latest-post__title, .latest-post__title-link, .blog-one__text blockquote, .comments__content-name, .comments-form__title, .modal__link, .modal__btn, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title, .comments-form__btn, .shop__filters-btn, .filter__btn, .top-slider__link, .video__link, .promo__link, .product__link, .footer-top__form-btn {
+.info__item-title, .blog__item-title, .latest-post__title, .latest-post__title-link, .blog-one__text blockquote, .comments__content-name, .comments-form__title, .modal__link, .modal__btn, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title, .comments-form__btn, .contact__form-btn, .shop__filters-btn, .filter__btn, .top-slider__link, .video__link, .promo__link, .product__link, .footer-top__form-btn {
     font-family: "Roboto-Regular", sans-serif;
     font-weight: 400;
 }
@@ -13,12 +13,12 @@ body, a {
     font-weight: 500;
 }
 
-.top-slider__title, .promo__clock-item span, .person__name, .blog-one__form-title, .title {
+.top-slider__title, .promo__clock-item span, .person__name, .blog-one__form-title, .contact__info-title, .contact__form-title, .title {
     font-family: "Roboto-Bold", sans-serif;
     font-weight: 700;
 }
 
-.comments-form__btn, .shop__filters-btn, .filter__btn, .footer-top__form-btn {
+.comments-form__btn, .contact__form-btn, .shop__filters-btn, .filter__btn, .footer-top__form-btn {
     position: relative;
     padding: 12px 26px;
     top: -1px;
@@ -30,11 +30,11 @@ body, a {
     border: none;
 }
 
-.comments-form__btn:hover, .shop__filters-btn:hover, .filter__btn:hover, .footer-top__form-btn:hover {
+.comments-form__btn:hover, .contact__form-btn:hover, .shop__filters-btn:hover, .filter__btn:hover, .footer-top__form-btn:hover {
     box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.5);
 }
 
-.comments-form__btn:active, .shop__filters-btn:active, .filter__btn:active, .footer-top__form-btn:active {
+.comments-form__btn:active, .contact__form-btn:active, .shop__filters-btn:active, .filter__btn:active, .footer-top__form-btn:active {
     top: 2px;
 }
 
@@ -1467,11 +1467,11 @@ footer {
     margin-bottom: 25px;
 }
 
-.blog-one__info-link {
+.blog-one__info-item a {
     transition: color 0.3s ease-in-out;
 }
 
-.blog-one__info-link:hover {
+.blog-one__info-item a:hover {
     color: #fe3e57;
 }
 
@@ -1810,6 +1810,204 @@ footer {
 
     .comments-form__box-input {
         flex-wrap: wrap;
+    }
+}
+
+.contact {
+    padding-bottom: 120px;
+}
+
+.contact__inner {
+    display: flex;
+}
+
+.contact__info {
+    max-width: 370px;
+    margin-right: 30px;
+}
+
+.contact__info-title {
+    color: #29282d;
+    font-size: 48px;
+    line-height: 58px;
+    margin-bottom: 20px;
+}
+
+.contact__info-text {
+    margin-bottom: 60px;
+}
+
+.contact__info-item {
+    color: #29282d;
+    margin-top: 55px;
+    padding-left: 80px;
+    position: relative;
+}
+
+.contact__info-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0px 5px 20px 0px rgba(146, 146, 146, 0.3);
+    top: -5px;
+}
+
+.contact__info-item::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url("../images/icons/phone-icon.svg");
+    left: 20px;
+    top: 15px;
+}
+
+.contact__info-item--location::after {
+    background-image: url("../images/icons/location-icon.svg");
+    width: 14px;
+    height: 20px;
+}
+
+.contact__info-item--mail::after {
+    background-image: url("../images/icons/mail-icon.svg");
+    width: 18px;
+    height: 20px;
+}
+
+.contact__info-phone {
+    color: #29282d;
+    display: block;
+}
+
+.contact__info-mail {
+    color: #29282d;
+}
+
+.contact__form {
+    width: 100%;
+    padding: 60px 40px;
+    box-shadow: 0px 5px 20px 0px rgba(146, 146, 146, 0.3);
+}
+
+.contact__form-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #29282d;
+}
+
+.contact__form-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact__form-box input {
+    width: 330px;
+}
+
+.contact__form-input {
+    width: 100%;
+    display: block;
+    height: 60px;
+    background-color: #f6f6f6;
+    border: none;
+    padding: 24px;
+    margin-bottom: 30px;
+}
+
+.contact__form-textarea {
+    width: 100%;
+    display: block;
+    height: 200px;
+    resize: none;
+    background-color: #f6f6f6;
+    border: none;
+    padding: 24px;
+    margin-bottom: 30px;
+}
+
+.map {
+    padding: 120px 0;
+}
+
+#map {
+    width: 100%;
+    height: 450px;
+}
+
+@media (max-width: 1200px) {
+    .contact__inner {
+        display: block;
+    }
+
+    .contact__info {
+        margin-right: 0;
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: none;
+    }
+
+    .contact__info-list {
+        width: 300px;
+    }
+
+    .contact__info-title {
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 1200px) and (max-width: 767px) {
+    .contact__info-title {
+        font-size: calc(22px + 44.2 * (100vw - 320px) / 1200);
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 767px) {
+    .contact__info-title {
+        font-size: calc(22px + 26 * 100vw / 1200);
+    }
+}
+
+@media (max-width: 1200px) {
+    .contact__info-text {
+        margin-bottom: 20px;
+    }
+
+    .contact__form {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .contact__form-box {
+        display: block;
+    }
+
+    .contact__form-box input {
+        width: 100%;
+    }
+
+    .contact__info-item + .contact__info-item--mail {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .map {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .map {
+        padding: 20px 0;
+    }
+
+    .contact__info-text {
+        margin-bottom: 5px;
+    }
+
+    .contact__info-item {
+        margin-top: 30px;
     }
 }
 
@@ -2885,7 +3083,7 @@ body, a {
     font-weight: 500;
 }
 
-.top-slider__link, .video__link, .promo__link, .product__link, .comments-form__btn, .shop__filters-btn, .filter__btn, .info__item-title, .blog__item-title, .latest-post__title, .latest-post__title-link, .blog-one__text blockquote, .comments__content-name, .comments-form__title, .modal__link, .modal__btn, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title {
+.top-slider__link, .video__link, .promo__link, .product__link, .comments-form__btn, .contact__form-btn, .shop__filters-btn, .filter__btn, .info__item-title, .blog__item-title, .latest-post__title, .latest-post__title-link, .blog-one__text blockquote, .comments__content-name, .comments-form__title, .modal__link, .modal__btn, .product-item--sale .product-item__top-box::before, .bottom-box__price, .filter__title {
     font-family: "Roboto-Regular", sans-serif;
     font-weight: 400;
 }
@@ -2895,12 +3093,12 @@ body, a {
     font-weight: 500;
 }
 
-.top-slider__title, .promo__clock-item span, .person__name, .blog-one__form-title, .title {
+.top-slider__title, .promo__clock-item span, .person__name, .blog-one__form-title, .contact__info-title, .contact__form-title, .title {
     font-family: "Roboto-Bold", sans-serif;
     font-weight: 700;
 }
 
-.comments-form__btn, .shop__filters-btn, .filter__btn {
+.comments-form__btn, .contact__form-btn, .shop__filters-btn, .filter__btn {
     position: relative;
     padding: 12px 26px;
     top: -1px;
@@ -2912,11 +3110,11 @@ body, a {
     border: none;
 }
 
-.comments-form__btn:hover, .shop__filters-btn:hover, .filter__btn:hover {
+.comments-form__btn:hover, .contact__form-btn:hover, .shop__filters-btn:hover, .filter__btn:hover {
     box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.5);
 }
 
-.comments-form__btn:active, .shop__filters-btn:active, .filter__btn:active {
+.comments-form__btn:active, .contact__form-btn:active, .shop__filters-btn:active, .filter__btn:active {
     top: 2px;
 }
 

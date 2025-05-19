@@ -336,10 +336,12 @@
     display: flex;
     margin-bottom: 25px;
   } 
-  &__info-link{
-    transition: color .3s ease-in-out;
-    &:hover{
-      color: vars.$accent;
+  &__info-item{
+    a{
+      transition: color .3s ease-in-out;
+      &:hover{
+        color: vars.$accent;
+      }
     }
   }
   &__info-link {
