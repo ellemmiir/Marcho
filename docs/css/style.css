@@ -916,10 +916,6 @@ footer {
     }
 }
 
-.star-rating .star-value {
-    transition: all 0.2s ease-in-out;
-}
-
 @media (max-width: 1050px) {
     .top-slider__item {
         height: 500px;
@@ -1420,6 +1416,68 @@ footer {
     left: 0;
     top: 5px;
     background-image: url("../images/icons/calendar.svg");
+}
+
+@media (max-width: 1200px) {
+    .blog-page {
+        padding: 60px 0;
+    }
+
+    .blog-page .filter-category,
+  .blog-page .filter-popular {
+        display: none;
+    }
+
+    .blog-page__inner {
+        flex-direction: column;
+    }
+
+    .blog-page__content {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .blog-page__img {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .blog-page__aside {
+        order: -1;
+        width: 100%;
+    }
+
+    .blog-page__item-popup {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .blog-page .filter-search__input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-page {
+        padding: 30px 0;
+    }
+
+    .blog-page .blog-box {
+        margin-bottom: 10px;
+    }
+
+    .blog-page__item {
+        margin-bottom: 30px;
+    }
+
+    .blog-page__item-title {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .blog-page__item-box {
+        padding: 20px;
+    }
 }
 
 html,
@@ -2469,7 +2527,6 @@ a {
     }
 
     .filter__item {
-        margin-bottom: 0;
         padding: 20px;
     }
 }
