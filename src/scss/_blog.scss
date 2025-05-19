@@ -3,8 +3,9 @@
   background-position: center center;
   background-repeat: no-repeat;
   &__items {
-    display: flex;
-    justify-content: space-between;
+    display: grid ;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
     position: relative;
     &::after {
       content: "";
