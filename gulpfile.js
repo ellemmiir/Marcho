@@ -85,7 +85,7 @@ function pages () {
 
 
 function styles () {
-    return src([ path.src.css, 'node_modules/@fancyapps/ui/dist/fancybox/fancybox.css', 'node_modules/rateyo/src/jquery.rateyo.css', 'node_modules/slick-slider/slick/slick.css', 'node_modules/aos/dist/aos.css'], {base: srcPath + 'scss/'})
+    return src([ path.src.css, 'node_modules/@fancyapps/ui/dist/fancybox/fancybox.css', 'node_modules/rateyo/src/jquery.rateyo.css', 'node_modules/slick-slider/slick/slick.css', 'node_modules/jquery-form-styler/dist/jquery.formstyler.css', 'node_modules/aos/dist/aos.css'], {base: srcPath + 'scss/'})
     .pipe(plumber({
       errorHandler : function (err) {
         notify.onError({
@@ -110,7 +110,7 @@ function styles () {
 
 
 function scripts () {
-    return src(['node_modules/jquery/dist/jquery.js', 'node_modules/@fancyapps/ui/dist/fancybox/fancybox.umd.js', 'node_modules/rateyo/src/jquery.rateyo.js', 'node_modules/ion-rangeslider/js/ion.rangeSlider.js', 'node_modules/slick-slider/slick/slick.js', 'node_modules/aos/dist/aos.js', path.src.js], {base: srcPath + 'js/'})
+    return src(['node_modules/jquery/dist/jquery.js', 'node_modules/@fancyapps/ui/dist/fancybox/fancybox.umd.js', 'node_modules/rateyo/src/jquery.rateyo.js', 'node_modules/ion-rangeslider/js/ion.rangeSlider.js', 'node_modules/slick-slider/slick/slick.js', 'node_modules/jquery-form-styler/dist/jquery.formstyler.js', 'node_modules/aos/dist/aos.js', path.src.js], {base: srcPath + 'js/'})
     .pipe(plumber({
       errorHandler : function (err) {
         notify.onError({

@@ -35,4 +35,19 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .page-404 {
+    &__img {
+      width: 40%;
+    }
+  }
+}
 
+
+@media (max-width: 992px) {
+  .page-404 {
+    &__img {
+      display: none;
+    }
+  }
+}

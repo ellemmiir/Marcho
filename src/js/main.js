@@ -116,6 +116,8 @@ $(function () {
   });
 
 
+  $('.select-style, .product-one__num').styler();
+
   //rateyo
   $(".star").rateYo({
     readOnly: true,
