@@ -367,6 +367,14 @@
   &__list {
     margin-bottom: 30px;
   }
+  &__text{
+    a{
+      transition: color .3s ease-in-out;
+      &:hover{
+        color: vars.$accent;
+      }
+    }
+  }
   &__item {
     display: flex;
     margin-bottom: 5px;
@@ -377,12 +385,15 @@
   }
   &__link {
     path {
+      transition: all .3s ease-in-out;
+
       fill: vars.$default;
     }
     &+.product-info__link {
       margin-left: 14px;
     }
     &:hover {
+
       path {
         fill: vars.$accent;
       }

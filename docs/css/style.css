@@ -3,7 +3,7 @@ body, a {
     font-weight: 500;
 }
 
-.info__item-title, .blog__item-title, .latest-post__title, .latest-post__title-link, .blog-one__text blockquote, .comments__content-name, .comments-form__title, .modal__link, .modal__btn, .product-item--sale .product-item__top-box::before, .bottom-box__price, .product-one__item-text span, .product-filter__color-title, .product-filter__size-title, .product-tabs__top, .filter__title, .comments-form__btn, .contact__form-btn, .product-one__btn, .shop__filters-btn, .filter__btn, .top-slider__link, .video__link, .promo__link, .product__link, .footer-top__form-btn {
+.info__item-title, .page-404__link, .blog__item-title, .latest-post__title, .latest-post__title-link, .blog-one__text blockquote, .comments__content-name, .comments-form__title, .modal__link, .modal__btn, .product-item--sale .product-item__top-box::before, .bottom-box__price, .product-one__item-text span, .product-filter__color-title, .product-filter__size-title, .product-tabs__top, .filter__title, .comments-form__btn, .contact__form-btn, .product-one__btn, .shop__filters-btn, .filter__btn, .top-slider__link, .video__link, .promo__link, .product__link, .footer-top__form-btn {
     font-family: "Roboto-Regular", sans-serif;
     font-weight: 400;
 }
@@ -13,7 +13,7 @@ body, a {
     font-weight: 500;
 }
 
-.top-slider__title, .promo__clock-item span, .person__name, .blog-one__form-title, .contact__info-title, .contact__form-title, .title {
+.top-slider__title, .promo__clock-item span, .page-404__title, .person__name, .blog-one__form-title, .contact__info-title, .contact__form-title, .title {
     font-family: "Roboto-Bold", sans-serif;
     font-weight: 700;
 }
@@ -1089,6 +1089,42 @@ footer {
     .categories__item {
         padding: 10px;
     }
+}
+
+.page-404__inner {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-404__content {
+    max-width: 570px;
+    width: 100%;
+}
+
+.page-404__title {
+    color: #28384f;
+    margin-bottom: 40px;
+    font-size: 48px;
+    line-height: 52px;
+}
+
+.page-404__text {
+    margin-bottom: 55px;
+    max-width: 470px;
+}
+
+.page-404__link {
+    background-color: #fe3e57;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 14px 35px;
+    transition: all 0.3s ease-in-out;
+}
+
+.page-404__link:hover {
+    box-shadow: 0px 5px 25px 0px rgba(254, 62, 87, 0.35);
 }
 
 .blog {
@@ -2754,6 +2790,14 @@ button {
     margin-bottom: 30px;
 }
 
+.product-info__text a {
+    transition: color 0.3s ease-in-out;
+}
+
+.product-info__text a:hover {
+    color: #fe3e57;
+}
+
 .product-info__item {
     display: flex;
     margin-bottom: 5px;
@@ -2765,6 +2809,7 @@ button {
 }
 
 .product-info__link path {
+    transition: all 0.3s ease-in-out;
     fill: #8d8d8d;
 }
 
@@ -3342,7 +3387,7 @@ body, a {
     font-weight: 500;
 }
 
-.top-slider__link, .video__link, .promo__link, .product__link, .comments-form__btn, .contact__form-btn, .product-one__btn, .shop__filters-btn, .filter__btn, .info__item-title, .blog__item-title, .latest-post__title, .latest-post__title-link, .blog-one__text blockquote, .comments__content-name, .comments-form__title, .modal__link, .modal__btn, .product-item--sale .product-item__top-box::before, .bottom-box__price, .product-one__item-text span, .product-filter__color-title, .product-filter__size-title, .product-tabs__top, .filter__title {
+.top-slider__link, .video__link, .promo__link, .product__link, .comments-form__btn, .contact__form-btn, .product-one__btn, .shop__filters-btn, .filter__btn, .info__item-title, .page-404__link, .blog__item-title, .latest-post__title, .latest-post__title-link, .blog-one__text blockquote, .comments__content-name, .comments-form__title, .modal__link, .modal__btn, .product-item--sale .product-item__top-box::before, .bottom-box__price, .product-one__item-text span, .product-filter__color-title, .product-filter__size-title, .product-tabs__top, .filter__title {
     font-family: "Roboto-Regular", sans-serif;
     font-weight: 400;
 }
@@ -3352,7 +3397,7 @@ body, a {
     font-weight: 500;
 }
 
-.top-slider__title, .promo__clock-item span, .person__name, .blog-one__form-title, .contact__info-title, .contact__form-title, .title {
+.top-slider__title, .promo__clock-item span, .page-404__title, .person__name, .blog-one__form-title, .contact__info-title, .contact__form-title, .title {
     font-family: "Roboto-Bold", sans-serif;
     font-weight: 700;
 }
