@@ -9,15 +9,20 @@
   right: 0;
   background-color: vars.$white;
   z-index: 999;
-  transition: 0.5s;
+  transition: all .4s ease-in-out;
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-transform: uppercase;
     flex-wrap: wrap;
+    text-transform: uppercase;
   }
 } 
+
+.header-mini {
+  padding: 20px 10px;
+}
+
 
 .menu {
   &__btn {
@@ -41,26 +46,23 @@
   }
 }
 
+
 .user-nav {
   display: flex;
   &__link {
     position: relative;
     display: flex;
-    svg{
-      path{
-        transition: all .3s ease-in-out;
-      }
+    svg path{
+      transition: fill .3s ease-in-out;
     }
     &:hover{
-      svg{
-        path{
-          fill: vars.$accent;
+      svg path {
+        fill: vars.$accent;
       }
     }
-  }
-  }
-  &__link:not(:last-child){
-    margin-right: 25px;
+    &:not(:last-child) {
+      margin-right: 25px;
+    }
   }
   &__num {
     position: absolute;
@@ -68,21 +70,16 @@
     height: 20px;
     top: -9px;
     right: -13px;
-    background-color: vars.$accent;
-    border-radius: 50%;
     font-size: 12px;
     color: vars.$white;
     text-align: center;
+    background-color: vars.$accent;
+    border-radius: 50%;
   }
 }
 
 
-.header-mini {
-  padding: 20px 10px;
-  transition: all .3 ease-in-out;
-}
-
-//adaptiv
+// --- adaptiv ---
 
 @media (max-width: 1600px){
   .header{
@@ -94,37 +91,6 @@
   .menu {
     margin-left: 40px;
     order: 1;
-    &__list {
-      position: absolute;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      height: 100vh;
-      top: 70px;
-      left: 0;
-      right: 0;
-      background-color: vars.$white;
-      transform: translateX(200%);
-      z-index: 5;
-      transition: all .5s ease-in-out;
-      &.menu__list--active {
-        transform: translateX(0%);
-        transition: all .5s ease-in-out;
-      }
-    }
-    &__list-item {
-      margin-right: 0 !important;
-      padding: 0 15px;
-      width: 100%;
-      text-align: center;
-    }
-    &__list-link {
-      padding: 12px 0;
-      display: block;
-      &:hover {
-        border-bottom: 1px solid transparent;
-      }
-    }
     &__btn{
       position: relative;
       display: block;
@@ -136,18 +102,18 @@
       transition: all .3s ease-in-out;
       &:before,
       &:after {
-        content: ' ';
+        content: '';
         position: absolute;
         display: block;
         width: 100%;
         height: 4px;
         top: 50%;
         left: 50%;
-        background: currentColor;
+        background-color: currentColor;
         transform: translate(-50%, -50%);
         transition: transform .3s ease-in-out;
       } 
-      &.menu__btn--active {
+      &.active {
         border-top: 4px solid transparent;
         border-bottom: 4px solid transparent;
         &:before {
@@ -158,31 +124,57 @@
         }
       }
     }
+    &__list {
+      position: absolute;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background-color: vars.$white;
+      transform: translateX(200%);
+      z-index: 99;
+      transition: transform .5s ease-in-out;
+      &.active {
+        transform: translateX(0%);
+      }
+    }
+    &__list-item.menu__list-item {
+      margin-right: 0;
+      padding: 0 15px;
+      width: 100%;
+      text-align: center;
+    }
+    &__list-link {
+      display: block;
+      padding: 15px 0;
+      &:hover {
+        border-bottom: 1px solid transparent;
+      }
+    }
   }
+
   .user-nav {
     margin-left: auto;
+      .user-nav__link:hover{
+        svg path {
+          fill: currentColor;
+        }
+      }
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
   .header {
     .logo{
       display: none;
     }
-    &__inner{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
   }
   
   .user-nav{
-    display: flex;
     justify-content: space-between;
     align-items: center;
     width: 60%;
-    &__link{
-      padding: 5px;
-    }
   }
 }

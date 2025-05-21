@@ -6,7 +6,7 @@ $title: #29282d;
 $bg: #f6f6f6;
 $bg-dark: #ececec;
 
-
+//--- fonts ---
 %quicksand-400 {
   font-family: 'Quicksand-Regular', sans-serif;
   font-weight: 400;
@@ -32,7 +32,7 @@ $bg-dark: #ececec;
   font-weight: 700;
 }
 
-
+//--- adaptiv font ---
 $maxWidth: 1200;
 
 @mixin adaptiv-font($pcSize, $mobSize) {
@@ -51,28 +51,8 @@ $maxWidth: 1200;
 // @include adaptiv-font(120, 50);
 
 
-%btn {
-  position: relative;
-  padding: 12px 26px;
-  top: -1px;
-  background-color: $accent;
-  color: #fff;
-  @extend %roboto-400;
-  text-transform: uppercase;
-  // box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  border: none;
-  &:hover {
-    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.5);
-  }
-  &:active {
-    top: 2px;
-  }
-}
-
-
-%btn-white {
+//--- btn at main page ---
+%btn-index {
   position: relative;
   display: inline-block;
   padding: 14px 36px;
@@ -99,11 +79,32 @@ $maxWidth: 1200;
   }
 }
 
-@media (max-width: 767px) {
-  %btn-white {
+@media (max-width: 991px) {
+  %btn-index {
     &:before{
       display: none;
     }
+  }
+}
+
+
+%btn {
+  position: relative;
+  padding: 12px 26px;
+  top: -1px;
+  background-color: $accent;
+  color: #fff;
+  @extend %roboto-400;
+  text-transform: uppercase;
+  // box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  &:hover {
+    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.5);
+  }
+  &:active {
+    top: 2px;
   }
 }
 

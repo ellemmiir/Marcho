@@ -7,8 +7,11 @@
   }
   &__link {
     margin-top: 30px;
-    @extend %btn-white;
+    @extend %btn-index;
     z-index: 1;
+  }
+  .star{
+    margin: 0 auto;
   }
 }
 

@@ -1,14 +1,30 @@
 $(function () {
 
+  //--- global ---
+
+  //1. Header size on scroll
   window.onscroll = function () { scrollFunction() };
 
   function scrollFunction() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      document.querySelector('header').classList.add('header-mini');
+      $('.header').addClass('header-mini');
     } else {
-      document.querySelector('header').classList.remove('header-mini');
+      $('.header').removeClass('header-mini');
     }
   }
+
+
+  // --- main page ---
+
+  //1. Top slider
+  $('.top-slider__inner').slick({
+    dots: true,
+    arrows: false,
+    fade: true,
+    // autoplay: true,
+    autoplaySpead: 5000,
+  });
+
 
 
   //shop
@@ -55,19 +71,13 @@ $(function () {
 
   //main page
   $('.menu__btn').on('click', function () {
-    $('.menu__list').toggleClass('menu__list--active');
-    $('.menu__btn').toggleClass('menu__btn--active');
+    $('html').toggleClass('menu-opened');
+    $('.menu__list').toggleClass('active');
+    $('.menu__btn').toggleClass('active');
   });
 
 
-  //main slider
-  $('.top-slider__inner').slick({
-    dots: true,
-    arrows: false,
-    fade: true,
-    autoplay: true,
-    autoplaySpead: 5000,
-  });
+  
 
   //slider on page-blog
   $('.blog-page__slider').slick({
