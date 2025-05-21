@@ -17342,18 +17342,1142 @@ return jQuery;
 
 }));
 
+/*
+ * jQuery Form Styler v2.0.2
+ * https://github.com/Dimox/jQueryFormStyler
+ *
+ * Copyright 2012-2017 Dimox (http://dimox.name/)
+ * Released under the MIT license.
+ *
+ * Date: 2017.10.22
+ *
+ */
+
+;(function(factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD
+		define(['jquery'], factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		module.exports = factory($ || require('jquery'));
+	} else {
+		factory(jQuery);
+	}
+}(function($) {
+
+	'use strict';
+
+	var pluginName = 'styler',
+			defaults = {
+				idSuffix: '-styler',
+				filePlaceholder: 'Файл не выбран',
+				fileBrowse: 'Обзор...',
+				fileNumber: 'Выбрано файлов: %s',
+				selectPlaceholder: 'Выберите...',
+				selectSearch: false,
+				selectSearchLimit: 10,
+				selectSearchNotFound: 'Совпадений не найдено',
+				selectSearchPlaceholder: 'Поиск...',
+				selectVisibleOptions: 0,
+				selectSmartPositioning: true,
+				locale: 'ru',
+				locales: {
+					'en': {
+						filePlaceholder: 'No file selected',
+						fileBrowse: 'Browse...',
+						fileNumber: 'Selected files: %s',
+						selectPlaceholder: 'Select...',
+						selectSearchNotFound: 'No matches found',
+						selectSearchPlaceholder: 'Search...'
+					}
+				},
+				onSelectOpened: function() {},
+				onSelectClosed: function() {},
+				onFormStyled: function() {}
+			};
+
+	function Plugin(element, options) {
+		this.element = element;
+		this.options = $.extend({}, defaults, options);
+		var locale = this.options.locale;
+		if (this.options.locales[locale] !== undefined) {
+			$.extend(this.options, this.options.locales[locale]);
+		}
+		this.init();
+	}
+
+	Plugin.prototype = {
+
+		// инициализация
+		init: function() {
+
+			var el = $(this.element);
+			var opt = this.options;
+
+			var iOS = (navigator.userAgent.match(/(iPad|iPhone|iPod)/i) && !navigator.userAgent.match(/(Windows\sPhone)/i)) ? true : false;
+			var Android = (navigator.userAgent.match(/Android/i) && !navigator.userAgent.match(/(Windows\sPhone)/i)) ? true : false;
+
+			function Attributes() {
+				if (el.attr('id') !== undefined && el.attr('id') !== '') {
+					this.id = el.attr('id') + opt.idSuffix;
+				}
+				this.title = el.attr('title');
+				this.classes = el.attr('class');
+				this.data = el.data();
+			}
+
+			// checkbox
+			if (el.is(':checkbox')) {
+
+				var checkboxOutput = function() {
+
+					var att = new Attributes();
+					var checkbox = $('<div class="jq-checkbox"><div class="jq-checkbox__div"></div></div>')
+						.attr({
+							id: att.id,
+							title: att.title
+						})
+						.addClass(att.classes)
+						.data(att.data)
+					;
+
+					el.after(checkbox).prependTo(checkbox);
+					if (el.is(':checked')) checkbox.addClass('checked');
+					if (el.is(':disabled')) checkbox.addClass('disabled');
+
+					// клик на псевдочекбокс
+					checkbox.click(function(e) {
+						e.preventDefault();
+						el.triggerHandler('click');
+						if (!checkbox.is('.disabled')) {
+							if (el.is(':checked')) {
+								el.prop('checked', false);
+								checkbox.removeClass('checked');
+							} else {
+								el.prop('checked', true);
+								checkbox.addClass('checked');
+							}
+							el.focus().change();
+						}
+					});
+					// клик на label
+					el.closest('label').add('label[for="' + el.attr('id') + '"]').on('click.styler', function(e) {
+						if (!$(e.target).is('a') && !$(e.target).closest(checkbox).length) {
+							checkbox.triggerHandler('click');
+							e.preventDefault();
+						}
+					});
+					// переключение по Space или Enter
+					el.on('change.styler', function() {
+						if (el.is(':checked')) checkbox.addClass('checked');
+						else checkbox.removeClass('checked');
+					})
+					// чтобы переключался чекбокс, который находится в теге label
+					.on('keydown.styler', function(e) {
+						if (e.which == 32) checkbox.click();
+					})
+					.on('focus.styler', function() {
+						if (!checkbox.is('.disabled')) checkbox.addClass('focused');
+					})
+					.on('blur.styler', function() {
+						checkbox.removeClass('focused');
+					});
+
+				}; // end checkboxOutput()
+
+				checkboxOutput();
+
+				// обновление при динамическом изменении
+				el.on('refresh', function() {
+					el.closest('label').add('label[for="' + el.attr('id') + '"]').off('.styler');
+					el.off('.styler').parent().before(el).remove();
+					checkboxOutput();
+				});
+
+			// end checkbox
+
+			// radio
+			} else if (el.is(':radio')) {
+
+				var radioOutput = function() {
+
+					var att = new Attributes();
+					var radio = $('<div class="jq-radio"><div class="jq-radio__div"></div></div>')
+						.attr({
+							id: att.id,
+							title: att.title
+						})
+						.addClass(att.classes)
+						.data(att.data)
+					;
+
+					el.after(radio).prependTo(radio);
+					if (el.is(':checked')) radio.addClass('checked');
+					if (el.is(':disabled')) radio.addClass('disabled');
+
+					// определяем общего родителя у радиокнопок с одинаковым name
+					// http://stackoverflow.com/a/27733847
+					$.fn.commonParents = function() {
+						var cachedThis = this;
+						return cachedThis.first().parents().filter(function() {
+							return $(this).find(cachedThis).length === cachedThis.length;
+						});
+					};
+					$.fn.commonParent = function() {
+						return $(this).commonParents().first();
+					};
+
+					// клик на псевдорадиокнопке
+					radio.click(function(e) {
+						e.preventDefault();
+						el.triggerHandler('click');
+						if (!radio.is('.disabled')) {
+							var inputName = $('input[name="' + el.attr('name') + '"]');
+							inputName.commonParent().find(inputName).prop('checked', false).parent().removeClass('checked');
+							el.prop('checked', true).parent().addClass('checked');
+							el.focus().change();
+						}
+					});
+					// клик на label
+					el.closest('label').add('label[for="' + el.attr('id') + '"]').on('click.styler', function(e) {
+						if (!$(e.target).is('a') && !$(e.target).closest(radio).length) {
+							radio.triggerHandler('click');
+							e.preventDefault();
+						}
+					});
+					// переключение стрелками
+					el.on('change.styler', function() {
+						el.parent().addClass('checked');
+					})
+					.on('focus.styler', function() {
+						if (!radio.is('.disabled')) radio.addClass('focused');
+					})
+					.on('blur.styler', function() {
+						radio.removeClass('focused');
+					});
+
+				}; // end radioOutput()
+
+				radioOutput();
+
+				// обновление при динамическом изменении
+				el.on('refresh', function() {
+					el.closest('label').add('label[for="' + el.attr('id') + '"]').off('.styler');
+					el.off('.styler').parent().before(el).remove();
+					radioOutput();
+				});
+
+			// end radio
+
+			// file
+			} else if (el.is(':file')) {
+
+				var fileOutput = function() {
+
+					var att = new Attributes();
+					var placeholder = el.data('placeholder');
+					if (placeholder === undefined) placeholder = opt.filePlaceholder;
+					var browse = el.data('browse');
+					if (browse === undefined || browse === '') browse = opt.fileBrowse;
+
+					var file =
+						$('<div class="jq-file">' +
+								'<div class="jq-file__name">' + placeholder + '</div>' +
+								'<div class="jq-file__browse">' + browse + '</div>' +
+							'</div>')
+						.attr({
+							id: att.id,
+							title: att.title
+						})
+						.addClass(att.classes)
+						.data(att.data)
+					;
+
+					el.after(file).appendTo(file);
+					if (el.is(':disabled')) file.addClass('disabled');
+
+					var value = el.val();
+					var name = $('div.jq-file__name', file);
+
+					// чтобы при динамическом изменении имя файла не сбрасывалось
+					if (value) name.text(value.replace(/.+[\\\/]/, ''));
+
+					el.on('change.styler', function() {
+						var value = el.val();
+						if (el.is('[multiple]')) {
+							value = '';
+							var files = el[0].files.length;
+							if (files > 0) {
+								var number = el.data('number');
+								if (number === undefined) number = opt.fileNumber;
+								number = number.replace('%s', files);
+								value = number;
+							}
+						}
+						name.text(value.replace(/.+[\\\/]/, ''));
+						if (value === '') {
+							name.text(placeholder);
+							file.removeClass('changed');
+						} else {
+							file.addClass('changed');
+						}
+					})
+					.on('focus.styler', function() {
+						file.addClass('focused');
+					})
+					.on('blur.styler', function() {
+						file.removeClass('focused');
+					})
+					.on('click.styler', function() {
+						file.removeClass('focused');
+					});
+
+				}; // end fileOutput()
+
+				fileOutput();
+
+				// обновление при динамическом изменении
+				el.on('refresh', function() {
+					el.off('.styler').parent().before(el).remove();
+					fileOutput();
+				});
+
+			// end file
+
+			// number
+			} else if (el.is('input[type="number"]')) {
+
+				var numberOutput = function() {
+
+					var att = new Attributes();
+					var number =
+						$('<div class="jq-number">' +
+								'<div class="jq-number__spin minus"></div>' +
+								'<div class="jq-number__spin plus"></div>' +
+							'</div>')
+						.attr({
+							id: att.id,
+							title: att.title
+						})
+						.addClass(att.classes)
+						.data(att.data)
+					;
+
+					el.after(number).prependTo(number).wrap('<div class="jq-number__field"></div>');
+					if (el.is(':disabled')) number.addClass('disabled');
+
+					var min,
+							max,
+							step,
+							timeout = null,
+							interval = null;
+					if (el.attr('min') !== undefined) min = el.attr('min');
+					if (el.attr('max') !== undefined) max = el.attr('max');
+					if (el.attr('step') !== undefined && $.isNumeric(el.attr('step')))
+						step = Number(el.attr('step'));
+					else
+						step = Number(1);
+
+					var changeValue = function(spin) {
+						var value = el.val(),
+								newValue;
+
+						if (!$.isNumeric(value)) {
+							value = 0;
+							el.val('0');
+						}
+
+						if (spin.is('.minus')) {
+							newValue = Number(value) - step;
+						} else if (spin.is('.plus')) {
+							newValue = Number(value) + step;
+						}
+
+						// определяем количество десятичных знаков после запятой в step
+						var decimals = (step.toString().split('.')[1] || []).length;
+						if (decimals > 0) {
+							var multiplier = '1';
+							while (multiplier.length <= decimals) multiplier = multiplier + '0';
+							// избегаем появления лишних знаков после запятой
+							newValue = Math.round(newValue * multiplier) / multiplier;
+						}
+
+						if ($.isNumeric(min) && $.isNumeric(max)) {
+							if (newValue >= min && newValue <= max) el.val(newValue);
+						} else if ($.isNumeric(min) && !$.isNumeric(max)) {
+							if (newValue >= min) el.val(newValue);
+						} else if (!$.isNumeric(min) && $.isNumeric(max)) {
+							if (newValue <= max) el.val(newValue);
+						} else {
+							el.val(newValue);
+						}
+					};
+
+					if (!number.is('.disabled')) {
+						number.on('mousedown', 'div.jq-number__spin', function() {
+							var spin = $(this);
+							changeValue(spin);
+							timeout = setTimeout(function(){
+								interval = setInterval(function(){ changeValue(spin); }, 40);
+							}, 350);
+						}).on('mouseup mouseout', 'div.jq-number__spin', function() {
+							clearTimeout(timeout);
+							clearInterval(interval);
+						}).on('mouseup', 'div.jq-number__spin', function() {
+							el.change().trigger('input');
+						});
+						el.on('focus.styler', function() {
+							number.addClass('focused');
+						})
+						.on('blur.styler', function() {
+							number.removeClass('focused');
+						});
+					}
+
+				}; // end numberOutput()
+
+				numberOutput();
+
+				// обновление при динамическом изменении
+				el.on('refresh', function() {
+					el.off('.styler').closest('.jq-number').before(el).remove();
+					numberOutput();
+				});
+
+			// end number
+
+			// select
+			} else if (el.is('select')) {
+
+				var selectboxOutput = function() {
+
+					// запрещаем прокрутку страницы при прокрутке селекта
+					function preventScrolling(selector) {
+
+						var scrollDiff = selector.prop('scrollHeight') - selector.outerHeight(),
+								wheelDelta = null,
+								scrollTop = null;
+
+						selector.off('mousewheel DOMMouseScroll').on('mousewheel DOMMouseScroll', function(e) {
+
+							/**
+							 * нормализация направления прокрутки
+							 * (firefox < 0 || chrome etc... > 0)
+							 * (e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0)
+							 */
+							wheelDelta = (e.originalEvent.detail < 0 || e.originalEvent.wheelDelta > 0) ? 1 : -1; // направление прокрутки (-1 вниз, 1 вверх)
+							scrollTop = selector.scrollTop(); // позиция скролла
+
+							if ((scrollTop >= scrollDiff && wheelDelta < 0) || (scrollTop <= 0 && wheelDelta > 0)) {
+								e.stopPropagation();
+								e.preventDefault();
+							}
+
+						});
+					}
+
+					var option = $('option', el);
+					var list = '';
+					// формируем список селекта
+					function makeList() {
+						for (var i = 0; i < option.length; i++) {
+							var op = option.eq(i);
+							var li = '',
+									liClass = '',
+									liClasses = '',
+									id = '',
+									title = '',
+									dataList = '',
+									optionClass = '',
+									optgroupClass = '',
+									dataJqfsClass = '';
+							var disabled = 'disabled';
+							var selDis = 'selected sel disabled';
+							if (op.prop('selected')) liClass = 'selected sel';
+							if (op.is(':disabled')) liClass = disabled;
+							if (op.is(':selected:disabled')) liClass = selDis;
+							if (op.attr('id') !== undefined && op.attr('id') !== '') id = ' id="' + op.attr('id') + opt.idSuffix + '"';
+							if (op.attr('title') !== undefined && option.attr('title') !== '') title = ' title="' + op.attr('title') + '"';
+							if (op.attr('class') !== undefined) {
+								optionClass = ' ' + op.attr('class');
+								dataJqfsClass = ' data-jqfs-class="' + op.attr('class') + '"';
+							}
+
+							var data = op.data();
+							for (var k in data) {
+								if (data[k] !== '') dataList += ' data-' + k + '="' + data[k] + '"';
+							}
+
+							if ( (liClass + optionClass) !== '' )   liClasses = ' class="' + liClass + optionClass + '"';
+							li = '<li' + dataJqfsClass + dataList + liClasses + title + id + '>'+ op.html() +'</li>';
+
+							// если есть optgroup
+							if (op.parent().is('optgroup')) {
+								if (op.parent().attr('class') !== undefined) optgroupClass = ' ' + op.parent().attr('class');
+								li = '<li' + dataJqfsClass + dataList + ' class="' + liClass + optionClass + ' option' + optgroupClass + '"' + title + id + '>'+ op.html() +'</li>';
+								if (op.is(':first-child')) {
+									li = '<li class="optgroup' + optgroupClass + '">' + op.parent().attr('label') + '</li>' + li;
+								}
+							}
+
+							list += li;
+						}
+					} // end makeList()
+
+					// одиночный селект
+					function doSelect() {
+
+						var att = new Attributes();
+						var searchHTML = '';
+						var selectPlaceholder = el.data('placeholder');
+						var selectSearch = el.data('search');
+						var selectSearchLimit = el.data('search-limit');
+						var selectSearchNotFound = el.data('search-not-found');
+						var selectSearchPlaceholder = el.data('search-placeholder');
+						var selectSmartPositioning = el.data('smart-positioning');
+
+						if (selectPlaceholder === undefined) selectPlaceholder = opt.selectPlaceholder;
+						if (selectSearch === undefined || selectSearch === '') selectSearch = opt.selectSearch;
+						if (selectSearchLimit === undefined || selectSearchLimit === '') selectSearchLimit = opt.selectSearchLimit;
+						if (selectSearchNotFound === undefined || selectSearchNotFound === '') selectSearchNotFound = opt.selectSearchNotFound;
+						if (selectSearchPlaceholder === undefined) selectSearchPlaceholder = opt.selectSearchPlaceholder;
+						if (selectSmartPositioning === undefined || selectSmartPositioning === '') selectSmartPositioning = opt.selectSmartPositioning;
+
+						var selectbox =
+							$('<div class="jq-selectbox jqselect">' +
+									'<div class="jq-selectbox__select">' +
+										'<div class="jq-selectbox__select-text"></div>' +
+										'<div class="jq-selectbox__trigger">' +
+											'<div class="jq-selectbox__trigger-arrow"></div></div>' +
+									'</div>' +
+								'</div>')
+							.attr({
+								id: att.id,
+								title: att.title
+							})
+							.addClass(att.classes)
+							.data(att.data)
+						;
+
+						el.after(selectbox).prependTo(selectbox);
+
+						var selectzIndex = selectbox.css('z-index');
+						selectzIndex = (selectzIndex > 0 ) ? selectzIndex : 1;
+						var divSelect = $('div.jq-selectbox__select', selectbox);
+						var divText = $('div.jq-selectbox__select-text', selectbox);
+						var optionSelected = option.filter(':selected');
+
+						makeList();
+
+						if (selectSearch) searchHTML =
+							'<div class="jq-selectbox__search"><input type="search" autocomplete="off" placeholder="' + selectSearchPlaceholder + '"></div>' +
+							'<div class="jq-selectbox__not-found">' + selectSearchNotFound + '</div>';
+						var dropdown =
+							$('<div class="jq-selectbox__dropdown">' +
+									searchHTML + '<ul>' + list + '</ul>' +
+								'</div>');
+						selectbox.append(dropdown);
+						var ul = $('ul', dropdown);
+						var li = $('li', dropdown);
+						var search = $('input', dropdown);
+						var notFound = $('div.jq-selectbox__not-found', dropdown).hide();
+						if (li.length < selectSearchLimit) search.parent().hide();
+
+						// показываем опцию по умолчанию
+						// если у 1-й опции нет текста, она выбрана по умолчанию и параметр selectPlaceholder не false, то показываем плейсхолдер
+						if (option.first().text() === '' && option.first().is(':selected') && selectPlaceholder !== false) {
+							divText.text(selectPlaceholder).addClass('placeholder');
+						} else {
+							divText.text(optionSelected.text());
+						}
+
+						// определяем самый широкий пункт селекта
+						var liWidthInner = 0,
+								liWidth = 0;
+						li.css({'display': 'inline-block'});
+						li.each(function() {
+							var l = $(this);
+							if (l.innerWidth() > liWidthInner) {
+								liWidthInner = l.innerWidth();
+								liWidth = l.width();
+							}
+						});
+						li.css({'display': ''});
+
+						// подстраиваем ширину свернутого селекта в зависимости
+						// от ширины плейсхолдера или самого широкого пункта
+						if (divText.is('.placeholder') && (divText.width() > liWidthInner)) {
+							divText.width(divText.width());
+						} else {
+							var selClone = selectbox.clone().appendTo('body').width('auto');
+							var selCloneWidth = selClone.outerWidth();
+							selClone.remove();
+							if (selCloneWidth == selectbox.outerWidth()) {
+								divText.width(liWidth);
+							}
+						}
+
+						// подстраиваем ширину выпадающего списка в зависимости от самого широкого пункта
+						if (liWidthInner > selectbox.width()) dropdown.width(liWidthInner);
+
+						// прячем 1-ю пустую опцию, если она есть и если атрибут data-placeholder не пустой
+						// если все же нужно, чтобы первая пустая опция отображалась, то указываем у селекта: data-placeholder=""
+						if (option.first().text() === '' && el.data('placeholder') !== '') {
+							li.first().hide();
+						}
+
+						var selectHeight = selectbox.outerHeight(true);
+						var searchHeight = search.parent().outerHeight(true) || 0;
+						var isMaxHeight = ul.css('max-height');
+						var liSelected = li.filter('.selected');
+						if (liSelected.length < 1) li.first().addClass('selected sel');
+						if (li.data('li-height') === undefined) {
+							var liOuterHeight = li.outerHeight();
+							if (selectPlaceholder !== false) liOuterHeight = li.eq(1).outerHeight();
+							li.data('li-height', liOuterHeight);
+						}
+						var position = dropdown.css('top');
+						if (dropdown.css('left') == 'auto') dropdown.css({left: 0});
+						if (dropdown.css('top') == 'auto') {
+							dropdown.css({top: selectHeight});
+							position = selectHeight;
+						}
+						dropdown.hide();
+
+						// если выбран не дефолтный пункт
+						if (liSelected.length) {
+							// добавляем класс, показывающий изменение селекта
+							if (option.first().text() != optionSelected.text()) {
+								selectbox.addClass('changed');
+							}
+							// передаем селекту класс выбранного пункта
+							selectbox.data('jqfs-class', liSelected.data('jqfs-class'));
+							selectbox.addClass(liSelected.data('jqfs-class'));
+						}
+
+						// если селект неактивный
+						if (el.is(':disabled')) {
+							selectbox.addClass('disabled');
+							return false;
+						}
+
+						// при клике на псевдоселекте
+						divSelect.click(function() {
+
+							// колбек при закрытии селекта
+							if ($('div.jq-selectbox').filter('.opened').length) {
+								opt.onSelectClosed.call($('div.jq-selectbox').filter('.opened'));
+							}
+
+							el.focus();
+
+							// если iOS, то не показываем выпадающий список,
+							// т.к. отображается нативный и неизвестно, как его спрятать
+							if (iOS) return;
+
+							// умное позиционирование
+							var win = $(window);
+							var liHeight = li.data('li-height');
+							var topOffset = selectbox.offset().top;
+							var bottomOffset = win.height() - selectHeight - (topOffset - win.scrollTop());
+							var visible = el.data('visible-options');
+							if (visible === undefined || visible === '') visible = opt.selectVisibleOptions;
+							var minHeight = liHeight * 5;
+							var newHeight = liHeight * visible;
+							if (visible > 0 && visible < 6) minHeight = newHeight;
+							if (visible === 0) newHeight = 'auto';
+
+							var dropDown = function() {
+								dropdown.height('auto').css({bottom: 'auto', top: position});
+								var maxHeightBottom = function() {
+									ul.css('max-height', Math.floor((bottomOffset - 20 - searchHeight) / liHeight) * liHeight);
+								};
+								maxHeightBottom();
+								ul.css('max-height', newHeight);
+								if (isMaxHeight != 'none') {
+									ul.css('max-height', isMaxHeight);
+								}
+								if (bottomOffset < (dropdown.outerHeight() + 20)) {
+									maxHeightBottom();
+								}
+							};
+
+							var dropUp = function() {
+								dropdown.height('auto').css({top: 'auto', bottom: position});
+								var maxHeightTop = function() {
+									ul.css('max-height', Math.floor((topOffset - win.scrollTop() - 20 - searchHeight) / liHeight) * liHeight);
+								};
+								maxHeightTop();
+								ul.css('max-height', newHeight);
+								if (isMaxHeight != 'none') {
+									ul.css('max-height', isMaxHeight);
+								}
+								if ((topOffset - win.scrollTop() - 20) < (dropdown.outerHeight() + 20)) {
+									maxHeightTop();
+								}
+							};
+
+							if (selectSmartPositioning === true || selectSmartPositioning === 1) {
+								// раскрытие вниз
+								if (bottomOffset > (minHeight + searchHeight + 20)) {
+									dropDown();
+									selectbox.removeClass('dropup').addClass('dropdown');
+								// раскрытие вверх
+								} else {
+									dropUp();
+									selectbox.removeClass('dropdown').addClass('dropup');
+								}
+							} else if (selectSmartPositioning === false || selectSmartPositioning === 0) {
+								// раскрытие вниз
+								if (bottomOffset > (minHeight + searchHeight + 20)) {
+									dropDown();
+									selectbox.removeClass('dropup').addClass('dropdown');
+								}
+							} else {
+								// если умное позиционирование отключено
+								dropdown.height('auto').css({bottom: 'auto', top: position});
+								ul.css('max-height', newHeight);
+								if (isMaxHeight != 'none') {
+									ul.css('max-height', isMaxHeight);
+								}
+							}
+
+							// если выпадающий список выходит за правый край окна браузера,
+							// то меняем позиционирование с левого на правое
+							if (selectbox.offset().left + dropdown.outerWidth() > win.width()) {
+								dropdown.css({left: 'auto', right: 0});
+							}
+							// конец умного позиционирования
+
+							$('div.jqselect').css({zIndex: (selectzIndex - 1)}).removeClass('opened');
+							selectbox.css({zIndex: selectzIndex});
+							if (dropdown.is(':hidden')) {
+								$('div.jq-selectbox__dropdown:visible').hide();
+								dropdown.show();
+								selectbox.addClass('opened focused');
+								// колбек при открытии селекта
+								opt.onSelectOpened.call(selectbox);
+							} else {
+								dropdown.hide();
+								selectbox.removeClass('opened dropup dropdown');
+								// колбек при закрытии селекта
+								if ($('div.jq-selectbox').filter('.opened').length) {
+									opt.onSelectClosed.call(selectbox);
+								}
+							}
+
+							// поисковое поле
+							if (search.length) {
+								search.val('').keyup();
+								notFound.hide();
+								search.keyup(function() {
+									var query = $(this).val();
+									li.each(function() {
+										if (!$(this).html().match(new RegExp('.*?' + query + '.*?', 'i'))) {
+											$(this).hide();
+										} else {
+											$(this).show();
+										}
+									});
+									// прячем 1-ю пустую опцию
+									if (option.first().text() === '' && el.data('placeholder') !== '') {
+										li.first().hide();
+									}
+									if (li.filter(':visible').length < 1) {
+										notFound.show();
+									} else {
+										notFound.hide();
+									}
+								});
+							}
+
+							// прокручиваем до выбранного пункта при открытии списка
+							if (li.filter('.selected').length) {
+								if (el.val() === '') {
+									ul.scrollTop(0);
+								} else {
+									// если нечетное количество видимых пунктов,
+									// то высоту пункта делим пополам для последующего расчета
+									if ( (ul.innerHeight() / liHeight) % 2 !== 0 ) liHeight = liHeight / 2;
+									ul.scrollTop(ul.scrollTop() + li.filter('.selected').position().top - ul.innerHeight() / 2 + liHeight);
+								}
+							}
+
+							preventScrolling(ul);
+
+						}); // end divSelect.click()
+
+						// при наведении курсора на пункт списка
+						li.hover(function() {
+							$(this).siblings().removeClass('selected');
+						});
+						var selectedText = li.filter('.selected').text();
+
+						// при клике на пункт списка
+						li.filter(':not(.disabled):not(.optgroup)').click(function() {
+							el.focus();
+							var t = $(this);
+							var liText = t.text();
+							if (!t.is('.selected')) {
+								var index = t.index();
+								index -= t.prevAll('.optgroup').length;
+								t.addClass('selected sel').siblings().removeClass('selected sel');
+								option.prop('selected', false).eq(index).prop('selected', true);
+								selectedText = liText;
+								divText.text(liText);
+
+								// передаем селекту класс выбранного пункта
+								if (selectbox.data('jqfs-class')) selectbox.removeClass(selectbox.data('jqfs-class'));
+								selectbox.data('jqfs-class', t.data('jqfs-class'));
+								selectbox.addClass(t.data('jqfs-class'));
+
+								el.change();
+							}
+							dropdown.hide();
+							selectbox.removeClass('opened dropup dropdown');
+							// колбек при закрытии селекта
+							opt.onSelectClosed.call(selectbox);
+
+						});
+						dropdown.mouseout(function() {
+							$('li.sel', dropdown).addClass('selected');
+						});
+
+						// изменение селекта
+						el.on('change.styler', function() {
+							divText.text(option.filter(':selected').text()).removeClass('placeholder');
+							li.removeClass('selected sel').not('.optgroup').eq(el[0].selectedIndex).addClass('selected sel');
+							// добавляем класс, показывающий изменение селекта
+							if (option.first().text() != li.filter('.selected').text()) {
+								selectbox.addClass('changed');
+							} else {
+								selectbox.removeClass('changed');
+							}
+						})
+						.on('focus.styler', function() {
+							selectbox.addClass('focused');
+							$('div.jqselect').not('.focused').removeClass('opened dropup dropdown').find('div.jq-selectbox__dropdown').hide();
+						})
+						.on('blur.styler', function() {
+							selectbox.removeClass('focused');
+						})
+						// изменение селекта с клавиатуры
+						.on('keydown.styler keyup.styler', function(e) {
+							var liHeight = li.data('li-height');
+							if (el.val() === '') {
+								divText.text(selectPlaceholder).addClass('placeholder');
+							} else {
+								divText.text(option.filter(':selected').text());
+							}
+							li.removeClass('selected sel').not('.optgroup').eq(el[0].selectedIndex).addClass('selected sel');
+							// вверх, влево, Page Up, Home
+							if (e.which == 38 || e.which == 37 || e.which == 33 || e.which == 36) {
+								if (el.val() === '') {
+									ul.scrollTop(0);
+								} else {
+									ul.scrollTop(ul.scrollTop() + li.filter('.selected').position().top);
+								}
+							}
+							// вниз, вправо, Page Down, End
+							if (e.which == 40 || e.which == 39 || e.which == 34 || e.which == 35) {
+								ul.scrollTop(ul.scrollTop() + li.filter('.selected').position().top - ul.innerHeight() + liHeight);
+							}
+							// закрываем выпадающий список при нажатии Enter
+							if (e.which == 13) {
+								e.preventDefault();
+								dropdown.hide();
+								selectbox.removeClass('opened dropup dropdown');
+								// колбек при закрытии селекта
+								opt.onSelectClosed.call(selectbox);
+							}
+						}).on('keydown.styler', function(e) {
+							// открываем выпадающий список при нажатии Space
+							if (e.which == 32) {
+								e.preventDefault();
+								divSelect.click();
+							}
+						});
+
+						// прячем выпадающий список при клике за пределами селекта
+						if (!onDocumentClick.registered) {
+							$(document).on('click', onDocumentClick);
+							onDocumentClick.registered = true;
+						}
+
+					} // end doSelect()
+
+					// мультиселект
+					function doMultipleSelect() {
+
+						var att = new Attributes();
+						var selectbox =
+							$('<div class="jq-select-multiple jqselect"></div>')
+							.attr({
+								id: att.id,
+								title: att.title
+							})
+							.addClass(att.classes)
+							.data(att.data)
+						;
+
+						el.after(selectbox);
+
+						makeList();
+						selectbox.append('<ul>' + list + '</ul>');
+						var ul = $('ul', selectbox);
+						var li = $('li', selectbox);
+						var size = el.attr('size');
+						var ulHeight = ul.outerHeight();
+						var liHeight = li.outerHeight();
+						if (size !== undefined && size > 0) {
+							ul.css({'height': liHeight * size});
+						} else {
+							ul.css({'height': liHeight * 4});
+						}
+						if (ulHeight > selectbox.height()) {
+							ul.css('overflowY', 'scroll');
+							preventScrolling(ul);
+							// прокручиваем до выбранного пункта
+							if (li.filter('.selected').length) {
+								ul.scrollTop(ul.scrollTop() + li.filter('.selected').position().top);
+							}
+						}
+
+						// прячем оригинальный селект
+						el.prependTo(selectbox);
+
+						// если селект неактивный
+						if (el.is(':disabled')) {
+							selectbox.addClass('disabled');
+							option.each(function() {
+								if ($(this).is(':selected')) li.eq($(this).index()).addClass('selected');
+							});
+
+						// если селект активный
+						} else {
+
+							// при клике на пункт списка
+							li.filter(':not(.disabled):not(.optgroup)').click(function(e) {
+								el.focus();
+								var clkd = $(this);
+								if(!e.ctrlKey && !e.metaKey) clkd.addClass('selected');
+								if(!e.shiftKey) clkd.addClass('first');
+								if(!e.ctrlKey && !e.metaKey && !e.shiftKey) clkd.siblings().removeClass('selected first');
+
+								// выделение пунктов при зажатом Ctrl
+								if(e.ctrlKey || e.metaKey) {
+									if (clkd.is('.selected')) clkd.removeClass('selected first');
+										else clkd.addClass('selected first');
+									clkd.siblings().removeClass('first');
+								}
+
+								// выделение пунктов при зажатом Shift
+								if(e.shiftKey) {
+									var prev = false,
+											next = false;
+									clkd.siblings().removeClass('selected').siblings('.first').addClass('selected');
+									clkd.prevAll().each(function() {
+										if ($(this).is('.first')) prev = true;
+									});
+									clkd.nextAll().each(function() {
+										if ($(this).is('.first')) next = true;
+									});
+									if (prev) {
+										clkd.prevAll().each(function() {
+											if ($(this).is('.selected')) return false;
+												else $(this).not('.disabled, .optgroup').addClass('selected');
+										});
+									}
+									if (next) {
+										clkd.nextAll().each(function() {
+											if ($(this).is('.selected')) return false;
+												else $(this).not('.disabled, .optgroup').addClass('selected');
+										});
+									}
+									if (li.filter('.selected').length == 1) clkd.addClass('first');
+								}
+
+								// отмечаем выбранные мышью
+								option.prop('selected', false);
+								li.filter('.selected').each(function() {
+									var t = $(this);
+									var index = t.index();
+									if (t.is('.option')) index -= t.prevAll('.optgroup').length;
+									option.eq(index).prop('selected', true);
+								});
+								el.change();
+
+							});
+
+							// отмечаем выбранные с клавиатуры
+							option.each(function(i) {
+								$(this).data('optionIndex', i);
+							});
+							el.on('change.styler', function() {
+								li.removeClass('selected');
+								var arrIndexes = [];
+								option.filter(':selected').each(function() {
+									arrIndexes.push($(this).data('optionIndex'));
+								});
+								li.not('.optgroup').filter(function(i) {
+									return $.inArray(i, arrIndexes) > -1;
+								}).addClass('selected');
+							})
+							.on('focus.styler', function() {
+								selectbox.addClass('focused');
+							})
+							.on('blur.styler', function() {
+								selectbox.removeClass('focused');
+							});
+
+							// прокручиваем с клавиатуры
+							if (ulHeight > selectbox.height()) {
+								el.on('keydown.styler', function(e) {
+									// вверх, влево, PageUp
+									if (e.which == 38 || e.which == 37 || e.which == 33) {
+										ul.scrollTop(ul.scrollTop() + li.filter('.selected').position().top - liHeight);
+									}
+									// вниз, вправо, PageDown
+									if (e.which == 40 || e.which == 39 || e.which == 34) {
+										ul.scrollTop(ul.scrollTop() + li.filter('.selected:last').position().top - ul.innerHeight() + liHeight * 2);
+									}
+								});
+							}
+
+						}
+					} // end doMultipleSelect()
+
+					if (el.is('[multiple]')) {
+
+						// если Android или iOS, то мультиселект не стилизуем
+						// причина для Android - в стилизованном селекте нет возможности выбрать несколько пунктов
+						// причина для iOS - в стилизованном селекте неправильно отображаются выбранные пункты
+						if (Android || iOS) return;
+
+						doMultipleSelect();
+					} else {
+						doSelect();
+					}
+
+				}; // end selectboxOutput()
+
+				selectboxOutput();
+
+				// обновление при динамическом изменении
+				el.on('refresh', function() {
+					el.off('.styler').parent().before(el).remove();
+					selectboxOutput();
+				});
+
+			// end select
+
+			// reset
+			} else if (el.is(':reset')) {
+				el.on('click', function() {
+					setTimeout(function() {
+						el.closest('form').find('input, select').trigger('refresh');
+					}, 1);
+				});
+			} // end reset
+
+		}, // init: function()
+
+		// деструктор
+		destroy: function() {
+
+			var el = $(this.element);
+
+			if (el.is(':checkbox') || el.is(':radio')) {
+				el.removeData('_' + pluginName).off('.styler refresh').removeAttr('style').parent().before(el).remove();
+				el.closest('label').add('label[for="' + el.attr('id') + '"]').off('.styler');
+			} else if (el.is('input[type="number"]')) {
+				el.removeData('_' + pluginName).off('.styler refresh').closest('.jq-number').before(el).remove();
+			} else if (el.is(':file') || el.is('select')) {
+				el.removeData('_' + pluginName).off('.styler refresh').removeAttr('style').parent().before(el).remove();
+			}
+
+		} // destroy: function()
+
+	}; // Plugin.prototype
+
+	$.fn[pluginName] = function(options) {
+		var args = arguments;
+		if (options === undefined || typeof options === 'object') {
+			this.each(function() {
+				if (!$.data(this, '_' + pluginName)) {
+					$.data(this, '_' + pluginName, new Plugin(this, options));
+				}
+			})
+			// колбек после выполнения плагина
+			.promise()
+			.done(function() {
+				var opt = $(this[0]).data('_' + pluginName);
+				if (opt) opt.options.onFormStyled.call();
+			});
+			return this;
+		} else if (typeof options === 'string' && options[0] !== '_' && options !== 'init') {
+			var returns;
+			this.each(function() {
+				var instance = $.data(this, '_' + pluginName);
+				if (instance instanceof Plugin && typeof instance[options] === 'function') {
+					returns = instance[options].apply(instance, Array.prototype.slice.call(args, 1));
+				}
+			});
+			return returns !== undefined ? returns : this;
+		}
+	};
+
+	// прячем выпадающий список при клике за пределами селекта
+	function onDocumentClick(e) {
+		// e.target.nodeName != 'OPTION' - добавлено для обхода бага в Opera на движке Presto
+		// (при изменении селекта с клавиатуры срабатывает событие onclick)
+		if (!$(e.target).parents().hasClass('jq-selectbox') && e.target.nodeName != 'OPTION') {
+			if ($('div.jq-selectbox.opened').length) {
+				var selectbox = $('div.jq-selectbox.opened'),
+						search = $('div.jq-selectbox__search input', selectbox),
+						dropdown = $('div.jq-selectbox__dropdown', selectbox),
+						opt = selectbox.find('select').data('_' + pluginName).options;
+
+				// колбек при закрытии селекта
+				opt.onSelectClosed.call(selectbox);
+
+				if (search.length) search.val('').keyup();
+				dropdown.hide().find('li.sel').addClass('selected');
+				selectbox.removeClass('focused opened dropup dropdown');
+			}
+		}
+	}
+	onDocumentClick.registered = false;
+
+}));
 !function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.AOS=t():e.AOS=t()}(this,function(){return function(e){function t(o){if(n[o])return n[o].exports;var i=n[o]={exports:{},id:o,loaded:!1};return e[o].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="dist/",t(0)}([function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{default:e}}var i=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(e[o]=n[o])}return e},r=n(1),a=(o(r),n(6)),u=o(a),c=n(7),s=o(c),f=n(8),d=o(f),l=n(9),p=o(l),m=n(10),b=o(m),v=n(11),y=o(v),g=n(14),h=o(g),w=[],k=!1,x={offset:120,delay:0,easing:"ease",duration:400,disable:!1,once:!1,startEvent:"DOMContentLoaded",throttleDelay:99,debounceDelay:50,disableMutationObserver:!1},j=function(){var e=arguments.length>0&&void 0!==arguments[0]&&arguments[0];if(e&&(k=!0),k)return w=(0,y.default)(w,x),(0,b.default)(w,x.once),w},O=function(){w=(0,h.default)(),j()},M=function(){w.forEach(function(e,t){e.node.removeAttribute("data-aos"),e.node.removeAttribute("data-aos-easing"),e.node.removeAttribute("data-aos-duration"),e.node.removeAttribute("data-aos-delay")})},S=function(e){return e===!0||"mobile"===e&&p.default.mobile()||"phone"===e&&p.default.phone()||"tablet"===e&&p.default.tablet()||"function"==typeof e&&e()===!0},_=function(e){x=i(x,e),w=(0,h.default)();var t=document.all&&!window.atob;return S(x.disable)||t?M():(x.disableMutationObserver||d.default.isSupported()||(console.info('\n      aos: MutationObserver is not supported on this browser,\n      code mutations observing has been disabled.\n      You may have to call "refreshHard()" by yourself.\n    '),x.disableMutationObserver=!0),document.querySelector("body").setAttribute("data-aos-easing",x.easing),document.querySelector("body").setAttribute("data-aos-duration",x.duration),document.querySelector("body").setAttribute("data-aos-delay",x.delay),"DOMContentLoaded"===x.startEvent&&["complete","interactive"].indexOf(document.readyState)>-1?j(!0):"load"===x.startEvent?window.addEventListener(x.startEvent,function(){j(!0)}):document.addEventListener(x.startEvent,function(){j(!0)}),window.addEventListener("resize",(0,s.default)(j,x.debounceDelay,!0)),window.addEventListener("orientationchange",(0,s.default)(j,x.debounceDelay,!0)),window.addEventListener("scroll",(0,u.default)(function(){(0,b.default)(w,x.once)},x.throttleDelay)),x.disableMutationObserver||d.default.ready("[data-aos]",O),w)};e.exports={init:_,refresh:j,refreshHard:O}},function(e,t){},,,,,function(e,t){(function(t){"use strict";function n(e,t,n){function o(t){var n=b,o=v;return b=v=void 0,k=t,g=e.apply(o,n)}function r(e){return k=e,h=setTimeout(f,t),M?o(e):g}function a(e){var n=e-w,o=e-k,i=t-n;return S?j(i,y-o):i}function c(e){var n=e-w,o=e-k;return void 0===w||n>=t||n<0||S&&o>=y}function f(){var e=O();return c(e)?d(e):void(h=setTimeout(f,a(e)))}function d(e){return h=void 0,_&&b?o(e):(b=v=void 0,g)}function l(){void 0!==h&&clearTimeout(h),k=0,b=w=v=h=void 0}function p(){return void 0===h?g:d(O())}function m(){var e=O(),n=c(e);if(b=arguments,v=this,w=e,n){if(void 0===h)return r(w);if(S)return h=setTimeout(f,t),o(w)}return void 0===h&&(h=setTimeout(f,t)),g}var b,v,y,g,h,w,k=0,M=!1,S=!1,_=!0;if("function"!=typeof e)throw new TypeError(s);return t=u(t)||0,i(n)&&(M=!!n.leading,S="maxWait"in n,y=S?x(u(n.maxWait)||0,t):y,_="trailing"in n?!!n.trailing:_),m.cancel=l,m.flush=p,m}function o(e,t,o){var r=!0,a=!0;if("function"!=typeof e)throw new TypeError(s);return i(o)&&(r="leading"in o?!!o.leading:r,a="trailing"in o?!!o.trailing:a),n(e,t,{leading:r,maxWait:t,trailing:a})}function i(e){var t="undefined"==typeof e?"undefined":c(e);return!!e&&("object"==t||"function"==t)}function r(e){return!!e&&"object"==("undefined"==typeof e?"undefined":c(e))}function a(e){return"symbol"==("undefined"==typeof e?"undefined":c(e))||r(e)&&k.call(e)==d}function u(e){if("number"==typeof e)return e;if(a(e))return f;if(i(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=i(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(l,"");var n=m.test(e);return n||b.test(e)?v(e.slice(2),n?2:8):p.test(e)?f:+e}var c="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},s="Expected a function",f=NaN,d="[object Symbol]",l=/^\s+|\s+$/g,p=/^[-+]0x[0-9a-f]+$/i,m=/^0b[01]+$/i,b=/^0o[0-7]+$/i,v=parseInt,y="object"==("undefined"==typeof t?"undefined":c(t))&&t&&t.Object===Object&&t,g="object"==("undefined"==typeof self?"undefined":c(self))&&self&&self.Object===Object&&self,h=y||g||Function("return this")(),w=Object.prototype,k=w.toString,x=Math.max,j=Math.min,O=function(){return h.Date.now()};e.exports=o}).call(t,function(){return this}())},function(e,t){(function(t){"use strict";function n(e,t,n){function i(t){var n=b,o=v;return b=v=void 0,O=t,g=e.apply(o,n)}function r(e){return O=e,h=setTimeout(f,t),M?i(e):g}function u(e){var n=e-w,o=e-O,i=t-n;return S?x(i,y-o):i}function s(e){var n=e-w,o=e-O;return void 0===w||n>=t||n<0||S&&o>=y}function f(){var e=j();return s(e)?d(e):void(h=setTimeout(f,u(e)))}function d(e){return h=void 0,_&&b?i(e):(b=v=void 0,g)}function l(){void 0!==h&&clearTimeout(h),O=0,b=w=v=h=void 0}function p(){return void 0===h?g:d(j())}function m(){var e=j(),n=s(e);if(b=arguments,v=this,w=e,n){if(void 0===h)return r(w);if(S)return h=setTimeout(f,t),i(w)}return void 0===h&&(h=setTimeout(f,t)),g}var b,v,y,g,h,w,O=0,M=!1,S=!1,_=!0;if("function"!=typeof e)throw new TypeError(c);return t=a(t)||0,o(n)&&(M=!!n.leading,S="maxWait"in n,y=S?k(a(n.maxWait)||0,t):y,_="trailing"in n?!!n.trailing:_),m.cancel=l,m.flush=p,m}function o(e){var t="undefined"==typeof e?"undefined":u(e);return!!e&&("object"==t||"function"==t)}function i(e){return!!e&&"object"==("undefined"==typeof e?"undefined":u(e))}function r(e){return"symbol"==("undefined"==typeof e?"undefined":u(e))||i(e)&&w.call(e)==f}function a(e){if("number"==typeof e)return e;if(r(e))return s;if(o(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=o(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=e.replace(d,"");var n=p.test(e);return n||m.test(e)?b(e.slice(2),n?2:8):l.test(e)?s:+e}var u="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},c="Expected a function",s=NaN,f="[object Symbol]",d=/^\s+|\s+$/g,l=/^[-+]0x[0-9a-f]+$/i,p=/^0b[01]+$/i,m=/^0o[0-7]+$/i,b=parseInt,v="object"==("undefined"==typeof t?"undefined":u(t))&&t&&t.Object===Object&&t,y="object"==("undefined"==typeof self?"undefined":u(self))&&self&&self.Object===Object&&self,g=v||y||Function("return this")(),h=Object.prototype,w=h.toString,k=Math.max,x=Math.min,j=function(){return g.Date.now()};e.exports=n}).call(t,function(){return this}())},function(e,t){"use strict";function n(e){var t=void 0,o=void 0,i=void 0;for(t=0;t<e.length;t+=1){if(o=e[t],o.dataset&&o.dataset.aos)return!0;if(i=o.children&&n(o.children))return!0}return!1}function o(){return window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver}function i(){return!!o()}function r(e,t){var n=window.document,i=o(),r=new i(a);u=t,r.observe(n.documentElement,{childList:!0,subtree:!0,removedNodes:!0})}function a(e){e&&e.forEach(function(e){var t=Array.prototype.slice.call(e.addedNodes),o=Array.prototype.slice.call(e.removedNodes),i=t.concat(o);if(n(i))return u()})}Object.defineProperty(t,"__esModule",{value:!0});var u=function(){};t.default={isSupported:i,ready:r}},function(e,t){"use strict";function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(){return navigator.userAgent||navigator.vendor||window.opera||""}Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}(),r=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i,a=/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i,u=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i,c=/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i,s=function(){function e(){n(this,e)}return i(e,[{key:"phone",value:function(){var e=o();return!(!r.test(e)&&!a.test(e.substr(0,4)))}},{key:"mobile",value:function(){var e=o();return!(!u.test(e)&&!c.test(e.substr(0,4)))}},{key:"tablet",value:function(){return this.mobile()&&!this.phone()}}]),e}();t.default=new s},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e,t,n){var o=e.node.getAttribute("data-aos-once");t>e.position?e.node.classList.add("aos-animate"):"undefined"!=typeof o&&("false"===o||!n&&"true"!==o)&&e.node.classList.remove("aos-animate")},o=function(e,t){var o=window.pageYOffset,i=window.innerHeight;e.forEach(function(e,r){n(e,i+o,t)})};t.default=o},function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var i=n(12),r=o(i),a=function(e,t){return e.forEach(function(e,n){e.node.classList.add("aos-init"),e.position=(0,r.default)(e.node,t.offset)}),e};t.default=a},function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var i=n(13),r=o(i),a=function(e,t){var n=0,o=0,i=window.innerHeight,a={offset:e.getAttribute("data-aos-offset"),anchor:e.getAttribute("data-aos-anchor"),anchorPlacement:e.getAttribute("data-aos-anchor-placement")};switch(a.offset&&!isNaN(a.offset)&&(o=parseInt(a.offset)),a.anchor&&document.querySelectorAll(a.anchor)&&(e=document.querySelectorAll(a.anchor)[0]),n=(0,r.default)(e).top,a.anchorPlacement){case"top-bottom":break;case"center-bottom":n+=e.offsetHeight/2;break;case"bottom-bottom":n+=e.offsetHeight;break;case"top-center":n+=i/2;break;case"bottom-center":n+=i/2+e.offsetHeight;break;case"center-center":n+=i/2+e.offsetHeight/2;break;case"top-top":n+=i;break;case"bottom-top":n+=e.offsetHeight+i;break;case"center-top":n+=e.offsetHeight/2+i}return a.anchorPlacement||a.offset||isNaN(t)||(o=t),n+o};t.default=a},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){for(var t=0,n=0;e&&!isNaN(e.offsetLeft)&&!isNaN(e.offsetTop);)t+=e.offsetLeft-("BODY"!=e.tagName?e.scrollLeft:0),n+=e.offsetTop-("BODY"!=e.tagName?e.scrollTop:0),e=e.offsetParent;return{top:n,left:t}};t.default=n},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){return e=e||document.querySelectorAll("[data-aos]"),Array.prototype.map.call(e,function(e){return{node:e}})};t.default=n}])});
 $(function () {
 
+  //--- global ---
+
+  //1. Header size on scroll
   window.onscroll = function () { scrollFunction() };
 
   function scrollFunction() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      document.querySelector('header').classList.add('header-mini');
+      $('.header').addClass('header-mini');
     } else {
-      document.querySelector('header').classList.remove('header-mini');
+      $('.header').removeClass('header-mini');
     }
   }
+
+
+  // --- main page ---
+
+  //1. Top slider
+  $('.top-slider__inner').slick({
+    dots: true,
+    arrows: false,
+    fade: true,
+    // autoplay: true,
+    autoplaySpead: 5000,
+  });
+
 
 
   //shop
@@ -17400,19 +18524,13 @@ $(function () {
 
   //main page
   $('.menu__btn').on('click', function () {
-    $('.menu__list').toggleClass('menu__list--active');
-    $('.menu__btn').toggleClass('menu__btn--active');
+    $('html').toggleClass('menu-opened');
+    $('.menu__list').toggleClass('active');
+    $('.menu__btn').toggleClass('active');
   });
 
 
-  //main slider
-  $('.top-slider__inner').slick({
-    dots: true,
-    arrows: false,
-    fade: true,
-    autoplay: true,
-    autoplaySpead: 5000,
-  });
+  
 
   //slider on page-blog
   $('.blog-page__slider').slick({
@@ -17425,6 +18543,45 @@ $(function () {
   });
 
 
+  //slider on page product
+  $('.product-slide__thumb').slick({
+    asNavFor: '.product-slide__big',
+    focusOnSelect: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    vertical: true,
+    draggable: false,
+  });
+
+  $('.product-slide__big').slick({
+    asNavFor: '.product-slide__thumb',
+    draggable: false,
+    arrows: false,
+    fade: true,
+    responsive: [
+      {
+        breakpoint: 1051,
+        settings: {
+          draggable: true,
+        }
+      },
+    ]
+  });
+
+  //product-tabs
+  $('.product-tabs__top-item').on('click', function (e) {
+    e.preventDefault();
+    $('.product-tabs__top-item').removeClass('product-tabs__top-item--active');
+    $(this).addClass('product-tabs__top-item--active');
+
+    $('.product-tabs__content-item').removeClass('product-tabs__content-item--active');
+    $($(this).attr('href')).addClass('product-tabs__content-item--active');
+  });
+
+
+  $('.select-style, .product-one__num').styler();
+
+  //rateyo
   $(".star").rateYo({
     readOnly: true,
     starWidth: "17px",
@@ -17479,6 +18636,15 @@ $(function () {
   initializeClock('promo__clock', deadline);
 
 
+  //map
+  let map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 8,
+    });
+  }
   
 
   Fancybox.bind("[data-fancybox]", {
