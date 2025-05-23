@@ -87,24 +87,34 @@ $maxWidth: 1200;
   }
 }
 
-
+//--- default btn ---
 %btn {
   position: relative;
   padding: 12px 26px;
   top: -1px;
-  background-color: $accent;
-  color: #fff;
   @extend %roboto-400;
+  color: $white;
+  background-color: $accent;
   text-transform: uppercase;
-  // box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
-  transition: all 0.2s ease-in-out;
   cursor: pointer;
   border: none;
+  transition: all .2s ease-in-out;
   &:hover {
     box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.5);
   }
   &:active {
     top: 2px;
+  }
+}
+
+@media (max-width: 991px) {
+  %btn {
+    &:hover{
+      box-shadow: none;
+    }
+    &:active{
+      top: -1px;
+    }
   }
 }
 
