@@ -6,24 +6,74 @@ $(function () {
   window.onscroll = function () { scrollFunction() };
 
   function scrollFunction() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      $('.header').addClass('header-mini');
+    if (window.innerWidth > 991) {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        $('.header').addClass('header-mini');
+      } else {
+        $('.header').removeClass('header-mini');
+      }
     } else {
       $('.header').removeClass('header-mini');
     }
   }
 
+  //2. Menu
+  $('.menu__btn').on('click', function () {
+    $('html').toggleClass('menu-opened');
+    $('.menu__list').toggleClass('active');
+    $('.menu__btn').toggleClass('active');
+  });
+
 
   // --- main page ---
 
-  //1. Top slider
+  //1. Top slider (slick)
   $('.top-slider__inner').slick({
     dots: true,
     arrows: false,
     fade: true,
-    // autoplay: true,
+    autoplay: true,
     autoplaySpead: 5000,
   });
+
+  //2. Clock
+  const $clock = $('.promo__clock');
+
+  function getTimeRemaining(endtime) {
+    const total = Date.parse(endtime) - Date.now();
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+    return { total, days, hours, minutes, seconds };
+  }
+
+  function initializeClock($clock, endtime) {
+    const $days = $clock.find('.promo__days');
+    const $hours = $clock.find('.promo__hours');
+    const $minutes = $clock.find('.promo__minutes');
+    const $seconds = $clock.find('.promo__seconds');
+
+    function updateClock() {
+      const t = getTimeRemaining(endtime);
+
+      $days.text(t.days);
+      $hours.text(('0' + t.hours).slice(-2));
+      $minutes.text(('0' + t.minutes).slice(-2));
+      $seconds.text(('0' + t.seconds).slice(-2));
+
+      if (t.total <= 0) {
+        clearInterval(timeinterval);
+      }
+    }
+
+    updateClock();
+    const timeinterval = setInterval(updateClock, 1000);
+  }
+
+  const deadline = $clock.attr('data-time');
+  initializeClock($clock, deadline);
 
 
 
@@ -48,10 +98,19 @@ $(function () {
     $(this).addClass('shop-content__filter-btn--active');
   });
 
+
+ 
+
+
+
+
   //open filter at page shop on small screens
   $('.shop__filter-btn').on('click', function () {
+    $('body').toggleClass('menu-opened');
     $('.shop__filters').slideToggle();
   });
+
+
 
   // $('.filter__btn').on('click', function () {
   //   $('.shop__filters').slideToggle();
@@ -69,12 +128,6 @@ $(function () {
   });
 
 
-  //main page
-  $('.menu__btn').on('click', function () {
-    $('html').toggleClass('menu-opened');
-    $('.menu__list').toggleClass('active');
-    $('.menu__btn').toggleClass('active');
-  });
 
 
   
@@ -128,7 +181,11 @@ $(function () {
 
   $('.select-style, .product-one__num').styler();
 
-  //rateyo
+
+
+  //--- plugins ---
+
+  //1. Rateyo
   $(".star").rateYo({
     readOnly: true,
     starWidth: "17px",
@@ -137,66 +194,11 @@ $(function () {
     starSvg: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="16"><path d="m8.102.555-2.04 4.14-4.566.664C.68 5.477.352 6.49.946 7.066l3.3 3.22-.781 4.546c-.14.82.726 1.438 1.45 1.05L9 13.739l4.086 2.145c.723.383 1.59-.23 1.45-1.051l-.782-4.547 3.3-3.219c.594-.578.266-1.59-.55-1.707l-4.567-.664L9.899.555c-.367-.735-1.425-.746-1.796 0Zm0 0" style="stroke:none;fill-rule:nonzero;fill-opacity:1"/></svg>',
   });
 
-
-  //main page - clock
-  function getTimeRemaining(endtime) {
-    const total = Date.parse(endtime) - Date.parse(new Date());
-    const seconds = Math.floor((total / 1000) % 60);
-    const minutes = Math.floor((total / 1000 / 60) % 60);
-    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(total / (1000 * 60 * 60 * 24));
-
-    return {
-      total,
-      days,
-      hours,
-      minutes,
-      seconds
-    };
-  }
-
-  function initializeClock(id, endtime) {
-    const clock = document.querySelector('.promo__clock');
-    const daysSpan = clock.querySelector('.promo__days');
-    const hoursSpan = clock.querySelector('.promo__hours');
-    const minutesSpan = clock.querySelector('.promo__minutes');
-    const secondsSpan = clock.querySelector('.promo__seconds');
-
-    function updateClock() {
-      const t = getTimeRemaining(endtime);
-
-      daysSpan.innerHTML = t.days;
-      hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-      minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-      secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-      if (t.total <= 0) {
-        clearInterval(timeinterval);
-      }
-    }
-
-    updateClock();
-    const timeinterval = setInterval(updateClock, 1000);
-  }
-
-  const deadline = $('.promo__clock').attr('data-time');
-  initializeClock('promo__clock', deadline);
-
-
-  //map
-  let map;
-
-  function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8,
-    });
-  }
-  
-
+  //2. Fancybox - for video and photos
   Fancybox.bind("[data-fancybox]", {
   });
 
+  //3. AOS- animations
   AOS.init({
     disable: function () {
       let maxWidth = 1200;
@@ -207,6 +209,16 @@ $(function () {
     delay: 200,
     duration: 1500,
   });
+
+  //4. Map
+  let map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 8,
+    });
+  }
 
 });
 
