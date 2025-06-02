@@ -214,20 +214,20 @@
 }
 
 
-
+//--- index.html ---
 .blog {
   background-image: url("../images/blog-bg.svg");
   background-position: center center;
   background-repeat: no-repeat;
   &__items {
-    display: grid ;
+    position: relative;
+    display: grid;
     grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
-    position: relative;
     &::after {
-      content: "";
       position: absolute;
-      right: -20px;
+      content: "";
+      right: -10px;
       top: -25px;
       width: 126px;
       height: 53px;
@@ -238,17 +238,15 @@
   &__item {
     max-width: 370px;
     background-color: vars.$white;
-    border: 1px solid #ececec;
+    border: 1px solid vars.$bg-dark;
     transition: all .3s ease-in-out;
     &:hover {
       box-shadow: 20px 0px 60px 0px rgba(202, 202, 202, 0.35);
-      transition: all .3s ease-in-out;
+      transition: all .3s ease-in-out; 
       .blog__item-link {
         color: vars.$accent;
-        svg {
-          path {
-            fill: vars.$accent;
-          }
+        svg path {
+          fill: vars.$accent;
         }
       }
     }
@@ -298,6 +296,7 @@
 }
 
 
+//--- blog-one.html ---
 .blog-one {
   &__text {
     border: 1px solid #ececec;
@@ -599,8 +598,33 @@
   }
 
   .comments-form{
-      padding-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  //--- index.html ---
+  .blog{
+    .blog__item{
+      max-width: 100%;
     }
+    &__item-box{
+      padding: 20px;
+    }
+    &__img{
+      margin: 0 auto;
+    }
+  } 
+}
+
+
+@media (max-width: 1050px) {
+  //--- index.html ---
+  .blog{
+    .blog__items{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 20px;
+    }
+  }
 }
 
 
@@ -656,6 +680,36 @@
       }
     }
   }
+
+  //--- index.html ---
+  .blog {
+    &__item {
+      max-width: 100%;
+      &:hover {
+        box-shadow: none;
+        .blog__item-link {
+          color: vars.$default;
+          svg path {
+            fill: vars.$default;
+          }
+        }
+      }
+    }
+    &__item-box {
+      padding: 10px;
+    }
+    &__item-title {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    &__img {
+      margin: 0 auto;
+    }
+  }
+
+  .blog-box{
+    margin-bottom: 10px;
+  }
 }
 
 
@@ -684,15 +738,22 @@
       margin: 10px 0;
     }
   }
+
+  // --- index.html ---
+  .blog{
+    .blog__items{
+      grid-template-columns: repeat(1, 1fr);
+    }
+  } 
 }
 
 
 @media (max-width: 480px) {
   .blog-page{
+    padding: 30px 0;
     .blog-box{
       margin-bottom: 10px;
     }
-    padding: 30px 0;
     &__item{
       margin-bottom: 30px;
     }
@@ -704,6 +765,7 @@
       padding: 20px;
     }
   }
+
   .blog-one{
     &__info{
       flex-wrap: wrap;
@@ -717,6 +779,7 @@
       height: 80px;
     }
   }
+
   .comments-form{
     &__box-input{
       flex-wrap: wrap;

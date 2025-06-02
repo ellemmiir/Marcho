@@ -63,32 +63,10 @@
     }
   }
 
-  .blog{
-    .blog__item{
-      max-width: 100%;
-    }
-    .blog__item-box{
-      padding: 20px;
-    }
-    &__img{
-      margin: 0 auto;
-    }
-  } 
+  
 }
 
 
-@media (max-width: 1050px) {
-
-
-
-  .blog{
-    .blog__items{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); 
-      gap: 20px;
-    }
-  }
-}
 
 
 /* Portrait tablets and small desktops */
@@ -239,8 +217,6 @@
     }
   }
 
-
-
   .product{
     &__items{
       grid-template-columns: repeat(1, 1fr) !important;
@@ -250,15 +226,8 @@
     margin-bottom: 0;
   }
 
-  
 
   
-
-  .blog{
-    .blog__items{
-      grid-template-columns: repeat(1, 1fr);
-    }
-  } 
 }
 
 

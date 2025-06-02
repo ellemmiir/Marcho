@@ -1135,16 +1135,16 @@ footer {
 }
 
 .blog__items {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    position: relative;
 }
 
 .blog__items::after {
-    content: "";
     position: absolute;
-    right: -20px;
+    content: "";
+    right: -10px;
     top: -25px;
     width: 126px;
     height: 53px;
@@ -1539,6 +1539,26 @@ footer {
     .comments-form {
         padding-bottom: 0;
     }
+
+    .blog .blog__item {
+        max-width: 100%;
+    }
+
+    .blog__item-box {
+        padding: 20px;
+    }
+
+    .blog__img {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1050px) {
+    .blog .blog__items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
 }
 
 @media (max-width: 991px) {
@@ -1585,6 +1605,39 @@ footer {
     .latest-post__title-link:hover {
         color: #29282d;
     }
+
+    .blog__item {
+        max-width: 100%;
+    }
+
+    .blog__item:hover {
+        box-shadow: none;
+    }
+
+    .blog__item:hover .blog__item-link {
+        color: #8d8d8d;
+    }
+
+    .blog__item:hover .blog__item-link svg path {
+        fill: #8d8d8d;
+    }
+
+    .blog__item-box {
+        padding: 10px;
+    }
+
+    .blog__item-title {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .blog__img {
+        margin: 0 auto;
+    }
+
+    .blog-box {
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -1615,6 +1668,10 @@ footer {
 
     .blog-one h4 {
         margin: 10px 0;
+    }
+
+    .blog .blog__items {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
@@ -2290,26 +2347,6 @@ button {
     .product-item--sale .product-item__top-box::before {
         display: none;
     }
-
-    .blog .blog__item {
-        max-width: 100%;
-    }
-
-    .blog .blog__item-box {
-        padding: 20px;
-    }
-
-    .blog__img {
-        margin: 0 auto;
-    }
-}
-
-@media (max-width: 1050px) {
-    .blog .blog__items {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
 }
 /* Portrait tablets and small desktops */
 @media (max-width: 991px) {
@@ -2481,10 +2518,6 @@ button {
 
     .product-item__top-box.top-box {
         margin-bottom: 0;
-    }
-
-    .blog .blog__items {
-        grid-template-columns: repeat(1, 1fr);
     }
 }
 /* Landscape phones and smaller */

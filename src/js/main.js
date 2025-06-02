@@ -78,16 +78,20 @@ $(function () {
 
 
   //shop
-   $('.filter-price__input').ionRangeSlider({
+  $('.filter-price__input').ionRangeSlider({
     type: "double",
     prefix: "$",
     onStart: function (data) {
       $('.filter-price__from').text(data.from);
       $('.filter-price__to').text(data.to);
+      $('input[name="min_price"]').val(data.from);
+      $('input[name="max_price"]').val(data.to);
     },
     onChange: function (data) {
       $('.filter-price__from').text(data.from);
       $('.filter-price__to').text(data.to);
+      $('input[name="min_price"]').val(data.from);
+      $('input[name="max_price"]').val(data.to);
     },
   });
 
