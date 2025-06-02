@@ -407,9 +407,6 @@
   }
 
   .filter-search {
-    &__form{
-      padding-right: 50px;
-    }
     &__input {
       width: 100%;
     }
@@ -429,11 +426,15 @@
       display: flex;
     }
   }
+  
   .filter{
     &__item{
-      // margin-bottom: 0;
       padding: 20px;
     }
+  }
+
+  .filter-search{
+    padding-top: 35px;
   }
 }
 
