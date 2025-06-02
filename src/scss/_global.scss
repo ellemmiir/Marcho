@@ -78,29 +78,29 @@ button {
 //--- no scroll on phone, etc. ---
 .menu-opened{
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 
-
-
-
-//at pages
+//--- top section on every page ---
 .top {
   padding-top: 110px;
   &__container {
     margin: 0 auto;
-    padding: 120px 0 130px;
+    padding: 120px 0;
     max-width: 1700px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
+    background-color: vars.$bg;
     text-align: center;
   }
 }
 
 @media (max-width: 1600px){
   .top{
-    padding-top: 70px;
+    padding-top: 60px;
   }
 }
 
@@ -114,11 +114,12 @@ button {
 }
 
 
+//--- breadcrums on every page ---
 .breadcrumbs {
+  position: relative;
   display: inline-flex;
   justify-content: center;
   padding-left: 25px;
-  position: relative;
   flex-wrap: wrap;
   &::before {
     content: '';
@@ -133,9 +134,9 @@ button {
     display: flex;
   }
   &__item {
-    color: #727272;
-    padding-right: 40px;
     position: relative;
+    padding-right: 40px;
+    color: vars.$default;
     &::after {
       content: '';
       position: absolute;
@@ -148,21 +149,32 @@ button {
       background-size: contain;
     }
     &:last-child {
-      color: vars.$accent;
       padding-right: 0;
+      color: vars.$accent;
       &::after {
         display: none;
       }
     }
   }
   &__link {
-    transition: color .3s ease-in-out;
     color: inherit;
-  }
-  &__link:hover {
-    color: vars.$accent;
+    transition: color .3s ease-in-out;
+    &:hover{
+      color: vars.$accent;
+    }
   }
 }
+
+@media (max-width: 991px){
+  .breadcrumbs {
+    &__link {
+      &:hover{
+        color: inherit;
+      }
+    }
+  }
+}
+
 
 
 .pagination {
