@@ -2,8 +2,8 @@
   margin: 0 auto;
   max-width: 570px;
   &__links {
-    text-align: center;
     margin-bottom: 40px;
+    text-align: center;
   }
   &__link {
     margin: 0 30px;
@@ -33,13 +33,14 @@
     display: block;
     padding: 14px 0;
     width: 100%;
-    color: vars.$default;
+    top: 0;
     @extend %roboto-400;
+    color: vars.$default;
     text-transform: uppercase;
     background-color: vars.$title;
     border: none;
     cursor: pointer;
-    top: 0;
+    transition: box-shadow .2s ease-in-out;
     &:hover {
       box-shadow: 0px 2px 10px 0px rgba(30, 30, 30, 0.5);
     }
@@ -58,7 +59,21 @@
   }
 }
 
-@media (max-width: 375px) {
+
+@media (max-width: 991px) {
+  .modal {
+    &__btn {
+      &:hover {
+        box-shadow: none;
+      }
+      &:active {
+        top: 0px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
   .modal__link {
     margin: 0 20px;
   }
